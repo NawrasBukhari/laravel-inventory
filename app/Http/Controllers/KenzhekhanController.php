@@ -2,35 +2,33 @@
 
 namespace App\Http\Controllers;
 use App\Country;
-use App\Product;
-use App\ProductCategory;
 use App\Http\Requests\ProductRequest;
+use App\Kenzhekhan;
+use App\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class ProductController extends Controller
+class KenzhekhanController extends Controller
 {
     public function index()
     {
-        $products = Product::paginate(25);
+        $products = Kenzhekhan::paginate(25);
 
-        return view('inventory.products.index', compact('products',$products));
+        return view('inventory.kenzhekhan.index', compact('products',$products));
     }
-
     public function create()
     {
         $categories = ProductCategory::all();
         $countries = Country::all();
-        return view('inventory.products.create', compact('categories', 'countries'));
+        return view('inventory.kenzhekhan.create', compact('categories', 'countries'));
     }
-
-    public function store(ProductRequest $request, Product $model)
+    public function store(ProductRequest $request, Kenzhekhan $model)
     {
         $uploadFile = $request->file('image');
-        $filename = 'KAZKAN'.'_'.Str::random(8).'.'.$uploadFile->extension();
+        $filename = 'KENZHEKHAN'.'_'.Str::random(8).'.'.$uploadFile->extension();
         $path = '';
         $uploadFile->storeAs($path, $filename,'uploads');
-        $model = new Product();
+        $model = new Kenzhekhan();
         $model->name = $request->name;
         $model->description = $request->description;
         $model->product_category_id = $request->product_category_id;
@@ -44,30 +42,25 @@ class ProductController extends Controller
         $model->weight=$request->weight;
         $model->image = $path.'/'.$filename;
         $model->save([$model]);
-            return redirect()
-                ->route('products.index')
-                ->withStatus('Product successfully registered.');
+        return redirect()
+            ->route('kenzhekhan.index')
+            ->withStatus('Product successfully registered.');
     }
-
-    public function show(Product $product)
+    public function show(Kenzhekhan $product)
     {
         $solds = $product->solds()->latest()->limit(25)->get();
 
         $receiveds = $product->receiveds()->latest()->limit(25)->get();
 
-        return view('inventory.products.show', compact('product', 'solds', 'receiveds'));
+        return view('inventory.kenzhekhan.show', compact('product', 'solds', 'receiveds'));
     }
-
-
-    public function edit(Product $product)
+    public function edit(Kenzhekhan $product)
     {
         $categories = ProductCategory::all();
         $countries = Country::all();
-        return view('inventory.products.edit', compact('product', 'categories', 'countries'));
+        return view('inventory.kenzhekhan.edit', compact('product', 'categories', 'countries'));
     }
-
-
-    public function update(ProductRequest $request, Product $product)
+    public function update(ProductRequest $request, Kenzhekhan $product)
     {
         $request->validate([
             'name' => 'required',
@@ -84,7 +77,7 @@ class ProductController extends Controller
             'usage'=>'required',
         ]);
         $uploadFile = $request->file('image');
-        $filename = 'KAZKAN'.'_'.Str::random(8).'.'.$uploadFile->extension();
+        $filename = 'KENZHEKHAN'.'_'.Str::random(8).'.'.$uploadFile->extension();
         $path = '';
         $uploadFile->storeAs($path, $filename,'uploads');
         $product->update($request->all());
@@ -92,26 +85,21 @@ class ProductController extends Controller
         $product->save([$product]);
 
         return redirect()
-            ->route('products.index')
+            ->route('kenzhekhan.index')
             ->withStatus('Product updated successfully.');
 
     }
-
-    // ------------------------------------------------------------------------------------------------- //
     public function country()
     {
         $countries = Country::all();
-        return view('inventory.products.create', compact('countries', $countries));
+        return view('inventory.kenzhekhan.create', compact('countries', $countries));
     }
-
-
-    public function destroy(Product $product)
+    public function destroy(Kenzhekhan $product)
     {
         $product->delete();
 
         return redirect()
-            ->route('products.index')
+            ->route('kenzhekhan.index')
             ->withStatus('Product removed successfully.');
     }
-
 }

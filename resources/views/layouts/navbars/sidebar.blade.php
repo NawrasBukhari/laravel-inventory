@@ -83,8 +83,8 @@
                                 <p>Казкан основной</p>
                             </a>
                         </li>
-                        <li @if ($pageSlug == 'Кенжехан второй') class="active " @endif>
-                            <a href="{{ route('products.index') }}">
+                        <li @if ($pageSlug == 'kenzhekhan') class="active " @endif>
+                            <a href="{{ route('kenzhekhan.index') }}">
                                 <i class="tim-icons icon-notes"></i>
                                 <p>Кенжехан второй</p>
                             </a>

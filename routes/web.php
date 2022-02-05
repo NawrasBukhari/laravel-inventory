@@ -22,6 +22,7 @@ Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resources([
+        'inventory/kenzhekhan'=>'KenzhekhanController',
         'theme'=>'SettingsController',
         'translations'=>'TranslationController',
         'users' => 'UserController',
