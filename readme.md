@@ -1,4 +1,4 @@
-![license](https://img.shields.io/badge/license-MIT-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/ct-black-dashboard-pro-laravel.svg)](https://github.com/NawrasBukhari/laravel-inventory/issues?q=is%3Aopen+is%3Aissue)  [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/ct-black-dashboard-pro-laravel/ct-black-dashboard-pro-laravel.svg)](https://github.com/NawrasBukhari/laravel-inventory/issues?q=is%3Aissue+is%3Aclosed)
+![license](https://img.shields.io/badge/license-MIT-blue.svg) ![version](https://img.shields.io/badge/version-1.0.1-green.svg)
 
 # Quick Introduction
 This is an inventory system and point of sale application it is build in laravel 7 and php 7.2
