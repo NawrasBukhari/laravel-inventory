@@ -9,7 +9,6 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5|^8.0.13",
-        "bacon/bacon-qr-code": "^2.0",
         "barryvdh/laravel-translation-manager": "^0.6.1",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^7.0",
@@ -18,11 +17,7 @@
         "laravelcollective/html": "^6.2",
         "maatwebsite/excel": "^3.1",
         "mcamara/laravel-localization": "^1.7",
-        "monarobase/country-list": "^3.2",
-        "nnjeim/world": "^1.1",
-        "pragmarx/countries": "^0.7.2",
-        "pragmarx/google2fa-laravel": "^2.0",
-        "spatie/laravel-medialibrary": "9.0"
+        "nnjeim/world": "^1.1"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
