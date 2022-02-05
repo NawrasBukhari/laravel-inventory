@@ -3,6 +3,10 @@ This is an inventory system and point of sale application it is build in laravel
 
 # Quick Installation
 ```bash
+change .env.example into .env
+DB_DATABASE="Database name"
+DB_USERNAME="Database username"
+DB_PASSWORD="Database password"
 composer install
 composer update
 php artisan migreate --seed
