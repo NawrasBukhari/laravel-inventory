@@ -27,6 +27,6 @@ class Product extends Model
 
     public function receiveds()
     {
-        return $this->hasMany('App\ReceivedProduct');
+        return $this->hasMany('App\Models\ReceivedProduct');
     }
 }
