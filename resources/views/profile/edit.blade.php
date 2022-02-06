@@ -91,9 +91,6 @@
                     </div>
                 </form>
             </div>
-        {{---------------------------------------------Here Goes 2FA--------------------------------------------------}}
-
-        {{---------------------------------------------Here Ends 2FA--------------------------------------------------}}
         </div>
         <div class="col-md-4">
             <div class="card card-user">
@@ -110,11 +107,11 @@
                                 <button type="button" class="close" data-dismiss="alert">×</button>
                                 <strong>{{ $message }}</strong>
                             </div>
-                            <img src="images/{{ Session::get('image') }}">
+                            <img src="{{asset('/images/profile_pictures/'.Auth::user()->image)}}">
                         @endif
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
-                                <strong>Whoops!</strong> There were some problems with your input.
+                                <strong>{{__('translation.Whoops')}}!</strong>{{__('translation.problems_input')}}
                                 <ul>
                                     @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>
@@ -123,7 +120,8 @@
                             </div>
                         @endif
                             @if(Auth::user()->image)
-                                <img class="avatar" src="{{asset('/storage/images/'.Auth::user()->image)}}" alt="profile_image">
+                                <img class="avatar" src="{{asset('/images/profile_pictures/'.Auth::user()->image)}}"
+                                     alt="{{__('translation.upload_image')}}">
                             @endif
                         <div class="upload-btn-wrapper">
                             <form action="{{route('profile.edit')}}" method="POST" enctype="multipart/form-data">

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
+use Illuminate\Support\Str;
 
 
 class ProfileController extends Controller
@@ -34,8 +36,8 @@ class ProfileController extends Controller
     public function upload(Request $request)
     {
         if($request->hasFile('image')){
-            $filename = $request->image->getClientOriginalName();
-            $request->image->storeAs('images',$filename,'public');
+            $filename = 'user_'.Str::random(12).'.'.$request->image->extension();
+            $request->image->storeAs('',$filename,'profile');
             Auth()->user()->update(['image'=>$filename]);
         }
         return back()->withstatus('Image uploaded successfully');

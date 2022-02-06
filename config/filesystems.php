@@ -54,6 +54,11 @@ return [
             'url' => '/img/uploads',
             'visibility' => 'public',
         ],
+        'profile' => [
+            'driver' => 'local',
+            'root' => public_path('images/profile_pictures'),
+            'visibility' => 'public',
+        ],
 
         'public' => [
             'driver' => 'local',

@@ -160,5 +160,8 @@ return[
     'New_user'=>'New user',
     'Translation_Manager'=>'Translation Manager',
     'Settings'=>'Settings',
+    'upload_image'=>'upload image',
+    'Whoops'=>'Whoops',
+    'problems_input'=>'There were some problems with your input.',
 
 ];
