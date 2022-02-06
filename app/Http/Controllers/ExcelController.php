@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\Input;
 use App\Models\Post;
 use DB;
 use Session;
-use Excel;
+use App\Models\Excel;
 
 class ExcelController extends Controller
 {
