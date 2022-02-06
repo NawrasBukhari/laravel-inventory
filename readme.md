@@ -1,5 +1,5 @@
 # Quick Introduction
-This is an inventory system and point of sale application it is build in laravel 7 and php 7.2
+This is an inventory system and point of sale application it is build in laravel 8 and php 7.3
 
 # Quick Installation
 ```bash
@@ -12,8 +12,16 @@ php artisan migreate --seed
 
 # Login and password
 
+```bash 
+Admin login: <br>
 Login: admin@app.com <br>
-password: admin
+Password: admin
+```
+```bash
+Worker login <br>
+Login: worker@app.com
+Password: worker
+```
 
 # roles
 Admin: can (add, read, edit, delete)<br>
