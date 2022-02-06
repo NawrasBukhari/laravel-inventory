@@ -14,7 +14,7 @@ php artisan migreate --seed
 
 ```bash 
 Admin login:
-Login: admin@app.com <br>
+Login: admin@app.com
 Password: admin
 ```
 ```bash
