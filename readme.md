@@ -13,12 +13,12 @@ php artisan migreate --seed
 # Login and password
 
 ```bash 
-Admin login: <br>
+Admin login:
 Login: admin@app.com <br>
 Password: admin
 ```
 ```bash
-Worker login <br>
+Worker login
 Login: worker@app.com
 Password: worker
 ```
