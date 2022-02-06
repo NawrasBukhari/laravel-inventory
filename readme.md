@@ -4,11 +4,11 @@ This is an inventory system and point of sale application it is build in laravel
 # Quick Installation
 ```bash
 change .env.example into .env
+composer install
+composer update
 DB_DATABASE=""
 DB_USERNAME=""
 DB_PASSWORD=""
-composer install
-composer update
 php artisan migreate --seed
 ```
 
