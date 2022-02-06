@@ -122,12 +122,11 @@
                                         </div>
                                     </div>
                                     {{-------------------------------Here Product Usage Starts------------------------------}}
-                                    <div class="col-lg-4">
+                                    <div class="col-4">
                                         <div class="form-group{{ $errors->has('usage') ? ' has-danger' : '' }}">
                                             <label class="form-control-label" for="input-price">{{__('translation.usage')}}</label>
-                                            <input type="text" data-toggle="tooltip" data-placement="top" title="{{__('translation.why_usage')}}"
-                                                   name="usage" id="input-usage"  class="form-control form-control-alternative"
-                                                   placeholder="{{__('translation.usage')}}" value="{{ old('usage'), $product->usage }}" required>
+                                            <input type="text" name="usage" id="input-usage" class="form-control form-control-alternative"
+                                                   placeholder="{{__('translation.usage')}}" value="{{ old('usage', $product->usage) }}" required>
                                             @include('alerts.feedback', ['field' => 'usage'])
                                         </div>
                                     </div>

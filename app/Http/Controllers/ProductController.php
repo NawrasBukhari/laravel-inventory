@@ -27,7 +27,7 @@ class ProductController extends Controller
     public function store(ProductRequest $request, Product $model)
     {
         $uploadFile = $request->file('image');
-        $filename = Str::random(8).'.'.$uploadFile->extension();
+        $filename = 'kazkan_'.Str::random(12).'.'.$uploadFile->extension();
         $path = '';
         $uploadFile->storeAs($path, $filename,'uploads');
         $model = new Product();
@@ -84,7 +84,7 @@ class ProductController extends Controller
             'usage'=>'required',
         ]);
         $uploadFile = $request->file('image');
-        $filename = Str::random(8).'.'.$uploadFile->extension();
+        $filename = 'kazkan_'.Str::random(8).'.'.$uploadFile->extension();
         $path = '';
         $uploadFile->storeAs($path, $filename,'uploads');
         $product->update($request->all());

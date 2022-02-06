@@ -10,11 +10,9 @@ class ProductCategory extends Model
     use SoftDeletes;
     protected $table = 'product_categories';
     protected $fillable = ['name'];
-    public function products() {
-        return $this->hasMany('App\Product');
-    }
-    public function kenzhekhan()
+
+    public function products()
     {
-        return $this->hasMany('App\Kenzhekhan');
+        return $this->hasMany('App\Product');
     }
 }

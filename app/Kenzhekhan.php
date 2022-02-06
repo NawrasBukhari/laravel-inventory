@@ -21,10 +21,10 @@ class Kenzhekhan extends Model
     }
     public function solds()
     {
-        return $this->hasMany('App\SoldProduct');
+        return $this->hasMany('App\SoldProduct','kenzhekhan_id');
     }
     public function receiveds()
     {
-        return $this->hasMany('App\ReceivedProduct');
+        return $this->hasMany('App\ReceivedProduct','kenzhekhan_id');
     }
 }

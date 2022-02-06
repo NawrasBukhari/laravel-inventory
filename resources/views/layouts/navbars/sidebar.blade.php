@@ -10,7 +10,7 @@
             <li>
                 <a data-toggle="collapse" href="#transactions" {{ $section == 'transactions' ? 'aria-expanded=true' : '' }}>
                     <i class="tim-icons icon-bank" ></i>
-                    <span class="nav-link-text">Transactions</span>
+                    <span class="nav-link-text">{{__('translation.transactions')}}</span>
                     <b class="caret mt-1"></b>
                 </a>
 
@@ -19,43 +19,43 @@
                         <li @if ($pageSlug == 'tstats') class="active " @endif>
                             <a href="{{ route('transactions.stats')  }}">
                                 <i class="tim-icons icon-chart-pie-36"></i>
-                                <p>Statistics</p>
+                                <p>{{__('translation.Statistics')}}</p>
                             </a>
                         </li>
                         <li @if ($pageSlug == 'transactions') class="active " @endif>
                             <a href="{{ route('transactions.index')  }}">
                                 <i class="tim-icons icon-bullet-list-67"></i>
-                                <p>All</p>
+                                <p>{{__('translation.All')}}</p>
                             </a>
                         </li>
                         <li @if ($pageSlug == 'sales') class="active " @endif>
                             <a href="{{ route('sales.index')  }}">
                                 <i class="tim-icons icon-bag-16"></i>
-                                <p>Sales</p>
+                                <p>{{__('translation.Sales')}}</p>
                             </a>
                         </li>
                         <li @if ($pageSlug == 'expenses') class="active " @endif>
                             <a href="{{ route('transactions.type', ['type' => 'expense'])  }}">
                                 <i class="tim-icons icon-coins"></i>
-                                <p>Expenses</p>
+                                <p>{{__('translation.Expenses')}}</p>
                             </a>
                         </li>
                         <li @if ($pageSlug == 'incomes') class="active " @endif>
                             <a href="{{ route('transactions.type', ['type' => 'income'])  }}">
                                 <i class="tim-icons icon-credit-card"></i>
-                                <p>Income</p>
+                                <p>{{__('translation.Income')}}</p>
                             </a>
                         </li>
                         <li @if ($pageSlug == 'transfers') class="active " @endif>
                             <a href="{{ route('transfer.index')  }}">
                                 <i class="tim-icons icon-send"></i>
-                                <p>Transfers</p>
+                                <p>{{__('translation.transfers')}}</p>
                             </a>
                         </li>
                         <li @if ($pageSlug == 'payments') class="active " @endif>
                             <a href="{{ route('transactions.type', ['type' => 'payment'])  }}">
                                 <i class="tim-icons icon-money-coins"></i>
-                                <p>Payments</p>
+                                <p>{{__('translation.payments')}}</p>
                             </a>
                         </li>
                     </ul>
@@ -65,7 +65,7 @@
             <li>
                 <a data-toggle="collapse" href="#inventory" {{ $section == 'inventory' ? 'aria-expanded=true' : '' }}>
                     <i class="tim-icons icon-app"></i>
-                    <span class="nav-link-text">Inventory</span>
+                    <span class="nav-link-text">{{__('translation.Inventory')}}</span>
                     <b class="caret mt-1"></b>
                 </a>
 
@@ -74,31 +74,31 @@
                         <li @if ($pageSlug == 'istats') class="active " @endif>
                             <a href="{{ route('inventory.stats') }}">
                                 <i class="tim-icons icon-chart-pie-36"></i>
-                                <p>Statistics</p>
+                                <p>{{__('translation.Statistics')}}</p>
                             </a>
                         </li>
                         <li @if ($pageSlug == 'products') class="active " @endif>
                             <a href="{{ route('products.index') }}">
                                 <i class="tim-icons icon-notes"></i>
-                                <p>Казкан основной</p>
+                                <p>Казкан</p>
                             </a>
                         </li>
-                        <li @if ($pageSlug == 'Кенжехан второй') class="active " @endif>
-                            <a href="{{ route('products.index') }}">
+                        <li @if ($pageSlug == 'kenzhekhan') class="active " @endif>
+                            <a href="{{ route('kenzhekhan.index') }}">
                                 <i class="tim-icons icon-notes"></i>
-                                <p>Кенжехан второй</p>
+                                <p>Кенжехан</p>
                             </a>
                         </li>
                         <li @if ($pageSlug == 'categories') class="active " @endif>
                             <a href="{{ route('categories.index') }}">
                                 <i class="tim-icons icon-tag"></i>
-                                <p>Categoríes</p>
+                                <p>{{__('translation.categories')}}</p>
                             </a>
                         </li>
                         <li @if ($pageSlug == 'receipts') class="active " @endif>
                             <a href="{{ route('receipts.index') }}">
                                 <i class="tim-icons icon-paper"></i>
-                                <p>Receipts</p>
+                                <p>{{__('translation.Receipts')}}</p>
                             </a>
                         </li>
                     </ul>
@@ -108,50 +108,47 @@
             <li @if ($pageSlug == 'clients') class="active " @endif>
                 <a href="{{ route('clients.index') }}">
                     <i class="tim-icons icon-single-02"></i>
-                    <p>Clients</p>
+                    <p>{{__('translation.Clients')}}</p>
                 </a>
             </li>
 
             <li @if ($pageSlug == 'providers') class="active " @endif>
                 <a href="{{ route('providers.index') }}">
                     <i class="tim-icons icon-delivery-fast"></i>
-                    <p>Providers</p>
+                    <p>{{__('translation.Providers')}}</p>
                 </a>
             </li>
 
             <li @if ($pageSlug == 'methods') class="active " @endif>
                 <a href="{{ route('methods.index') }}">
                     <i class="tim-icons icon-wallet-43"></i>
-                    <p>Methods and Accounts</p>
+                    <p>{{__('translation.Methods_and_Accounts')}}</p>
                 </a>
             </li>
+{{--             <li>--}}
+{{--                <a data-toggle="collapse" href="#clients">--}}
+{{--                    <i class="tim-icons icon-single-02" ></i>--}}
+{{--                    <span class="nav-link-text">Clients</span>--}}
+{{--                    <b class="caret mt-1"></b>--}}
+{{--                </a>--}}
 
-
-            <!-- <li>
-                <a data-toggle="collapse" href="#clients">
-                    <i class="tim-icons icon-single-02" ></i>
-                    <span class="nav-link-text">Clients</span>
-                    <b class="caret mt-1"></b>
-                </a>
-
-                <div class="collapse" id="clients">
-                    <ul class="nav pl-4">
-                        <li @if ($pageSlug == 'clients-list') class="active " @endif>
-                            <a href="{{ route('clients.index')  }}">
-                                <i class="tim-icons icon-notes"></i>
-                                <p>Administrar Clients</p>
-                            </a>
-                        </li>
-                        <li @if ($pageSlug == 'clients-create') class="active " @endif>
-                            <a href="{{ route('clients.create')  }}">
-                                <i class="tim-icons icon-simple-add"></i>
-                                <p>New Client</p>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li> -->
-
+{{--                <div class="collapse" id="clients">--}}
+{{--                    <ul class="nav pl-4">--}}
+{{--                        <li @if ($pageSlug == 'clients-list') class="active " @endif>--}}
+{{--                            <a href="{{ route('clients.index')  }}">--}}
+{{--                                <i class="tim-icons icon-notes"></i>--}}
+{{--                                <p>Administrar Clients</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li @if ($pageSlug == 'clients-create') class="active " @endif>--}}
+{{--                            <a href="{{ route('clients.create')  }}">--}}
+{{--                                <i class="tim-icons icon-simple-add"></i>--}}
+{{--                                <p>New Client</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--            </li>--}}
             @can('manage_users')
                 <li>
                     <a data-toggle="collapse" href="#users" {{ $section == 'users' ? 'aria-expanded=true' : '' }}>
@@ -165,19 +162,19 @@
                             <li @if ($pageSlug == 'profile') class="active " @endif>
                                 <a href="{{ route('profile.edit')  }}">
                                     <i class="tim-icons icon-badge"></i>
-                                    <p>My profile</p>
+                                    <p>{{__('translation.My_profile')}}</p>
                                 </a>
                             </li>
                             <li @if ($pageSlug == 'users-list') class="active " @endif>
                                 <a href="{{ route('users.index')  }}">
                                     <i class="tim-icons icon-notes"></i>
-                                    <p>Manage Users</p>
+                                    <p>{{__('translation.Manage_Users')}}</p>
                                 </a>
                             </li>
                             <li @if ($pageSlug == 'users-create') class="active " @endif>
                                 <a href="{{ route('users.create')  }}">
                                     <i class="tim-icons icon-simple-add"></i>
-                                    <p>New user</p>
+                                    <p>{{__('translation.New_user')}}</p>
                                 </a>
                             </li>
                         </ul>
@@ -188,7 +185,7 @@
                 <li>
                     <a href="{{ route('translations.index')  }}">
                         <i class="tim-icons icon-caps-small"></i>
-                        <p>Translation Manager</p>
+                        <p>{{__('translation.Translation_Manager')}}</p>
                     </a>
                 </li>
             @endcan
@@ -196,7 +193,7 @@
                 <li>
                     <a href="{{route('theme.index')}}">
                         <i class="tim-icons icon-settings-gear-63"></i>
-                        <p>Settings</p>
+                        <p>{{__('translation.Settings')}}</p>
                     </a>
                 </li>
             @endcan

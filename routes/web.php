@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth'], function () {
         'users' => 'UserController',
         'providers' => 'ProviderController',
         'inventory/products' => 'ProductController',
+        'inventory/kenzhekhan' => 'KenzhekhanController',
         'clients' => 'ClientController',
         'inventory/categories' => 'ProductCategoryController',
         'transactions/transfer' => 'TransferController',

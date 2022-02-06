@@ -3,7 +3,7 @@ return[
     'welcome' => 'Welcome to the Dashboard',
     'author'=>'Nawras Bukhari',
     'success' => 'Edit has been successfully changed!',
-    'kazkan'=>'Казкан основной ',
+    'kazkan'=>'Казкан',
     'Edit_Profile'=>'Edit Profile',
     'Name'=>'Name',
     'Email'=>'Email',
@@ -140,7 +140,25 @@ return[
     'Delete_Product'=>'Delete Product',
     'Are_you_sure_you_want_to_remove_this_product?'=>
         'Are you sure you want to remove this product? The records that contain it will continue to exist.',
-
-
+    'usage'=>'usage',
+    'why_usage'=>'The usage/application of this item/product/stock and what it should be needed',
+    'kenzhekhan'=>'Кенжехан',
+    'transactions'=>'Transactions',
+    'Statistics'=>'Statistics',
+    'All'=>'All',
+    'Sales'=>'Sales',
+    'Expenses'=>'Expenses',
+    'transfers'=>'Transfers',
+    'payments'=>'Payments',
+    'Inventory'=>'Inventory',
+    'categories'=>'Categories',
+    'Receipts'=>'Receipts',
+    'Providers'=>'Providers',
+    'Methods_and_Accounts'=>'Methods and Accounts',
+    'My_profile'=>'My profile',
+    'Manage_Users'=>'Manage Users',
+    'New_user'=>'New user',
+    'Translation_Manager'=>'Translation Manager',
+    'Settings'=>'Settings',
 
 ];

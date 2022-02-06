@@ -17,7 +17,8 @@
         "laravelcollective/html": "^6.2",
         "maatwebsite/excel": "^3.1",
         "mcamara/laravel-localization": "^1.7",
-        "nnjeim/world": "^1.1"
+        "nnjeim/world": "^1.1",
+      "ext-pdo": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

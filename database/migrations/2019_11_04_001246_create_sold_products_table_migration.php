@@ -17,12 +17,14 @@ class CreateSoldProductsTableMigration extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('sale_id');
             $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('kenzhekhan_id');
             $table->integer('qty');
             $table->decimal('price', 10, 2);
             $table->decimal('total_amount', 10, 2);
             $table->timestamps();
             $table->foreign('sale_id')->references('id')->on('sales')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('kenzhekhan_id')->references('id')->on('kenzhekhans');
         });
     }
 

@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Country;
-use App\Http\Requests\ProductRequest;
+use App\Http\Requests\KenzhekhanRequest;
 use App\Kenzhekhan;
-use App\ProductCategory;
+use App\KenzhekhanCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -12,20 +13,21 @@ class KenzhekhanController extends Controller
 {
     public function index()
     {
-        $products = Kenzhekhan::paginate(25);
+        $kenzhekhan = Kenzhekhan::paginate(25);
 
-        return view('inventory.kenzhekhan.index', compact('products',$products));
+        return view('inventory.kenzhekhan.index', compact('kenzhekhan',$kenzhekhan));
     }
     public function create()
     {
-        $categories = ProductCategory::all();
+        $categories = KenzhekhanCategory::all();
         $countries = Country::all();
         return view('inventory.kenzhekhan.create', compact('categories', 'countries'));
     }
-    public function store(ProductRequest $request, Kenzhekhan $model)
+
+    public function store(KenzhekhanRequest $request, Kenzhekhan $model)
     {
         $uploadFile = $request->file('image');
-        $filename = 'KENZHEKHAN'.'_'.Str::random(8).'.'.$uploadFile->extension();
+        $filename = 'kenzhekhan_'.Str::random(8).'.'.$uploadFile->extension();
         $path = '';
         $uploadFile->storeAs($path, $filename,'uploads');
         $model = new Kenzhekhan();
@@ -46,21 +48,7 @@ class KenzhekhanController extends Controller
             ->route('kenzhekhan.index')
             ->withStatus('Product successfully registered.');
     }
-    public function show(Kenzhekhan $product)
-    {
-        $solds = $product->solds()->latest()->limit(25)->get();
-
-        $receiveds = $product->receiveds()->latest()->limit(25)->get();
-
-        return view('inventory.kenzhekhan.show', compact('product', 'solds', 'receiveds'));
-    }
-    public function edit(Kenzhekhan $product)
-    {
-        $categories = ProductCategory::all();
-        $countries = Country::all();
-        return view('inventory.kenzhekhan.edit', compact('product', 'categories', 'countries'));
-    }
-    public function update(ProductRequest $request, Kenzhekhan $product)
+    public function update(KenzhekhanRequest $request, Kenzhekhan $kenzhekhan)
     {
         $request->validate([
             'name' => 'required',
@@ -77,26 +65,36 @@ class KenzhekhanController extends Controller
             'usage'=>'required',
         ]);
         $uploadFile = $request->file('image');
-        $filename = 'KENZHEKHAN'.'_'.Str::random(8).'.'.$uploadFile->extension();
+        $filename = 'kenzhekhan_'.Str::random(8).'.'.$uploadFile->extension();
         $path = '';
         $uploadFile->storeAs($path, $filename,'uploads');
-        $product->update($request->all());
-        $product->image = $path.'/'.$filename;
-        $product->save([$product]);
+        $kenzhekhan->update($request->all());
+        $kenzhekhan->image = $path.'/'.$filename;
+        $kenzhekhan->save([$kenzhekhan]);
 
         return redirect()
-            ->route('kenzhekhan.index')
+            ->route('products.index')
             ->withStatus('Product updated successfully.');
 
     }
-    public function country()
+
+    public function edit(Kenzhekhan $kenzhekhan)
     {
+        $categories = KenzhekhanCategory::all();
         $countries = Country::all();
-        return view('inventory.kenzhekhan.create', compact('countries', $countries));
+        return view('inventory.kenzhekhan.edit', compact('kenzhekhan', 'categories', 'countries'));
     }
-    public function destroy(Kenzhekhan $product)
+    public function show(Kenzhekhan $kenzhekhan)
     {
-        $product->delete();
+        $solds = $kenzhekhan->solds()->latest()->limit(25)->get();
+
+        $receiveds = $kenzhekhan->receiveds()->latest()->limit(25)->get();
+
+        return view('inventory.kenzhekhan.show', compact('kenzhekhan', 'solds', 'receiveds'));
+    }
+    public function destroy(Kenzhekhan $kenzhekhan)
+    {
+        $kenzhekhan->delete();
 
         return redirect()
             ->route('kenzhekhan.index')

@@ -17,10 +17,12 @@ class CreateReceivedProductsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('receipt_id');
             $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('kenzhekhan_id');
             $table->integer('stock');
             $table->integer('stock_defective');
             $table->foreign('receipt_id')->references('id')->on('receipts')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('kenzhekhan_id')->references('id')->on('kenzhekhans');
             $table->timestamps();
         });
     }
