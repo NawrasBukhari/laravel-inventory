@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Sale;
-use App\Client;
-use App\Transaction;
-use App\PaymentMethod;
+use App\Models\Sale;
+use App\Models\Client;
+use App\Models\Transaction;
+use App\Models\PaymentMethod;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClientRequest;
 

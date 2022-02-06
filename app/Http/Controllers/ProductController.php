@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Country;
-use App\Product;
-use App\ProductCategory;
+use App\Models\Country;
+use App\Models\Product;
+use App\Models\ProductCategory;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -27,7 +27,7 @@ class ProductController extends Controller
     public function store(ProductRequest $request, Product $model)
     {
         $uploadFile = $request->file('image');
-        $filename = 'kazkan_'.Str::random(12).'_'.$uploadFile->extension();
+        $filename = 'kazkan_'.Str::random(12).'.'.$uploadFile->extension();
         $path = '';
         $uploadFile->storeAs($path, $filename,'uploads');
         $model = new Product();

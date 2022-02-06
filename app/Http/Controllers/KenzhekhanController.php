@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Country;
 use App\Http\Requests\KenzhekhanRequest;
-use App\Kenzhekhan;
-use App\KenzhekhanCategory;
+use App\Models\Kenzhekhan;
+use App\Models\KenzhekhanCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
