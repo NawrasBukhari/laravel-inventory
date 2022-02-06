@@ -21,6 +21,6 @@ class ReceivedProduct extends Model
     }
     public function kenzhekhan()
     {
-        return $this->belongsTo('App\Kenzhekhan');
+        return $this->belongsTo('App\Models\Kenzhekhan');
     }
 }
