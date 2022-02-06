@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Transfer;
-use App\Transaction;
-use App\PaymentMethod;
+use App\Models\Transfer;
+use App\Models\Transaction;
+use App\Models\PaymentMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

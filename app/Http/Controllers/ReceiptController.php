@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Receipt;
-use App\Provider;
-use App\Product;
-
+use App\Models\Receipt;
+use App\Models\Provider;
+use App\Models\Product;
 use Carbon\Carbon;
-use App\ReceivedProduct;
+use App\Models\ReceivedProduct;
 use Illuminate\Http\Request;
 
 class ReceiptController extends Controller

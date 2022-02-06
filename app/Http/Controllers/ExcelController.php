@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
-use App\Post;
+use App\Models\Post;
 use DB;
 use Session;
 use Excel;

@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Sale;
+use App\Models\Sale;
 use Carbon\Carbon;
-use App\SoldProduct;
-use App\Transaction;
-use App\PaymentMethod;
+use App\Models\SoldProduct;
+use App\Models\Transaction;
+use App\Models\PaymentMethod;
 
 class HomeController extends Controller
 {

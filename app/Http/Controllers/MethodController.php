@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use App\Transaction;
-use App\PaymentMethod;
+use App\Models\Transaction;
+use App\Models\PaymentMethod;
 use Illuminate\Http\Request;
 
 class MethodController extends Controller
