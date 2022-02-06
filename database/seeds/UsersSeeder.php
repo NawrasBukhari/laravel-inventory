@@ -14,18 +14,13 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'Admin',
-            'email' => 'admin@app.com',
-            'email_verified_at' => Carbon::now(),
-            'created_at'=>Carbon::now(),
-            'is_admin'=>'1',
-            'password' => Hash::make('admin'),
+        DB::table('users')->insert
+        ([
+            ['name' => 'Admin', 'email' => 'admin@app.com', 'email_verified_at' => Carbon::now(), 'created_at'=>Carbon::now(), 'is_admin'=>'1', 'password' => Hash::make('admin')],
+            ['name' => 'worker', 'email' => 'worker@app.com', 'email_verified_at' => Carbon::now(), 'created_at'=>Carbon::now(), 'is_admin'=>'0', 'password' => Hash::make('worker')]
             ]);
         \Artisan::call('key:generate');
         \Artisan::call('storage:link');
         \Artisan::call('optimize:clear');
-
-
     }
 }
