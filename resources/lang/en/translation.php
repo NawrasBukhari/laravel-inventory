@@ -13,7 +13,7 @@ return[
     'New_Password'=>'New Password',
     'Confirm_new_password'=>'Confirm new password',
     'Save_New_Password'=>'Save New Password',
-    'Upload_a_file'=>'Upload a file',
+    'Upload_a_file'=>'Upload an image',
     'Change_profile_picture'=>'Change profile picture',
     'Total_sales'=>'Total sales',
     'Annual_income'=>'Annual income',
