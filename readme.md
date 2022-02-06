@@ -3,7 +3,7 @@ This is an inventory system and point of sale application it is build in laravel
 
 # Quick Installation
 ```bash
-change .env.example into .env
+change values of .env
 DB_DATABASE=""
 DB_USERNAME=""
 DB_PASSWORD=""
