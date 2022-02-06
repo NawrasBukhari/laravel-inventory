@@ -1,6 +1,6 @@
 <?php
 return[
-    'welcome' => 'Welcome to the Dashboard',
+    'welcome' => 'Welcome! Please Upload your profile image.',
     'author'=>'Nawras Bukhari',
     'success' => 'Edit has been successfully changed!',
     'kazkan'=>'Казкан',
