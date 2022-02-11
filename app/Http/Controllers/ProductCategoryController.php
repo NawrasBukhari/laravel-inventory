@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Kenzhekhan;
+use App\Http\Requests\KenzhekhanRequest;
 use App\Models\ProductCategory;
 use App\Http\Requests\ProductCategoryRequest;
 
@@ -55,7 +57,8 @@ class ProductCategoryController extends Controller
     {
         return view('inventory.categories.show', [
             'category' => $category,
-            'products' => Product::where('product_category_id', $category->id)->paginate(25)
+            'products' => Product::where('product_category_id', $category->id)->paginate(25),
+            'kenzhelhan'=>Kenzhekhan::where('product_category_id', $category->id)->paginate(25),
         ]);
     }
 
@@ -77,7 +80,7 @@ class ProductCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductCategoryRequest $request, ProductCategory $category)
+    public function update(ProductCategoryRequest $request, ProductCategory $category )
     {
         $category->update($request->all());
 

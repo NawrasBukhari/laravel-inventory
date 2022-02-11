@@ -19,7 +19,6 @@ class Product extends Model
     {
         return $this->belongsTo('App\Models\ProductCategory', 'product_category_id')->withTrashed();
     }
-
     public function solds()
     {
         return $this->hasMany('App\Models\SoldProduct');
@@ -28,5 +27,9 @@ class Product extends Model
     public function receiveds()
     {
         return $this->hasMany('App\Models\ReceivedProduct');
+    }
+    public function kenzhekhan()
+    {
+        return $this->hasMany('App\Models\Kenzhekhan');
     }
 }

@@ -5,20 +5,20 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Method information</h4>
+                    <h4 class="card-title">{{__('translation.Method_information')}}</h4>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Transactions</th>
-                            <th>Daily Balance</th>
-                            <th>Weekly Balance</th>
-                            <th>Quarterly Balance</th>
-                            <th>Monthly Balance</th>
-                            <th>Annual balance</th>
+                            <th>{{__('translation.ID')}}</th>
+                            <th>{{__('translation.Name')}}</th>
+                            <th>{{__('translation.Description')}}</th>
+                            <th>{{__('translation.transactions')}}</th>
+                            <th>{{__('translation.Daily_Balance')}}</th>
+                            <th>{{__('translation.Weekly_Balance')}}</th>
+                            <th>{{__('translation.Quarterly_Balance')}}</th>
+                            <th>{{__('translation.Monthly_Balance')}}</th>
+                            <th>{{__('translation.Annual_balance')}}</th>
                         </thead>
                         <tbody>
                             <tr>
@@ -42,17 +42,17 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Transactions: {{ $transactions->count() }}</h4>
+                    <h4 class="card-title">{{__('translation.transactions')}}: {{ $transactions->count() }}</h4>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>ID</th>
-                            <th>Date</th>
-                            <th>Type</th>
-                            <th>Title</th>
-                            <th>Amount</th>
-                            <th>Reference</th>
+                            <th>{{__('translation.ID')}}</th>
+                            <th>{{__('translation.Date')}}</th>
+                            <th>{{__('translation.Type')}}</th>
+                            <th>{{__('translation.Title')}}</th>
+                            <th>{{__('translation.Amount')}}</th>
+                            <th>{{__('translation.Reference')}}</th>
                         </thead>
                         <tbody>
                             @foreach($transactions as $transaction)
@@ -77,7 +77,7 @@
                                             <form action="{{ route('transactions.destroy', $transaction) }}" method="post" class="d-inline">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Transaction" onclick="confirm('Are you sure you want to delete this transaction? There will be no record left.') ? this.parentElement.submit() : ''">
+                                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Transaction" onclick="confirm('Вы уверены, что хотите удалить эту транзакцию? Записи не останется.') ? this.parentElement.submit() : ''">
                                                     <i class="tim-icons icon-simple-remove"></i>
                                                 </button>
                                             </form>

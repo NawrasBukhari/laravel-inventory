@@ -14,8 +14,10 @@ class payment_mothods_table_seeder extends Seeder
     public function run()
     {
         DB::table('payment_methods')->insert([
+            ['name' => 'Нурбанк','description'=>'Способ оплаты Нурбанк' ,'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()],
             ['name' => 'КАСПИ GOLD', 'description'=>'Использование каспи перевод','created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()],
             ['name' => 'наличные деньги','description'=>'Оплата из рук в руки' ,'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()],
-        ]);
+
+    ]);
     }
 }

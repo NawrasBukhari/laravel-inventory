@@ -30,10 +30,10 @@
                                 @foreach ($categories as $category)
                                     <tr>
                                         <td>{{ $category->name }}</td>
-                                        <td>{{ count($category->products) }}</td>
-                                        <td>{{ $category->products->sum('stock') }}</td>
-                                        <td>{{ $category->products->sum('stock_defective') }}</td>
-                                        <td>{{ format_money($category->products->avg('price')) }}</td>
+                                        <td>{{ count($category->products) + count($category->kenzhekhan) }}</td>
+                                        <td>{{ $category->products->sum('stock') + $category->kenzhekhan->sum('stock') }}</td>
+                                        <td>{{ $category->products->sum('stock_defective') + $category->kenzhekhan->sum('stock_defective') }}</td>
+                                        <td>{{ format_money($category->products->avg('price') + ($category->kenzhekhan->avg('price')))  }}</td>
                                         <td class="td-actions text-right">
                                             <a href="{{ route('categories.show', $category) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
                                                 <i class="tim-icons icon-zoom-split"></i>

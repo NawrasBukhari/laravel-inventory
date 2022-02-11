@@ -5,18 +5,18 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Statistics by Quantity (TOP 15)</h4>
+                    <h4 class="card-title">{{__('translation.Statistics_by_Quantity_(TOP 15)')}}</h4>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>ID</th>
-                            <th>Category</th>
-                            <th>Name</th>
-                            <th>Stock</th>
-                            <th>Annual Sales</th>
-                            <th>Average Price</th>
-                            <th>Annual Income</th>
+                            <th>{{__('translation.ID')}}</th>
+                            <th>{{__('translation.Category')}}</th>
+                            <th>{{__('translation.Name')}}</th>
+                            <th>{{__('translation.stock')}}</th>
+                            <th>{{__('translation.Annual_Sales')}}</th>
+                            <th>{{__('translation.Average_Price')}}</th>
+                            <th>{{__('translation.Annual_income')}}</th>
                             <th></th>
                         </thead>
                         <tbody>
@@ -46,17 +46,17 @@
         <div class="col-md-6">
             <div class="card card-tasks">
                 <div class="card-header">
-                    <h4 class="card-title">Statistics by Income (TOP 15)</h4>
+                    <h4 class="card-title">{{__('translation.Statistics_by_Income_(TOP 15)')}}</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-full-width table-responsive">
                         <table class="table">
                             <thead>
-                                <th>ID</th>
-                                <th>Category</th>
-                                <th>Name</th>
-                                <th>Sold</th>
-                                <th>Income</th>
+                                <th>{{__('translation.ID')}}</th>
+                                <th>{{__('translation.Category')}}</th>
+                                <th>{{__('translation.Name')}}</th>
+                                <th>{{__('translation.Sold')}}</th>
+                                <th>{{__('translation.Income')}}</th>
                             </thead>
                             <tbody>
                                 @foreach ($soldproductsbyincomes as $soldproduct)
@@ -77,17 +77,17 @@
         <div class="col-md-6">
             <div class="card card-tasks">
                 <div class="card-header">
-                    <h4 class="card-title">Statistics by Average Price (TOP 15)</h4>
+                    <h4 class="card-title">{{__('translation.Statistics_by_Average_Price_(TOP 15)')}}</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-full-width table-responsive">
                         <table class="table">
                             <thead>
-                                <th>ID</th>
-                                <th>Category</th>
-                                <th>Name</th>
-                                <th>Sold</th>
-                                <th>Average Price</th>
+                                <th>{{__('translation.ID')}}</th>
+                                <th>{{__('translation.Category')}}</th>
+                                <th>{{__('translation.Name')}}</th>
+                                <th>{{__('translation.Sold')}}</th>
+                                <th>{{__('translation.Average_Price')}}</th>
                             </thead>
                             <tbody>
                                 @foreach ($soldproductsbyavgprice as $soldproduct)

@@ -7,10 +7,10 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-8">
-                        <h4 class="card-title">Receipts</h4>
+                        <h4 class="card-title">{{__('translation.Receipts')}}</h4>
                     </div>
                     <div class="col-4 text-right">
-                        <a href="{{ route('receipts.create') }}" class="btn btn-sm btn-primary">New Receipt</a>
+                        <a href="{{ route('receipts.create') }}" class="btn btn-sm btn-primary">{{__('translation.New_Receipt')}}</a>
                     </div>
                 </div>
             </div>
@@ -18,13 +18,13 @@
                 <div class="">
                     <table class="table">
                         <thead>
-                            <th>Date</th>
-                            <th>Title</th>
-                            <th>Provider</th>
-                            <th>products</th>
-                            <th>Stock</th>
-                            <th>Defective Stock</th>
-                            <th>Status</th>
+                            <th>{{__('translation.Date')}}</th>
+                            <th>{{__('translation.Title')}}</th>
+                            <th>{{__('translation.Provider')}}</th>
+                            <th>{{__('translation.Products')}}</th>
+                            <th>{{__('translation.stock')}}</th>
+                            <th>{{__('translation.Defective_Stock')}}</th>
+                            <th>{{__('translation.Status')}}</th>
                             <th></th>
                         </thead>
                         <tbody>
@@ -46,7 +46,7 @@
                                         @if($receipt->finalized_at)
                                             FINALIZED
                                         @else
-                                            <span style="color:red; font-weight:bold;">TO FINALIZE</span>
+                                            <span style="color:red; font-weight:bold;">{{__('translation.TO_FINALIZE')}}</span>
                                         @endif
                                     </td>
                                     <td class="td-actions text-right">
@@ -62,7 +62,7 @@
                                         <form action="{{ route('receipts.destroy', $receipt) }}" method="post" class="d-inline">
                                             @csrf
                                             @method('delete')
-                                            <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Receipt" onclick="confirm('Estás seguro que quieres eliminar este recibo? Todos sus registros serán eliminados permanentemente, si ya está finalizado el stock de los productos permanecerán.') ? this.parentElement.submit() : ''">
+                                            <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Receipt" onclick="confirm('Вы уверены, что хотите удалить эту квитанцию? Все ваши записи будут безвозвратно удалены, если запас товаров уже закончился они останутся.') ? this.parentElement.submit() : ''">
                                                 <i class="tim-icons icon-simple-remove"></i>
                                             </button>
                                         </form>

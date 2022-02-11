@@ -8,10 +8,10 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">New Income</h3>
+                                <h3 class="mb-0">{{__('translation.New_Income')}}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('transactions.type', ['type' => 'income']) }}" class="btn btn-sm btn-primary">Back to List</a>
+                                <a href="{{ route('transactions.type', ['type' => 'income']) }}" class="btn btn-sm btn-primary">{{__('translation.Back_to_List')}}</a>
                             </div>
                         </div>
                     </div>
@@ -20,17 +20,17 @@
                             @csrf
                             <input type="hidden" name="type" value="income">
                             <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                            <h6 class="heading-small text-muted mb-4">Income Information</h6>
+                            <h6 class="heading-small text-muted mb-4">{{__('translation.Income_Information')}}</h6>
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('title') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-title">Title</label>
+                                    <label class="form-control-label" for="input-title">{{__('translation.Title')}}</label>
                                     <input type="text" name="title" id="input-title" class="form-control form-control-alternative{{ $errors->has('title') ? ' is-invalid' : '' }}" placeholder="Title" value="{{ old('title') }}" required autofocus>
                                     @include('alerts.feedback', ['field' => 'title'])
                                 </div>
 
 
                                 <div class="form-group{{ $errors->has('payment_method_id') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-method">Payment Method</label>
+                                    <label class="form-control-label" for="input-method">{{__('translation.Payment_Method')}}</label>
                                     <select name="payment_method_id" id="input-method" class="form-select form-control-alternative{{ $errors->has('payment_method_id') ? ' is-invalid' : '' }}" required>
                                         @foreach ($payment_methods as $payment_method)
                                             @if($payment_method['id'] == old('payment_method_id'))
@@ -44,20 +44,20 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('amount') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-amount">Amount</label>
+                                    <label class="form-control-label" for="input-amount">{{__('translation.Amount')}}</label>
                                     <input type="number" step=".01" name="amount" id="input-amount" class="form-control form-control-alternative" placeholder="Amount" value="{{ old('amount') }}" min="0" required>
                                     @include('alerts.feedback', ['field' => 'amount'])
 
                                 </div>
 
                                 <div class="form-group{{ $errors->has('reference') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-reference">Reference</label>
+                                    <label class="form-control-label" for="input-reference">{{__('translation.Reference')}}</label>
                                     <input type="text" name="reference" id="input-reference" class="form-control form-control-alternative{{ $errors->has('reference') ? ' is-invalid' : '' }}" placeholder="Reference" value="{{ old('reference') }}">
                                     @include('alerts.feedback', ['field' => 'reference'])
                                 </div>
 
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-success mt-4">Save</button>
+                                    <button type="submit" class="btn btn-success mt-4">{{__('translation.Save')}}</button>
                                 </div>
                             </div>
                         </form>

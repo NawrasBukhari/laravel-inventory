@@ -17,14 +17,18 @@ class Kenzhekhan extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Models\Kenzhekhan', 'product_category_id')->withTrashed();
+        return $this->belongsTo('App\Models\ProductCategory', 'product_category_id')->withTrashed();
     }
     public function solds()
     {
-        return $this->hasMany('App\Models\SoldProduct','kenzhekhan_id');
+        return $this->hasMany('App\Models\SoldProduct');
     }
     public function receiveds()
     {
-        return $this->hasMany('App\Models\ReceivedProduct','kenzhekhan_id');
+        return $this->hasMany('App\Models\ReceivedProduct');
+    }
+    public function product()
+    {
+        return $this->hasMany('App\Models\Product');
     }
 }

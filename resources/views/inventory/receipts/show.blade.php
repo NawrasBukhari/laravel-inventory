@@ -1,6 +1,5 @@
 @extends('layouts.app', ['page' => 'Manage Receipt', 'pageSlug' => 'receipts', 'section' => 'inventory'])
 
-
 @section('content')
     @include('alerts.success')
     @include('alerts.error')
@@ -10,7 +9,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Receipt Summary</h4>
+                            <h4 class="card-title">{{__('translation.Receipt_Summary')}}</h4>
                         </div>
                         @if (!$receipt->finalized_at)
                             <div class="col-4 text-right">
@@ -19,12 +18,12 @@
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-sm btn-primary">
-                                            Delete Receipt
+                                            {{__('translation.Delete_Receipt')}}
                                         </button>
                                     </form>
                                 @else
-                                    <button type="button" class="btn btn-sm btn-primary" onclick="confirm('ATTENTION: At the end of this receipt you will not be able to load more products in it.') ? window.location.replace('{{ route('receipts.finalize', $receipt) }}') : ''">
-                                        Finalize Receipt
+                                    <button type="button" class="btn btn-sm btn-primary" onclick="confirm('ВНИМАНИЕ: В конце этого чека вы не сможете загрузить в него больше товаров.') ? window.location.replace('{{ route('receipts.finalize', $receipt) }}') : ''">
+                                        {{__('translation.Finalize_Receipt')}}
                                     </button>
                                 @endif
                             </div>
@@ -34,15 +33,15 @@
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>ID</th>
-                            <th>Date</th>
-                            <th>Title</th>
-                            <th>User</th>
-                            <th>Provider</th>
-                            <th>products</th>
-                            <th>Stock</th>
-                            <th>Defective Stock</th>
-                            <th>Status</th>
+                            <th>{{__('translation.ID')}}</th>
+                            <th>{{__('translation.Date')}}</th>
+                            <th>{{__('translation.Title')}}</th>
+                            <th>{{__('translation.User')}}</th>
+                            <th>{{__('translation.Provider')}}</th>
+                            <th>{{__('translation.Products')}}</th>
+                            <th>{{__('translation.stock')}}</th>
+                            <th>{{__('translation.Defective_Stock')}}</th>
+                            <th>{{__('translation.Status')}}</th>
                         </thead>
                         <tbody>
                             <tr>
@@ -60,7 +59,7 @@
                                 <td>{{ $receipt->products->count() }}</td>
                                 <td>{{ $receipt->products->sum('stock') }}</td>
                                 <td>{{ $receipt->products->sum('stock_defective') }}</td>
-                                <td>{!! $receipt->finalized_at ? 'Finalized' : '<span style="color:red; font-weight:bold;">TO FINALIZE</span>' !!}</td>
+                                <td>{!! $receipt->finalized_at ? 'Finalized' : '<span style="color:red; font-weight:bold;">ЗАВЕРШИТЬ</span>' !!}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -75,11 +74,11 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">products: {{ $receipt->products->count() }}</h4>
+                            <h4 class="card-title">{{__('translation.Products')}}: {{ $receipt->products->count() }}</h4>
                         </div>
                         @if (!$receipt->finalized_at)
                             <div class="col-4 text-right">
-                                <a href="{{ route('receipts.product.add', ['receipt' => $receipt]) }}" class="btn btn-sm btn-primary">Add</a>
+                                <a href="{{ route('receipts.product.add', ['receipt' => $receipt]) }}" class="btn btn-sm btn-primary">{{__('translation.Add')}}</a>
                             </div>
                         @endif
                     </div>
@@ -87,11 +86,11 @@
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>Category</th>
-                            <th>Product</th>
-                            <th>Stock</th>
-                            <th>Defective Stock</th>
-                            <th>Total Stock</th>
+                            <th>{{__('translation.Category')}}</th>
+                            <th>{{__('translation.Product')}}</th>
+                            <th>{{__('translation.stock')}}</th>
+                            <th>{{__('translation.Defective_Stock')}}</th>
+                            <th>{{__('translation.Total_Stock')}}</th>
                             <th></th>
                         </thead>
                         <tbody>
@@ -110,7 +109,7 @@
                                             <form action="{{ route('receipts.product.destroy', ['receipt' => $receipt, 'receivedproduct' => $received_product]) }}" method="post" class="d-inline">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Pedido" onclick="confirm('Estás seguro que quieres eliminar este producto?') ? this.parentElement.submit() : ''">
+                                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Pedido" onclick="confirm('Вы уверены, что хотите удалить этот продукт?') ? this.parentElement.submit() : ''">
                                                     <i class="tim-icons icon-simple-remove"></i>
                                                 </button>
                                             </form>
@@ -127,5 +126,5 @@
 @endsection
 
 @push('js')
-    <script src="{{ asset('assets') }}/js/sweetalerts2.js"></script>
+    <script src="{{ asset('assets/js/sweetalert2.js') }}"></script>
 @endpush

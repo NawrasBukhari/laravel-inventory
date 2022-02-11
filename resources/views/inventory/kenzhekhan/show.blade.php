@@ -7,24 +7,24 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Product Information</h4>
+                    <h4 class="card-title">{{__('translation.Product_Information')}}</h4>
                 </div>
                 <div class="card-body">
 
                     <table class="table table-responsive-sm">
                         <thead>
-                        <th>Category</th>
-                        <th>Name</th>
-                        <th>Photo</th>
-                        <th>Country</th>
-                        <th>Stock</th>
-                        <th>Product code</th>
-                        <th>Weight</th>
-                        <th>Defective Stock</th>
-                        <th>Base price</th>
-                        <th>Average Price</th>
-                        <th>Total sales</th>
-                        <th>Income Produced</th>
+                        <th>{{__('translation.Category')}}</th>
+                        <th>{{__('translation.Name')}}</th>
+                        <th>{{__('translation.Photo')}}</th>
+                        <th>{{__('translation.country')}}</th>
+                        <th>{{__('translation.stock')}}</th>
+                        <th>{{__('translation.product_code')}}</th>
+                        <th>{{__('translation.Weight')}}</th>
+                        <th>{{__('translation.Defective_Stock')}}</th>
+                        <th>{{__('translation.Base_price')}}</th>
+                        <th>{{__('translation.Average_Price')}}</th>
+                        <th>{{__('translation.Total_sales')}}</th>
+                        <th>{{__('translation.Income_Produced')}}</th>
                         </thead>
                         <tbody>
                         <tr>
@@ -60,16 +60,16 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Latest Sales</h4>
+                    <h4 class="card-title">{{__('translation.latest_sales')}}</h4>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                        <th>Date</th>
-                        <th>Sale ID</th>
-                        <th>Quantity</th>
-                        <th>Price Unit</th>
-                        <th>Total Amount</th>
+                        <th>{{__('translation.Date')}}</th>
+                        <th>{{__('translation.sale_id')}}</th>
+                        <th>{{__('translation.Quantity')}}</th>
+                        <th>{{__('translation.price_unit')}}</th>
+                        <th>{{__('translation.Total_Amount')}}</th>
                         <th></th>
                         </thead>
                         <tbody>
@@ -98,17 +98,17 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Latest Receipts</h4>
+                    <h4 class="card-title">{{__('translation.Latest_Receipts')}}</h4>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                        <th>Date</th>
-                        <th>Receipt ID</th>
-                        <th>Title</th>
-                        <th>Stock</th>
-                        <th>Defective Stock</th>
-                        <th>Total Stock</th>
+                        <th>{{__('translation.Date')}}</th>
+                        <th>{{__('translation.Latest_Receipts')}}</th>
+                        <th>{{__('translation.Title')}}</th>
+                        <th>{{__('translation.stock')}}</th>
+                        <th>{{__('translation.Defective_Stock')}}</th>
+                        <th>{{__('translation.Total_Stock')}}</th>
                         <th></th>
                         </thead>
                         <tbody>
@@ -133,12 +133,4 @@
             </div>
         </div>
     </div>
-    <script>
-        function showPicture() {
-            var sourceOfPicture = "http://img.tesco.com/Groceries/pi/118/5000175411118/IDShot_90x90.jpg";
-            var img = document.getElementById('bigpic')
-            img.src = sourceOfPicture.replace('90x90', '225x225');
-            img.style.display = "block";
-        }
-    </script>
 @endsection
