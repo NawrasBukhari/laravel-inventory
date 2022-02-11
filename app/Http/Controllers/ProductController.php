@@ -52,7 +52,6 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $solds = $product->solds()->latest()->limit(25)->get();
-
         $receiveds = $product->receiveds()->latest()->limit(25)->get();
 
         return view('inventory.products.show', compact('product', 'solds', 'receiveds'));
@@ -94,10 +93,7 @@ class ProductController extends Controller
         return redirect()
             ->route('products.index')
             ->withStatus('Product updated successfully.');
-
     }
-
-    // ------------------------------------------------------------------------------------------------- //
     public function country()
     {
         $countries = Country::all();

@@ -530,6 +530,8 @@ Created using IcoMoon - icomoon.io
 }
 
 .icon-zoom-split::before {
+  height: 10px;
+  width: 10px;
   content: "\ea61";
 }
 

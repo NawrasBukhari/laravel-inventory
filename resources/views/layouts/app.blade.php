@@ -46,7 +46,8 @@
                             <div class="card-body">
                                 <div class="bg-transparent text-justify position-relative text-black-10 text-center">
                                     <hr>
-                                    <span data-toggle="tooltip" data-placement="top" title="{{__('translation.why_copyright')}}" class="position-relative text-justify text-center">All rights reserved</span> for <a href="https://instagram.com"><span data-toggle="tooltip" data-placement="top" title="{{__('translation.why_nawras')}}" class="text-danger">Nawras Bukhari</span></a>
+                                    <span data-toggle="tooltip" data-placement="top" title="{{__('translation.why_copyright')}}" class="position-relative text-justify text-center">{{__('translation.All_rights_reserved')}}</span>
+                                    {{__('translation.for')}} <a href="https://instagram.com/nawrasbukhari"><span data-toggle="tooltip" data-placement="top" title="{{__('translation.why_nawras')}}" class="text-danger">{{__('translation.author')}}</span></a>
                                 </div>
                             </div>
                         </div>

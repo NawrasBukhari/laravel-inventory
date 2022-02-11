@@ -7,11 +7,11 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Transaction Statistics</h4>
+                            <h4 class="card-title">{{__('translation.Transaction_Statistics')}}</h4>
                         </div>
                         <div class="col-4 text-right">
                             <a href="{{ route('transactions.index') }}" class="btn btn-sm btn-primary">
-                                View Transactions
+                                {{__('translation.View_Transactions')}}
                             </a>
                         </div>
                     </div>
@@ -19,13 +19,13 @@
                 <div class="card-body">
                         <table class="table">
                             <thead>
-                                <th>Period</th>
-                                <th>Transactions</th>
-                                <th>Income</th>
-                                <th>Expenses</th>
-                                <th>Payments</th>
-                                <th>Cash Balance</th>
-                                <th>Total balance</th>
+                                <th>{{__('translation.Period')}}</th>
+                                <th>{{__('translation.transactions')}}</th>
+                                <th>{{__('translation.Income')}}</th>
+                                <th>{{__('translation.Expenses')}}</th>
+                                <th>{{__('translation.payments')}}</th>
+                                <th>{{__('translation.Cash_Balance')}}</th>
+                                <th>{{__('translation.Total_balance')}}</th>
                                 <th></th>
                             </thead>
                             <tbody>
@@ -54,10 +54,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Pending Balances</h4>
+                            <h4 class="card-title">{{__('translation.Pending_Balances')}}</h4>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{{ route('clients.index') }}" class="btn btn-sm btn-primary">View Clients</a>
+                            <a href="{{ route('clients.index') }}" class="btn btn-sm btn-primary">{{__('translation.View_Clients')}}</a>
                         </div>
                     </div>
                 </div>
@@ -65,10 +65,10 @@
                     <div class="table-full-width table-responsive">
                         <table class="table">
                             <thead>
-                                <th>Client</th>
-                                <th>Purchases</th>
-                                <th>Transactions</th>
-                                <th>Balance</th>
+                                <th>{{__('translation.Client')}}</th>
+                                <th>{{__('translation.Purchases')}}</th>
+                                <th>{{__('translation.transactions')}}</th>
+                                <th>{{__('translation.Balance')}}</th>
                                 <th></th>
                             </thead>
                             <tbody>
@@ -108,10 +108,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Statistics by Methods</h4>
+                            <h4 class="card-title">{{__('translation.Statistics_by_Methods')}}</h4>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{{ route('methods.index') }}" class="btn btn-sm btn-primary">View Methods</a>
+                            <a href="{{ route('methods.index') }}" class="btn btn-sm btn-primary">{{__('translation.View_Methods')}}</a>
                         </div>
                     </div>
                 </div>
@@ -119,9 +119,9 @@
                     <div class="table-full-width table-responsive">
                         <table class="table">
                             <thead>
-                                <th>Method</th>
-                                <th>Transactions {{ $date->year }}</th>
-                                <th>Balance {{ $date->year }}</th>
+                                <th>{{__('translation.Method')}}</th>
+                                <th>{{__('translation.transactions')}} {{ $date->year }}</th>
+                                <th>{{__('translation.Balance')}} {{ $date->year }}</th>
                                 <th></th>
                             </thead>
                             <tbody>
@@ -151,23 +151,24 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-8">
-                        <h4 class="card-title">Sales Statistics</h4>
+                        <h4 class="card-title">{{__('translation.Sales_Statistics')}}</h4>
                     </div>
                     <div class="col-4 text-right">
-                        <a href="{{ route('sales.index') }}" class="btn btn-sm btn-primary">View Sales</a>
+                        <a href="{{ route('sales.index') }}" class="btn btn-sm btn-primary">{{__('translation.View_Sales')}}</a>
                     </div>
                 </div>
             </div>
             <div class="card-body">
                 <table class="table">
                     <thead>
-                        <th>Period</th>
-                        <th>Sales</th>
-                        <th>Clients</th>
-                        <th>Total Stock</th>
-                        <th data-toggle="tooltip" data-placement="bottom" title="Promedio de ingresos por cada venta">Average C / V</th>
-                        <th>Billed Amount</th>
-                        <th>To Finalize</th>
+                        <th>{{__('translation.Period')}}</th>
+                        <th>{{__('translation.Sales')}}</th>
+                        <th>{{__('translation.Clients')}}</th>
+                        <th>{{__('translation.Total_Stock')}}</th>
+                        <th data-toggle="tooltip" data-placement="bottom" title="{{__('translation.Average_revenue_for_each_sale')}}">
+                            {{__('translation.Average')}}</th>
+                        <th>{{__('translation.Billed_Amount')}}</th>
+                        <th>{{__('translation.TO_FINALIZE')}}</th>
                     </thead>
                     <tbody>
                         @foreach ($salesperiods as $period => $data)

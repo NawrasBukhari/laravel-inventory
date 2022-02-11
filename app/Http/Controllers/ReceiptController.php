@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Receipt;
 use App\Models\Provider;
 use App\Models\Product;
+use App\Models\Kenzhekhan;
 use Carbon\Carbon;
 use App\Models\ReceivedProduct;
 use Illuminate\Http\Request;
@@ -107,8 +108,9 @@ class ReceiptController extends Controller
     public function addproduct(Receipt $receipt)
     {
         $products = Product::all();
+        $kenzhekhan = Kenzhekhan::all();
 
-        return view('inventory.receipts.addproduct', compact('receipt', 'products'));
+        return view('inventory.receipts.addproduct', compact('receipt', 'products', 'kenzhekhan'));
     }
 
     /**
@@ -136,8 +138,9 @@ class ReceiptController extends Controller
     public function editproduct(Receipt $receipt, ReceivedProduct $receivedproduct)
     {
         $products = Product::all();
+        $kenzhekhan = Kenzhekhan::all();
 
-        return view('inventory.receipts.editproduct', compact('receipt', 'receivedproduct', 'products'));
+        return view('inventory.receipts.editproduct', compact('receipt', 'receivedproduct', 'products', 'kenzhekhan'));
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\Sale;
 use App\Models\Product;
+use App\Models\Kenzhekhan;
 use Carbon\Carbon;
 use App\Models\SoldProduct;
 use App\Models\Transaction;
@@ -13,11 +14,7 @@ use Illuminate\Http\Request;
 
 class SaleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $sales = Sale::latest()->paginate(25);
@@ -26,11 +23,6 @@ class SaleController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $clients = Client::all();
@@ -38,12 +30,6 @@ class SaleController extends Controller
         return view('sales.create', compact('clients'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request, Sale $model)
     {
         $existent = Sale::where('client_id', $request->get('client_id'))->where('finalized_at', null)->get();
@@ -59,23 +45,11 @@ class SaleController extends Controller
             ->withStatus('Sale registered successfully, you can start registering products and transactions.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show(Sale $sale)
     {
         return view('sales.show', ['sale' => $sale]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Sale $sale)
     {
         $sale->delete();
@@ -87,18 +61,20 @@ class SaleController extends Controller
 
     public function finalize(Sale $sale)
     {
+        // Here goes product
         $sale->total_amount = $sale->products->sum('total_amount');
+
 
         foreach ($sale->products as $sold_product) {
             $product_name = $sold_product->product->name;
             $product_stock = $sold_product->product->stock;
             if($sold_product->qty > $product_stock) return back()->withError("The product '$product_name' does not have enough stock. Only has $product_stock units.");
         }
-
         foreach ($sale->products as $sold_product) {
             $sold_product->product->stock -= $sold_product->qty;
             $sold_product->product->save();
         }
+
 
         $sale->finalized_at = Carbon::now()->toDateTimeString();
         $sale->client->balance -= $sale->total_amount;
@@ -111,8 +87,9 @@ class SaleController extends Controller
     public function addproduct(Sale $sale)
     {
         $products = Product::all();
+        $kenzhekhan = Kenzhekhan::all(); // Kenzhekhan Goes here
 
-        return view('sales.addproduct', compact('sale', 'products'));
+        return view('sales.addproduct', compact('sale', 'products', 'kenzhekhan'));
     }
 
     public function storeproduct(Request $request, Sale $sale, SoldProduct $soldProduct)
@@ -129,8 +106,9 @@ class SaleController extends Controller
     public function editproduct(Sale $sale, SoldProduct $soldproduct)
     {
         $products = Product::all();
+        $kenzhekhan = Kenzhekhan::all();
 
-        return view('sales.editproduct', compact('sale', 'soldproduct', 'products'));
+        return view('sales.editproduct', compact('sale', 'soldproduct', 'products', 'kenzhekhan'));
     }
 
     public function updateproduct(Request $request, Sale $sale, SoldProduct $soldproduct)

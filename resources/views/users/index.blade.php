@@ -7,10 +7,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">{{ __('Users') }}</h4>
+                            <h4 class="card-title">{{ __('translation.Users') }}</h4>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{{ route('users.create') }}" class="btn btn-sm btn-primary">{{ __('Add user') }}</a>
+                            <a href="{{ route('users.create') }}" class="btn btn-sm btn-primary">{{ __('translation.Add_user') }}</a>
                         </div>
                     </div>
                 </div>
@@ -20,10 +20,10 @@
                     <div class="">
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
-                                <th scope="col">{{ __('Name') }}</th>
-                                <th scope="col">{{ __('Email') }}</th>
-                                <th scope="col">{{ __('Creation Date') }}</th>
-                                <th scope="col">{{ __('image') }}</th>
+                                <th scope="col">{{ __('translation.Name') }}</th>
+                                <th scope="col">{{ __('translation.Email') }}</th>
+                                <th scope="col">{{ __('translation.Creation_Date') }}</th>
+                                <th scope="col">{{ __('translation.Photo') }}</th>
                                 <th scope="col"></th>
                             </thead>
                             <tbody>
@@ -34,7 +34,8 @@
                                             <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
                                         </td>
                                         <td>{{ $user->created_at->format('d/m/Y H:i') }}</td>
-                                        <td><img width="64px" height="64px" class="rounded-circle" src="{{asset('/storage/images/'.$user->image)}}"></td>
+                                        <td><img width="64px" height="64px" class="rounded-circle" src="{{asset('/images/profile_pictures/'.$user->image)}}"></td>
+
                                         <td class="text-right">
                                                 <div class="dropdown">
                                                     <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -46,13 +47,13 @@
                                                                 @csrf
                                                                 @method('delete')
 
-                                                                <a class="dropdown-item" href="{{ route('users.edit', $user) }}">{{ __('Edit') }}</a>
-                                                                <button type="button" class="dropdown-item" onclick="confirm('{{ __('Are you sure you want to delete this user?') }}') ? this.parentElement.submit() : ''">
-                                                                            {{ __('Delete') }}
+                                                                <a class="dropdown-item" href="{{ route('users.edit', $user) }}">{{ __('translation.edit') }}</a>
+                                                                <button type="button" class="dropdown-item" onclick="confirm('Вы уверены, что хотите удалить этого пользователя') ? this.parentElement.submit() : ''">
+                                                                            {{ __('translation.delete') }}
                                                                 </button>
                                                             </form>
                                                         @else
-                                                            <a class="dropdown-item" href="{{ route('profile.edit', $user->id) }}">{{ __('Edit') }}</a>
+                                                            <a class="dropdown-item" href="{{ route('profile.edit', $user->id) }}">{{ __('translation.edit') }}</a>
                                                         @endif
                                                     </div>
                                                 </div>

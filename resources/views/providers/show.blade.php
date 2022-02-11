@@ -5,19 +5,19 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Provider Information</h4>
+                    <h4 class="card-title">{{__('translation.Provider_Information')}}</h4>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Email</th>
-                            <th>Telephone</th>
-                            <th>Payment information</th>
-                            <th>Payments Made</th>
-                            <th>Total Payment</th>
+                            <th>{{__('translation.ID')}}</th>
+                            <th>{{__('translation.Name')}}</th>
+                            <th>{{__('translation.Description')}}</th>
+                            <th>{{__('translation.Email')}}</th>
+                            <th>{{__('translation.Telephone')}}</th>
+                            <th>{{__('translation.Payment_Information')}}</th>
+                            <th>{{__('translation.Payments_Made')}}</th>
+                            <th>{{__('translation.Total_payments')}}</th>
                         </thead>
                         <tbody>
                             <tr>
@@ -40,17 +40,17 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Latest Payments</h4>
+                    <h4 class="card-title">{{__('translation.Latest_Payments')}}</h4>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>Date</th>
-                            <th>ID</th>
-                            <th>Title</th>
-                            <th>Method</th>
-                            <th>Amount</th>
-                            <th>Reference</th>
+                            <th>{{__('translation.Date')}}</th>
+                            <th>{{__('translation.ID')}}</th>
+                            <th>{{__('translation.Title')}}</th>
+                            <th>{{__('translation.Method')}}</th>
+                            <th>{{__('translation.Amount')}}</th>
+                            <th>{{__('translation.Reference')}}</th>
                         </thead>
                         <tbody>
                             @foreach ($transactions as $transaction)
@@ -73,18 +73,18 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Latest Receipts</h4>
+                    <h4 class="card-title">{{__('translation.Latest_Receipts')}}</h4>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>Date</th>
-                            <th>ID</th>
-                            <th>Title</th>
-                            <th>products</th>
-                            <th>Stock</th>
-                            <th>Defective Stock</th>
-                            <th>Total Stock</th>
+                            <th>{{__('translation.Date')}}</th>
+                            <th>{{__('translation.ID')}}</th>
+                            <th>{{__('translation.Title')}}</th>
+                            <th>{{__('translation.Products')}}</th>
+                            <th>{{__('translation.stock')}}</th>
+                            <th>{{__('translation.Defective_Stock')}}</th>
+                            <th>{{__('translation.Total_Stock')}}</th>
                             <th></th>
                         </thead>
                         <tbody>

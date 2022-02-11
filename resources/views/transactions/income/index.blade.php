@@ -7,10 +7,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Income</h4>
+                            <h4 class="card-title">{{__('translation.Income')}}</h4>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{{ route('transactions.create', ['type' => 'income']) }}" class="btn btn-sm btn-primary">Register Income</a>
+                            <a href="{{ route('transactions.create', ['type' => 'income']) }}" class="btn btn-sm btn-primary">{{__('translation.Register_Income')}}</a>
                         </div>
                     </div>
                 </div>
@@ -20,11 +20,11 @@
                     <div class="">
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
-                                <th scope="col">Date</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">Method</th>
-                                <th scope="col">Amount</th>
-                                <th scope="col">Reference</th>
+                                <th scope="col">{{__('translation.Date')}}</th>
+                                <th scope="col">{{__('translation.Title')}}</th>
+                                <th scope="col">{{__('translation.Method')}}</th>
+                                <th scope="col">{{__('translation.Amount')}}</th>
+                                <th scope="col">{{__('translation.Reference')}}</th>
                                 <th scope="col"></th>
                             </thead>
                             <tbody>

@@ -16,8 +16,8 @@ class CreateSoldProductsTableMigration extends Migration
         Schema::create('sold_products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('sale_id');
-            $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('kenzhekhan_id');
+            $table->unsignedBigInteger('product_id')->nullable();
+            $table->unsignedBigInteger('kenzhekhan_id')->nullable();
             $table->integer('qty');
             $table->decimal('price', 10, 2);
             $table->decimal('total_amount', 10, 2);

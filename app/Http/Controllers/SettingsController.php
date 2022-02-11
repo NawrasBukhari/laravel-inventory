@@ -18,14 +18,7 @@ class SettingsController extends Controller
     }
     public function store(Request $request, Settings $model)
     {
-        $request->validate([
-            'theme' => 'required',
-        ]);
-        $model->theme = $request->theme;
-        $model->save($model);
-        return redirect()
-            ->route('theme.index')
-            ->withStatus('Theme successfully Changed.');
+
     }
     public function edit()
     {

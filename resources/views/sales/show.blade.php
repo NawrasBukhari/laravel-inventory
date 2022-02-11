@@ -9,7 +9,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Sale Summary</h4>
+                            <h4 class="card-title">{{__('translation.Sale_Summary')}}</h4>
                         </div>
                         @if (!$sale->finalized_at)
                             <div class="col-4 text-right">
@@ -18,12 +18,12 @@
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-sm btn-primary">
-                                            Delete Sale
+                                            {{__('translation.Delete_Sale')}}
                                         </button>
                                     </form>
                                 @else
-                                    <button type="button" class="btn btn-sm btn-primary" onclick="confirm('ATTENTION: The transactions of this sale do not seem to coincide with the cost of the products, do you want to finalize it? Your records cannot be modified from now on.') ? window.location.replace('{{ route('sales.finalize', $sale) }}') : ''">
-                                        Finalize Sale
+                                    <button type="button" class="btn btn-sm btn-primary" onclick="confirm('ВНИМАНИЕ: Сделки этой продажи похоже не совпадают со стоимостью продукции, хотите доработать? Ваши записи не могут быть изменены с этого момента?') ? window.location.replace('{{ route('sales.finalize', $sale) }}') : ''">
+                                        {{__('translation.Finalize_Sale')}}
                                     </button>
                                 @endif
                             </div>
@@ -33,14 +33,14 @@
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>ID</th>
-                            <th>Date</th>
-                            <th>User</th>
-                            <th>Client</th>
-                            <th>products</th>
-                            <th>Total Stock</th>
-                            <th>Total Cost</th>
-                            <th>Status</th>
+                            <th>{{__('translation.ID')}}</th>
+                            <th>{{__('translation.Date')}}</th>
+                            <th>{{__('translation.User')}}</th>
+                            <th>{{__('translation.Clients')}}</th>
+                            <th>{{__('translation.Products')}}</th>
+                            <th>{{__('translation.Total_Stock')}}</th>
+                            <th>{{__('translation.total_sold')}}</th>
+                            <th>{{__('translation.Status')}}</th>
                         </thead>
                         <tbody>
                             <tr>
@@ -66,11 +66,11 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">products: {{ $sale->products->sum('qty') }}</h4>
+                            <h4 class="card-title">{{__('translation.Products')}}: {{ $sale->products->sum('qty') }}</h4>
                         </div>
                         @if (!$sale->finalized_at)
                             <div class="col-4 text-right">
-                                <a href="{{ route('sales.product.add', ['sale' => $sale->id]) }}" class="btn btn-sm btn-primary">Add</a>
+                                <a href="{{ route('sales.product.add', ['sale' => $sale->id]) }}" class="btn btn-sm btn-primary">{{__('translation.Add')}}</a>
                             </div>
                         @endif
                     </div>
@@ -78,19 +78,19 @@
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>ID</th>
-                            <th>Category</th>
-                            <th>Product</th>
-                            <th>Quantity</th>
-                            <th>Price C/U</th>
-                            <th>Total</th>
+                            <th>{{__('translation.ID')}}</th>
+                            <th>{{__('translation.Category')}}</th>
+                            <th>{{__('translation.Product')}}</th>
+                            <th>{{__('translation.Quantity')}}</th>
+                            <th>{{__('translation.Price')}}</th>
+                            <th>{{__('translation.Total')}}</th>
                             <th></th>
                         </thead>
                         <tbody>
                             @foreach ($sale->products as $sold_product)
                                 <tr>
-                                    <td>{{ $sold_product->product->id }}</td>
-                                    <td><a href="{{ route('categories.show', $sold_product->product->category) }}">{{ $sold_product->product->category->name }}</a></td>
+                                    <td>{{ $sold_product->product->id or $sold_kenzhekhan->kenzhekhan->id}}</td>
+                                    <td><a href="{{ route('categories.show', $sold_product->product->category or $sold_kenzhekhan->kenzhekhan->category) }}">{{ $sold_product->product->category->name or $sold_kenzhekhan->kenzhekhan->category->name }} </a></td>
                                     <td><a href="{{ route('products.show', $sold_product->product) }}">{{ $sold_product->product->name }}</a></td>
                                     <td>{{ $sold_product->qty }}</td>
                                     <td>{{ format_money($sold_product->price) }}</td>
@@ -103,14 +103,14 @@
                                             <form action="{{ route('sales.product.destroy', ['sale' => $sale, 'soldproduct' => $sold_product]) }}" method="post" class="d-inline">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Pedido" onclick="confirm('Estás seguro que quieres eliminar este pedido de producto/s? Su registro será eliminado de esta venta.') ? this.parentElement.submit() : ''">
+                                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Pedido" onclick="confirm('Вы уверены, что хотите удалить этот заказ? Ваша регистрация будет удалена из этой продажи.') ? this.parentElement.submit() : ''">
                                                     <i class="tim-icons icon-simple-remove"></i>
                                                 </button>
                                             </form>
                                         @endif
                                     </td>
                                 </tr>
-                            @endforeach
+                                @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -120,5 +120,5 @@
 @endsection
 
 @push('js')
-    <script src="{{ asset('assets') }}/js/sweetalerts2.js"></script>
+    <script src="{{ asset('assets/js/sweetalert2.js') }}"></script>
 @endpush

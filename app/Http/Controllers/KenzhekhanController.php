@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Country;
+use App\Models\Country;
 use App\Http\Requests\KenzhekhanRequest;
 use App\Models\Kenzhekhan;
-use App\Models\KenzhekhanCategory;
+use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -19,7 +19,7 @@ class KenzhekhanController extends Controller
     }
     public function create()
     {
-        $categories = KenzhekhanCategory::all();
+        $categories = ProductCategory::all();
         $countries = Country::all();
         return view('inventory.kenzhekhan.create', compact('categories', 'countries'));
     }
@@ -73,21 +73,20 @@ class KenzhekhanController extends Controller
         $kenzhekhan->save([$kenzhekhan]);
 
         return redirect()
-            ->route('products.index')
+            ->route('kenzhekhan.index')
             ->withStatus('Product updated successfully.');
 
     }
 
     public function edit(Kenzhekhan $kenzhekhan)
     {
-        $categories = KenzhekhanCategory::all();
+        $categories = ProductCategory::all();
         $countries = Country::all();
         return view('inventory.kenzhekhan.edit', compact('kenzhekhan', 'categories', 'countries'));
     }
     public function show(Kenzhekhan $kenzhekhan)
     {
         $solds = $kenzhekhan->solds()->latest()->limit(25)->get();
-
         $receiveds = $kenzhekhan->receiveds()->latest()->limit(25)->get();
 
         return view('inventory.kenzhekhan.show', compact('kenzhekhan', 'solds', 'receiveds'));

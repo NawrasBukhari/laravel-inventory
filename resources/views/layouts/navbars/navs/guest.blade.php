@@ -30,7 +30,7 @@
                     </div>
                 <li class="nav-item">
                     <a href="{{ route('home') }}" class="nav-link text-primary">
-                        <i class="tim-icons icon-minimal-left"></i> Home
+                        <i class="tim-icons icon-minimal-left"></i> {{__('translation.Home')}}
                     </a>
                 </li>
             </ul>

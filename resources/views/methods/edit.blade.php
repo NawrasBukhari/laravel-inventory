@@ -8,10 +8,10 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('Method Management') }}</h3>
+                                <h3 class="mb-0">{{ __('translation.Method_Management') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('methods.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
+                                <a href="{{ route('methods.index') }}" class="btn btn-sm btn-primary">{{ __('translation.Back_to_List') }}</a>
                             </div>
                         </div>
                     </div>
@@ -20,22 +20,24 @@
                             @csrf
                             @method('put')
 
-                            <h6 class="heading-small text-muted mb-4">{{ __('Product information') }}</h6>
+                            <h6 class="heading-small text-muted mb-4">{{ __('translation.Product_Information') }}</h6>
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-name">{{ __('Name') }}</label>
-                                    <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('name', $method->name) }}" required autofocus>
+                                    <label class="form-control-label" for="input-name">{{ __('translation.Name') }}</label>
+                                    <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                           placeholder="{{ __('translation.Name') }}" value="{{ old('name', $method->name) }}" required autofocus>
                                     @include('alerts.feedback', ['field' => 'name'])
                                 </div>
                                 <div class="form-group{{ $errors->has('description') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-description">{{ __('Description') }}</label>
-                                    <input type="text" name="description" id="input-description" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('description', $method->description) }}" required>
+                                    <input type="text" name="description" id="input-description" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                           placeholder="{{ __('translation.Description') }}" value="{{ old('description', $method->description) }}" required>
                                     @include('alerts.feedback', ['field' => 'description'])
                                 </div>
 
 
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
+                                    <button type="submit" class="btn btn-success mt-4">{{ __('translation.Save') }}</button>
                                 </div>
                             </div>
                         </form>

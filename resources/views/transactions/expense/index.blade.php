@@ -7,10 +7,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title">Expenses</h4>
+                            <h4 class="card-title">{{__('translation.Expenses')}}</h4>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{{ route('transactions.create', ['type' => 'expense']) }}" class="btn btn-sm btn-primary">Register Expense</a>
+                            <a href="{{ route('transactions.create', ['type' => 'expense']) }}" class="btn btn-sm btn-primary">{{__('translation.Register_Expense')}}</a>
                         </div>
                     </div>
                 </div>
@@ -20,11 +20,11 @@
                     <div class="">
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
-                                <th scope="col">Date</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">Method</th>
-                                <th scope="col">Amount</th>
-                                <th scope="col">Reference</th>
+                                <th scope="col">{{__('translation.Date')}}</th>
+                                <th scope="col">{{__('translation.Title')}}</th>
+                                <th scope="col">{{__('translation.Method')}}</th>
+                                <th scope="col">{{__('translation.Amount')}}</th>
+                                <th scope="col">{{__('translation.Reference')}}</th>
                                 <th scope="col"></th>
                             </thead>
                             <tbody>
@@ -47,7 +47,7 @@
                                                 <form action="{{ route('transactions.destroy', $transaction) }}" method="post" class="d-inline">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Transaction" onclick="confirm('Are you sure you want to delete this transaction? There will be no record left.') ? this.parentElement.submit() : ''">
+                                                    <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Transaction" onclick="confirm('Вы уверены, что хотите удалить эту транзакцию? Записи не останется.') ? this.parentElement.submit() : ''">
                                                         <i class="tim-icons icon-simple-remove"></i>
                                                     </button>
                                                 </form>

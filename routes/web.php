@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use App\Models\Product;
+use App\Models\Kenzhekhan;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +24,7 @@ Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
 // Languages Locales Route goes here
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
 
+
 // Sidebar left menu routes goes here
 Route::group(['middleware' => 'auth'], function () {
     Route::resources([
@@ -36,6 +39,23 @@ Route::group(['middleware' => 'auth'], function () {
         'transactions/transfer' => 'TransferController',
         'methods' => 'MethodController',
     ]); // Sidebar left menu routes goes here
+
+    // Search goes here
+    Route::post('/3559d7accf00360971961ca18989adc0614089c0', function (){
+        $q = Request::get('q');
+        if ($q != ""){
+            $product = Product:: where('product_code', 'LIKE', '%'. $q . '%')->get();
+            if(count($product) > 0)
+                return view('settings.index')->withDetails($product)->withQuery($q);
+    // ---------------------------------------------------------------------------------- //
+            else
+                $kenzhekhan = Kenzhekhan:: where('product_code', 'LIKE', '%'. $q . '%')->get();
+                if(count($kenzhekhan) > 0)
+                    return view('settings.index')->withDetails($kenzhekhan)->withQuery($q);
+        }
+        return redirect()->route('theme.index')
+            ->with('error','Товары не найдены! Поиск только по коду продукта.');
+    });
 
     // Transaction Routes Goes here
     Route::resource('transactions', 'TransactionController')->except(['create', 'show']);

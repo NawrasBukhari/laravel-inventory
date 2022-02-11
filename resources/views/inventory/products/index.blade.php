@@ -41,7 +41,7 @@
                                         <td>{{ $product->solds->sum('qty') }}</td>
                                         <td>{{ $product->country }}</td>
                                         <td>{{ format_weight($product->weight) }}</td>
-                                        <td><img height="64px" width="64px" src="{{ url('public/images/products_images'.$product->image) }}" class="rounded-circle" alt="{{ asset('storage/images'.$product->image) }}" title="Product image"></td>
+                                        <td><img height="64px" width="64px" src="{{ url('public/images/products_images'.$product->image) }}" class="rounded-circle" alt="{{ url('public/images/products_images'.$product->image) }}" title="Product image"></td>
                                         <td class="td-actions text-right">
                                             <a href="{{ route('products.show', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="{{__('translation.More_Details')}}">
                                                 <i class="tim-icons icon-zoom-split"></i>
