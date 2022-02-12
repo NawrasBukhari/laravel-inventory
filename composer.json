@@ -17,7 +17,8 @@
         "laravel/ui": ">2.5.0",
         "laravelcollective/html": "^6.2",
         "maatwebsite/excel": "^3.1.36",
-        "mcamara/laravel-localization": "^1.7.0"
+        "mcamara/laravel-localization": "^1.7.0",
+        "rachidlaasri/laravel-installer": "^4.1"
     },
     "require-dev": {
         "facade/ignition": "^2.17.4",

@@ -17,21 +17,12 @@
         <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.23.0/slimselect.min.css" rel="stylesheet">
         <!-- CSS -->
-        @if(env('THEME') == 1)
-            <link href="{{ asset('assets/css/white-dashboard.css?v=1.0.0') }}" rel="stylesheet" />
-            <link href="{{ asset('assets/css/theme.css') }}" rel="stylesheet" />
-            <link href="{{ asset('assets/css/nucleo-icons.css') }}" rel="stylesheet" />
-        @elseif(env('THEME')==2)
-            <link href="{{ asset('assets/css/black-dashboard.css?v=1.0.0') }}" rel="stylesheet" />
-            <link href="{{ asset('assets/css/black-theme.css') }}" rel="stylesheet" />
-            <link href="{{ asset('assets/css/black-nucleo-icons.css?v=1.0.0') }}" rel="stylesheet" />
-        @endif
+         <link href="{{ asset('assets/css/black-dashboard.css?v=1.0.0') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/css/black-theme.css') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/css/black-nucleo-icons.css?v=1.0.0') }}" rel="stylesheet" />
     </head>
-    @if(env('THEME') == 1)
-        <body class="white-content {{ $class ?? '' }}">
-    @elseif(env('THEME')==2)
+
         <body class="black-content {{ $class ?? '' }}">
-    @endif
         @auth()
             <div class="wrapper">
                     @include('layouts.navbars.sidebar')
@@ -72,26 +63,16 @@
 
         @endauth
 
-        @if(env('THEME') == 1)
-            <script src="{{ asset('assets/js/core/jquery.min.js') }}"></script>
-            <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
-            <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
-            <script src="{{ asset('assets/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
-             <script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
-            <script src="{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>
-            <script src="{{ asset('assets/js/white-dashboard.min.js?v=1.0.0') }}"></script>
-        @elseif(env('THEME')==2)
-            <script src="{{ asset('assets/js/black-core/jquery.min.js') }}"></script>
-            <script src="{{ asset('assets/js/black-core/popper.min.js') }}"></script>
-            <script src="{{ asset('assets/js/black-core/bootstrap.min.js') }}"></script>
-            <script src="{{ asset('assets/js/black-plugins/perfect-scrollbar.jquery.min.js') }}"></script>
-            <script src="{{ asset('assets/js/black-plugins/chartjs.min.js') }}"></script>
-            <script src="{{ asset('assets/js/black-plugins/bootstrap-notify.js') }}"></script>
-            <script src="{{ asset('assets/js/black-dashboard.min.js') }}"></script>
-            <script src="{{ asset('assets/js/theme.js') }}"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-            <script src="https://unpkg.com/xzoom/dist/xzoom.min.js"></script>
-        @endif
+        <script src="{{ asset('assets/js/black-core/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/js/black-core/popper.min.js') }}"></script>
+        <script src="{{ asset('assets/js/black-core/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/js/black-plugins/perfect-scrollbar.jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/js/black-plugins/chartjs.min.js') }}"></script>
+        <script src="{{ asset('assets/js/black-plugins/bootstrap-notify.js') }}"></script>
+        <script src="{{ asset('assets/js/black-dashboard.min.js') }}"></script>
+        <script src="{{ asset('assets/js/theme.js') }}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://unpkg.com/xzoom/dist/xzoom.min.js"></script>
         <script>
             $(document).ready(function() {
                 $().ready(function() {
