@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\SoldProduct;
 use App\Models\Transaction;
 use App\Models\PaymentMethod;
+use Illuminate\Support\Facades\File;
 
 class HomeController extends Controller
 {
@@ -18,6 +19,7 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
+
 
     public function index()
     {

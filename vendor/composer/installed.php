@@ -824,6 +824,15 @@
             'reference' => '570292577277f06f590635381a7f761a6cf4f026',
             'dev_requirement' => false,
         ),
+        'rachidlaasri/laravel-installer' => array(
+            'pretty_version' => '4.1.0',
+            'version' => '4.1.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../rachidlaasri/laravel-installer',
+            'aliases' => array(),
+            'reference' => 'b751b4c23dba893e9a4a12f881a6fd8fa921d228',
+            'dev_requirement' => false,
+        ),
         'ramsey/collection' => array(
             'pretty_version' => '1.2.2',
             'version' => '1.2.2.0',

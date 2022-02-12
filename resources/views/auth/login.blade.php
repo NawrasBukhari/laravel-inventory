@@ -1,26 +1,13 @@
 @extends('layouts.app', ['class' => 'login-page', 'page' => 'Laravel Inventory', 'contentClass' => 'login-page', 'section' => 'auth'])
 
 @section('content')
-    @if(env('THEME')==1)
-        <div style="height: 55vh" class="col-lg-4 col-md-6 ml-auto mr-auto">
-        @elseif(env('THEME')==2)
-        <div style="padding-top: 110px" class="col-lg-4 col-md-6 ml-auto mr-auto">
-        @endif
+     <div style="padding-top: 110px" class="col-lg-4 col-md-6 ml-auto mr-auto">
         <form class="form" method="post" action="{{ route('login') }}">
             @csrf
-            @if(env('THEME')==1)
-                <div class="card card-login card-white my-auto">
-            @elseif(env('THEME')==2)
-                <div class="card card-login card-black my-auto">
-            @endif
+            <div class="card card-login card-black my-auto">
                 <div class="card-header">
-                    @if(env('THEME')==1)
-                        <img src="{{ asset('assets/img/card-primary-1.png') }}" alt="">
+                    <img height="180px" width="100%" src="{{ asset('assets/img/card-primary-1.png') }}" alt="">
                         <h1 class="card-title">{{__('translation.Login')}}</h1>
-                    @elseif(env('THEME')==2)
-                        <img height="180px" width="100%" src="{{ asset('assets/img/card-primary-1.png') }}" alt="">
-                        <h1 class="card-title">{{__('translation.Login')}}</h1>
-                    @endif
                 </div>
                 <div class="card-body">
                     <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }}">

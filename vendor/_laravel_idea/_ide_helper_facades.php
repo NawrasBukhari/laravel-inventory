@@ -53,6 +53,8 @@ namespace Collective\Html {
      * @method static \Illuminate\Contracts\Session\Session getSessionStore()
      * @see FormBuilder::reset
      * @method static \Illuminate\Support\HtmlString reset(string $value, array $attributes = [])
+     * @see \Illuminate\Support\Traits\Macroable::flushMacros
+     * @method static void flushMacros()
      * @see FormBuilder::week
      * @method static \Illuminate\Support\HtmlString week(string $name, string $value = null, array $options = [])
      * @see FormBuilder::color
@@ -171,6 +173,8 @@ namespace Collective\Html {
      * @method static bool hasComponent($name)
      * @see HtmlBuilder::linkAsset
      * @method static \Illuminate\Support\HtmlString linkAsset(string $url, string $title = null, array $attributes = [], bool $secure = null, bool $escape = true)
+     * @see \Illuminate\Support\Traits\Macroable::flushMacros
+     * @method static void flushMacros()
      */
     class HtmlFacade {}
 }
@@ -351,6 +355,8 @@ namespace Illuminate\Support\Facades {
      * @method static int handle(\Symfony\Component\Console\Input\InputInterface $input, null|\Symfony\Component\Console\Output\OutputInterface $output = null)
      * @see \Illuminate\Contracts\Console\Kernel::terminate
      * @method static void terminate(\Symfony\Component\Console\Input\InputInterface $input, int $status)
+     * @see \Illuminate\Contracts\Console\Kernel::bootstrap
+     * @method static void bootstrap()
      * @see \Illuminate\Contracts\Console\Kernel::queue
      * @method static \Illuminate\Foundation\Bus\PendingDispatch queue(string $command, array $parameters = [])
      */
@@ -359,6 +365,8 @@ namespace Illuminate\Support\Facades {
     /**
      * @see \Illuminate\Auth\CreatesUserProviders::getDefaultUserProvider
      * @method static string getDefaultUserProvider()
+     * @see \Illuminate\Auth\AuthManager::forgetGuards
+     * @method static \Illuminate\Auth\AuthManager forgetGuards()
      * @see \Illuminate\Auth\AuthManager::setDefaultDriver
      * @method static void setDefaultDriver(string $name)
      * @see \Illuminate\Auth\AuthManager::shouldUse
@@ -381,6 +389,8 @@ namespace Illuminate\Support\Facades {
      * @method static \Closure userResolver()
      * @see \Illuminate\Auth\AuthManager::resolveUsersUsing
      * @method static \Illuminate\Auth\AuthManager resolveUsersUsing(\Closure $userResolver)
+     * @see \Illuminate\Auth\AuthManager::setApplication
+     * @method static \Illuminate\Auth\AuthManager setApplication(\Illuminate\Contracts\Foundation\Application $app)
      * @see \Illuminate\Auth\AuthManager::createSessionDriver
      * @method static \Illuminate\Auth\SessionGuard createSessionDriver(string $name, array $config)
      * @see \Illuminate\Auth\AuthManager::getDefaultDriver
@@ -410,15 +420,19 @@ namespace Illuminate\Support\Facades {
      * @see \Illuminate\Contracts\Auth\StatefulGuard::once
      * @method static bool once(array $credentials = [])
      * @see \Illuminate\Contracts\Auth\StatefulGuard::loginUsingId
-     * @method static \Illuminate\Contracts\Auth\Authenticatable loginUsingId($id, bool $remember = false)
+     * @method static bool|\Illuminate\Contracts\Auth\Authenticatable loginUsingId($id, bool $remember = false)
      */
     class Auth {}
     
     /**
      * @see \Illuminate\View\Compilers\BladeCompiler::getCustomDirectives
      * @method static array getCustomDirectives()
+     * @see \Illuminate\View\Compilers\BladeCompiler::getClassComponentNamespaces
+     * @method static array getClassComponentNamespaces()
      * @see \Illuminate\View\Compilers\Concerns\CompilesConditionals::compileEndOnce
      * @method static string compileEndOnce()
+     * @see \Illuminate\View\Compilers\BladeCompiler::componentNamespace
+     * @method static void componentNamespace(string $namespace, string $prefix)
      * @see \Illuminate\View\Compilers\BladeCompiler::if
      * @method static void if(string $name, callable $callback)
      * @see \Illuminate\View\Compilers\BladeCompiler::extend
@@ -427,6 +441,8 @@ namespace Illuminate\Support\Facades {
      * @method static void withoutDoubleEncoding()
      * @see \Illuminate\View\Compilers\Concerns\CompilesEchos::compileEchos
      * @method static string compileEchos(string $value)
+     * @see \Illuminate\View\Compilers\BladeCompiler::renderComponent
+     * @method static string renderComponent(\Illuminate\View\Component $component)
      * @see \Illuminate\View\Compilers\BladeCompiler::components
      * @method static void components(array $components, string $prefix = '')
      * @see \Illuminate\View\Compilers\BladeCompiler::precompiler
@@ -455,16 +471,22 @@ namespace Illuminate\Support\Facades {
      * @method static void compile(null|string $path = null)
      * @see \Illuminate\View\Compilers\Compiler::isExpired
      * @method static bool isExpired(string $path)
+     * @see \Illuminate\View\Compilers\Concerns\CompilesEchos::stringable
+     * @method static void stringable(callable|string $class, callable|null $handler = null)
      * @see \Illuminate\View\Compilers\BladeCompiler::check
      * @method static bool check(string $name, ...$parameters)
+     * @see \Illuminate\View\Compilers\Concerns\CompilesEchos::applyEchoHandler
+     * @method static string applyEchoHandler(string $value)
      * @see \Illuminate\View\Compilers\Concerns\CompilesComponents::sanitizeComponentAttribute
-     * @method static mixed sanitizeComponentAttribute($value)
+     * @method static \Illuminate\View\ComponentAttributeBag|mixed sanitizeComponentAttribute($value)
      * @see \Illuminate\View\Compilers\BladeCompiler::withoutComponentTags
      * @method static void withoutComponentTags()
      * @see \Illuminate\View\Compilers\BladeCompiler::aliasComponent
      * @method static void aliasComponent(string $path, null|string $alias = null)
      * @see \Illuminate\View\Compilers\BladeCompiler::setPath
      * @method static void setPath(string $path)
+     * @see \Illuminate\View\Compilers\BladeCompiler::render
+     * @method static string render(string $string, array $data = [], bool $deleteCachedView = false)
      * @see \Illuminate\View\Compilers\BladeCompiler::stripParentheses
      * @method static string stripParentheses(string $expression)
      * @see \Illuminate\View\Compilers\BladeCompiler::getPath
@@ -487,6 +509,8 @@ namespace Illuminate\Support\Facades {
     /**
      * @see \Illuminate\Contracts\Bus\Dispatcher::getCommandHandler
      * @method static bool|mixed getCommandHandler($command)
+     * @see \Illuminate\Contracts\Bus\Dispatcher::dispatchSync
+     * @method static mixed dispatchSync($command, $handler = null)
      * @see \Illuminate\Contracts\Bus\Dispatcher::dispatch
      * @method static mixed dispatch($command)
      * @see \Illuminate\Contracts\Bus\Dispatcher::dispatchNow
@@ -507,6 +531,8 @@ namespace Illuminate\Support\Facades {
      * @method static void setDefaultDriver(string $name)
      * @see \Illuminate\Contracts\Cache\Repository::increment
      * @method static bool|int increment(string $key, $value = 1)
+     * @see \Illuminate\Cache\CacheManager::purge
+     * @method static void purge(null|string $name = null)
      * @see \Illuminate\Cache\CacheManager::refreshEventDispatcher
      * @method static void refreshEventDispatcher()
      * @see \Illuminate\Cache\CacheManager::repository
@@ -553,6 +579,8 @@ namespace Illuminate\Support\Facades {
      * @method static bool forever(string $key, $value)
      * @see \Illuminate\Cache\CacheManager::getDefaultDriver
      * @method static string getDefaultDriver()
+     * @see \Illuminate\Cache\Repository::supportsTags
+     * @method static bool supportsTags()
      * @see \Illuminate\Cache\Repository::putMany
      * @method static bool putMany(array $values, \DateInterval|\DateTimeInterface|int|null $ttl = null)
      * @see \Illuminate\Cache\Repository::getDefaultCacheTime
@@ -567,6 +595,8 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Cache\Repository setDefaultCacheTime(int|null $seconds)
      * @see \Illuminate\Cache\Repository::offsetUnset
      * @method static void offsetUnset(string $key)
+     * @see \Illuminate\Support\Traits\Macroable::flushMacros
+     * @method static void flushMacros()
      * @see \Illuminate\Cache\Repository::offsetGet
      * @method static array|mixed offsetGet(string $key)
      * @see \Illuminate\Cache\Repository::setEventDispatcher
@@ -637,28 +667,34 @@ namespace Illuminate\Support\Facades {
      * @method static bool hasQueued(string $key, null|string $path = null)
      * @see \Illuminate\Support\Traits\Macroable::hasMacro
      * @method static bool hasMacro(string $name)
+     * @see \Illuminate\Cookie\CookieJar::expire
+     * @method static void expire(string $name, null|string $path = null, null|string $domain = null)
      * @see \Illuminate\Cookie\CookieJar::setDefaultPathAndDomain
      * @method static \Illuminate\Cookie\CookieJar setDefaultPathAndDomain(string $path, string $domain, bool $secure = false, null|string $sameSite = null)
      * @see \Illuminate\Cookie\CookieJar::forever
      * @method static \Symfony\Component\HttpFoundation\Cookie forever(string $name, string $value, null|string $path = null, null|string $domain = null, bool|null $secure = null, bool $httpOnly = true, bool $raw = false, null|string $sameSite = null)
      * @see \Illuminate\Cookie\CookieJar::make
      * @method static \Symfony\Component\HttpFoundation\Cookie make(string $name, string $value, int $minutes = 0, null|string $path = null, null|string $domain = null, bool|null $secure = null, bool $httpOnly = true, bool $raw = false, null|string $sameSite = null)
+     * @see \Illuminate\Support\Traits\Macroable::flushMacros
+     * @method static void flushMacros()
      * @see \Illuminate\Cookie\CookieJar::queue
      * @method static void queue(...$parameters)
+     * @see \Illuminate\Cookie\CookieJar::flushQueuedCookies
+     * @method static \Illuminate\Cookie\CookieJar flushQueuedCookies()
      */
     class Cookie {}
     
     /**
-     * @see \Illuminate\Encryption\Encrypter::getKey
-     * @method static string getKey()
-     * @see \Illuminate\Encryption\Encrypter::encryptString
-     * @method static string encryptString(string $value)
      * @see \Illuminate\Encryption\Encrypter::generateKey
      * @method static string generateKey(string $cipher)
      * @see \Illuminate\Encryption\Encrypter::decryptString
      * @method static string decryptString(string $payload)
+     * @see \Illuminate\Encryption\Encrypter::getKey
+     * @method static string getKey()
      * @see \Illuminate\Encryption\Encrypter::encrypt
      * @method static string encrypt($value, bool $serialize = true)
+     * @see \Illuminate\Encryption\Encrypter::encryptString
+     * @method static string encryptString(string $value)
      * @see \Illuminate\Encryption\Encrypter::decrypt
      * @method static mixed decrypt(string $payload, bool $unserialize = true)
      * @see \Illuminate\Encryption\Encrypter::supported
@@ -699,6 +735,8 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Database\Schema\Builder getSchemaBuilder()
      * @see \Illuminate\Database\DatabaseManager::extend
      * @method static void extend(string $name, callable $resolver)
+     * @see \Illuminate\Database\Connection::setReadWriteType
+     * @method static \Illuminate\Database\Connection setReadWriteType(null|string $readWriteType)
      * @see \Illuminate\Database\Connection::logging
      * @method static bool logging()
      * @see \Illuminate\Database\DatabaseManager::getDefaultConnection
@@ -715,6 +753,8 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Database\Connection setPdo(\Closure|null|\PDO $pdo)
      * @see \Illuminate\Database\Connection::bindValues
      * @method static void bindValues(\PDOStatement $statement, array $bindings)
+     * @see \Illuminate\Database\DatabaseManager::registerDoctrineType
+     * @method static void registerDoctrineType(string $class, string $name, string $type)
      * @see \Illuminate\Database\Connection::table
      * @method static \Illuminate\Database\Query\Builder table(\Closure|\Illuminate\Database\Query\Builder|string $table, null|string $as = null)
      * @see \Illuminate\Database\Connection::getRawPdo
@@ -725,6 +765,8 @@ namespace Illuminate\Support\Facades {
      * @method static int transactionLevel()
      * @see \Illuminate\Database\Connection::setPostProcessor
      * @method static \Illuminate\Database\Connection setPostProcessor(\Illuminate\Database\Query\Processors\Processor $processor)
+     * @see \Illuminate\Database\Connection::forgetRecordModificationState
+     * @method static void forgetRecordModificationState()
      * @see \Illuminate\Database\Connection::unprepared
      * @method static bool unprepared(string $query)
      * @see \Illuminate\Database\DatabaseManager::supportedDrivers
@@ -765,6 +807,8 @@ namespace Illuminate\Support\Facades {
      * @method static void listen(\Closure $callback)
      * @see \Illuminate\Database\Connection::getQueryGrammar
      * @method static \Illuminate\Database\Query\Grammars\Grammar getQueryGrammar()
+     * @see \Illuminate\Database\Concerns\ManagesTransactions::afterCommit
+     * @method static void afterCommit(callable $callback)
      * @see \Illuminate\Database\Connection::getDoctrineColumn
      * @method static \Doctrine\DBAL\Schema\Column getDoctrineColumn(string $table, string $column)
      * @see \Illuminate\Database\Connection::getQueryLog
@@ -781,6 +825,8 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Database\Connection setQueryGrammar(\Illuminate\Database\Query\Grammars\Grammar $grammar)
      * @see \Illuminate\Database\Connection::getTablePrefix
      * @method static string getTablePrefix()
+     * @see \Illuminate\Database\Connection::getNameWithReadWriteType
+     * @method static null|string getNameWithReadWriteType()
      * @see \Illuminate\Database\Connection::cursor
      * @method static \Generator cursor(string $query, array $bindings = [], bool $useReadPdo = true)
      * @see \Illuminate\Database\Connection::useDefaultQueryGrammar
@@ -805,18 +851,32 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Database\Connection setEventDispatcher(\Illuminate\Contracts\Events\Dispatcher $events)
      * @see \Illuminate\Database\Connection::delete
      * @method static int delete(string $query, array $bindings = [])
+     * @see \Illuminate\Database\Connection::setRecordModificationState
+     * @method static \Illuminate\Database\Connection setRecordModificationState(bool $value)
+     * @see \Illuminate\Database\Connection::beforeExecuting
+     * @method static \Illuminate\Database\Connection beforeExecuting(\Closure $callback)
+     * @see \Illuminate\Database\DatabaseManager::setApplication
+     * @method static \Illuminate\Database\DatabaseManager setApplication(\Illuminate\Contracts\Foundation\Application $app)
      * @see \Illuminate\Database\Connection::statement
      * @method static bool statement(string $query, array $bindings = [])
+     * @see \Illuminate\Database\Connection::unsetTransactionManager
+     * @method static void unsetTransactionManager()
      * @see \Illuminate\Database\Connection::setTablePrefix
      * @method static \Illuminate\Database\Connection setTablePrefix(string $prefix)
      * @see \Illuminate\Database\Connection::enableQueryLog
      * @method static void enableQueryLog()
      * @see \Illuminate\Database\Connection::getConfig
      * @method static mixed getConfig(null|string $option = null)
+     * @see \Illuminate\Database\Connection::setTransactionManager
+     * @method static \Illuminate\Database\Connection setTransactionManager(\Illuminate\Database\DatabaseTransactionsManager $manager)
      * @see \Illuminate\Database\Connection::setSchemaGrammar
      * @method static \Illuminate\Database\Connection setSchemaGrammar(\Illuminate\Database\Schema\Grammars\Grammar $grammar)
+     * @see \Illuminate\Database\Connection::useWriteConnectionWhenReading
+     * @method static \Illuminate\Database\Connection useWriteConnectionWhenReading(bool $value = true)
      * @see \Illuminate\Database\Connection::getResolver
      * @method static mixed|null getResolver(string $driver)
+     * @see \Illuminate\Database\Connection::hasModifiedRecords
+     * @method static bool hasModifiedRecords()
      */
     class DB {}
     
@@ -826,13 +886,13 @@ namespace Illuminate\Support\Facades {
      * @see \Illuminate\Events\Dispatcher::hasListeners
      * @method static bool hasListeners(string $eventName)
      * @see \Illuminate\Events\Dispatcher::listen
-     * @method static void listen(array|string $events, \Closure|string $listener)
+     * @method static void listen(array|\Closure|string $events, array|\Closure|null|string $listener = null)
      * @see \Illuminate\Support\Traits\Macroable::hasMacro
      * @method static bool hasMacro(string $name)
      * @see \Illuminate\Events\Dispatcher::flush
      * @method static void flush(string $event)
      * @see \Illuminate\Events\Dispatcher::makeListener
-     * @method static \Closure makeListener(\Closure|string $listener, bool $wildcard = false)
+     * @method static \Closure makeListener(array|\Closure|string $listener, bool $wildcard = false)
      * @see \Illuminate\Support\Traits\Macroable::macro
      * @method static void macro(string $name, callable|object $macro)
      * @see \Illuminate\Events\Dispatcher::setQueueResolver
@@ -851,6 +911,8 @@ namespace Illuminate\Support\Facades {
      * @method static array|null until(object|string $event, $payload = [])
      * @see \Illuminate\Events\Dispatcher::forgetPushed
      * @method static void forgetPushed()
+     * @see \Illuminate\Support\Traits\Macroable::flushMacros
+     * @method static void flushMacros()
      * @see \Illuminate\Events\Dispatcher::createClassListener
      * @method static \Closure createClassListener(string $listener, bool $wildcard = false)
      * @see \Illuminate\Events\Dispatcher::getListeners
@@ -859,62 +921,30 @@ namespace Illuminate\Support\Facades {
     class Event {}
     
     /**
-     * @see \Illuminate\Filesystem\Filesystem::extension
-     * @method static string extension(string $path)
      * @see \Illuminate\Filesystem\Filesystem::ensureDirectoryExists
      * @method static void ensureDirectoryExists(string $path, int $mode = 0755, bool $recursive = true)
      * @see \Illuminate\Filesystem\Filesystem::isWritable
      * @method static bool isWritable(string $path)
      * @see \Illuminate\Filesystem\Filesystem::prepend
      * @method static bool|int prepend(string $path, string $data)
-     * @see \Illuminate\Filesystem\Filesystem::link
-     * @method static void link(string $target, string $link)
-     * @see \Illuminate\Filesystem\Filesystem::glob
-     * @method static array glob(string $pattern, int $flags = 0)
      * @see \Illuminate\Filesystem\Filesystem::replace
      * @method static void replace(string $path, string $content)
      * @see \Illuminate\Filesystem\Filesystem::type
      * @method static string type(string $path)
      * @see \Illuminate\Filesystem\Filesystem::dirname
      * @method static string dirname(string $path)
-     * @see \Illuminate\Filesystem\Filesystem::delete
-     * @method static bool delete(array|string $paths)
      * @see \Illuminate\Filesystem\Filesystem::put
      * @method static bool|int put(string $path, string $contents, bool $lock = false)
-     * @see \Illuminate\Filesystem\Filesystem::requireOnce
-     * @method static mixed requireOnce(string $file)
      * @see \Illuminate\Filesystem\Filesystem::copyDirectory
      * @method static bool copyDirectory(string $directory, string $destination, int|null $options = null)
-     * @see \Illuminate\Support\Traits\Macroable::hasMacro
-     * @method static bool hasMacro(string $name)
-     * @see \Illuminate\Filesystem\Filesystem::get
-     * @method static string get(string $path, bool $lock = false)
+     * @see \Illuminate\Filesystem\Filesystem::relativeLink
+     * @method static void relativeLink(string $target, string $link)
      * @see \Illuminate\Filesystem\Filesystem::isFile
      * @method static bool isFile(string $file)
-     * @see \Illuminate\Filesystem\Filesystem::missing
-     * @method static bool missing(string $path)
-     * @see \Illuminate\Filesystem\Filesystem::directories
-     * @method static array directories(string $directory)
-     * @see \Illuminate\Filesystem\Filesystem::chmod
-     * @method static mixed chmod(string $path, int|null $mode = null)
-     * @see \Illuminate\Filesystem\Filesystem::copy
-     * @method static bool copy(string $path, string $target)
-     * @see \Illuminate\Support\Traits\Macroable::macro
-     * @method static void macro(string $name, callable|object $macro)
-     * @see \Illuminate\Filesystem\Filesystem::move
-     * @method static bool move(string $path, string $target)
      * @see \Illuminate\Filesystem\Filesystem::guessExtension
      * @method static null|string guessExtension(string $path)
-     * @see \Illuminate\Filesystem\Filesystem::isDirectory
-     * @method static bool isDirectory(string $directory)
-     * @see \Illuminate\Filesystem\Filesystem::moveDirectory
-     * @method static bool moveDirectory(string $from, string $to, bool $overwrite = false)
-     * @see \Illuminate\Filesystem\Filesystem::sharedGet
-     * @method static string sharedGet(string $path)
      * @see \Illuminate\Filesystem\Filesystem::getRequire
-     * @method static mixed getRequire(string $path)
-     * @see \Illuminate\Filesystem\Filesystem::deleteDirectory
-     * @method static bool deleteDirectory(string $directory, bool $preserve = false)
+     * @method static mixed getRequire(string $path, array $data = [])
      * @see \Illuminate\Support\Traits\Macroable::mixin
      * @method static void mixin(object $mixin, bool $replace = true)
      * @see \Illuminate\Filesystem\Filesystem::basename
@@ -923,28 +953,68 @@ namespace Illuminate\Support\Facades {
      * @method static int size(string $path)
      * @see \Illuminate\Filesystem\Filesystem::lastModified
      * @method static int lastModified(string $path)
-     * @see \Illuminate\Filesystem\Filesystem::makeDirectory
-     * @method static bool makeDirectory(string $path, int $mode = 0755, bool $recursive = false, bool $force = false)
      * @see \Illuminate\Filesystem\Filesystem::isReadable
      * @method static bool isReadable(string $path)
      * @see \Illuminate\Filesystem\Filesystem::name
      * @method static string name(string $path)
      * @see \Illuminate\Filesystem\Filesystem::files
      * @method static \Symfony\Component\Finder\SplFileInfo[] files(string $directory, bool $hidden = false)
+     * @see \Illuminate\Filesystem\Filesystem::cleanDirectory
+     * @method static bool cleanDirectory(string $directory)
+     * @see \Illuminate\Support\Traits\Macroable::flushMacros
+     * @method static void flushMacros()
+     * @see \Illuminate\Filesystem\Filesystem::hash
+     * @method static string hash(string $path)
+     * @see \Illuminate\Filesystem\Filesystem::deleteDirectories
+     * @method static bool deleteDirectories(string $directory)
+     * @see \Illuminate\Filesystem\Filesystem::extension
+     * @method static string extension(string $path)
+     * @see \Illuminate\Filesystem\Filesystem::link
+     * @method static void link(string $target, string $link)
+     * @see \Illuminate\Filesystem\Filesystem::glob
+     * @method static array glob(string $pattern, int $flags = 0)
+     * @see \Illuminate\Filesystem\Filesystem::delete
+     * @method static bool delete(array|string $paths)
+     * @see \Illuminate\Filesystem\Filesystem::requireOnce
+     * @method static mixed requireOnce(string $path, array $data = [])
+     * @see \Illuminate\Support\Traits\Macroable::hasMacro
+     * @method static bool hasMacro(string $name)
+     * @see \Illuminate\Filesystem\Filesystem::get
+     * @method static string get(string $path, bool $lock = false)
+     * @see \Illuminate\Filesystem\Filesystem::missing
+     * @method static bool missing(string $path)
+     * @see \Illuminate\Filesystem\Filesystem::directories
+     * @method static array directories(string $directory)
+     * @see \Illuminate\Filesystem\Filesystem::chmod
+     * @method static mixed chmod(string $path, int|null $mode = null)
+     * @see \Illuminate\Filesystem\Filesystem::copy
+     * @method static bool copy(string $path, string $target)
+     * @see \Illuminate\Filesystem\Filesystem::lines
+     * @method static \Illuminate\Support\LazyCollection lines(string $path)
+     * @see \Illuminate\Support\Traits\Macroable::macro
+     * @method static void macro(string $name, callable|object $macro)
+     * @see \Illuminate\Filesystem\Filesystem::move
+     * @method static bool move(string $path, string $target)
+     * @see \Illuminate\Filesystem\Filesystem::isDirectory
+     * @method static bool isDirectory(string $directory)
+     * @see \Illuminate\Filesystem\Filesystem::moveDirectory
+     * @method static bool moveDirectory(string $from, string $to, bool $overwrite = false)
+     * @see \Illuminate\Filesystem\Filesystem::sharedGet
+     * @method static string sharedGet(string $path)
+     * @see \Illuminate\Filesystem\Filesystem::replaceInFile
+     * @method static void replaceInFile(array|string $search, array|string $replace, string $path)
+     * @see \Illuminate\Filesystem\Filesystem::deleteDirectory
+     * @method static bool deleteDirectory(string $directory, bool $preserve = false)
+     * @see \Illuminate\Filesystem\Filesystem::makeDirectory
+     * @method static bool makeDirectory(string $path, int $mode = 0755, bool $recursive = false, bool $force = false)
      * @see \Illuminate\Filesystem\Filesystem::exists
      * @method static bool exists(string $path)
      * @see \Illuminate\Filesystem\Filesystem::mimeType
      * @method static false|string mimeType(string $path)
      * @see \Illuminate\Filesystem\Filesystem::allFiles
      * @method static \Symfony\Component\Finder\SplFileInfo[] allFiles(string $directory, bool $hidden = false)
-     * @see \Illuminate\Filesystem\Filesystem::cleanDirectory
-     * @method static bool cleanDirectory(string $directory)
-     * @see \Illuminate\Filesystem\Filesystem::hash
-     * @method static string hash(string $path)
      * @see \Illuminate\Filesystem\Filesystem::append
      * @method static int append(string $path, string $data)
-     * @see \Illuminate\Filesystem\Filesystem::deleteDirectories
-     * @method static bool deleteDirectories(string $directory)
      */
     class File {}
     
@@ -985,10 +1055,14 @@ namespace Illuminate\Support\Facades {
     class Gate {}
     
     /**
+     * @see \Illuminate\Support\Manager::forgetDrivers
+     * @method static \Illuminate\Support\Manager forgetDrivers()
      * @see \Illuminate\Hashing\HashManager::createArgonDriver
      * @method static \Illuminate\Hashing\ArgonHasher createArgonDriver()
      * @see \Illuminate\Hashing\HashManager::check
      * @method static bool check(string $value, string $hashedValue, array $options = [])
+     * @see \Illuminate\Support\Manager::setContainer
+     * @method static \Illuminate\Support\Manager setContainer(\Illuminate\Contracts\Container\Container $container)
      * @see \Illuminate\Support\Manager::extend
      * @method static \Illuminate\Support\Manager extend(string $driver, \Closure $callback)
      * @see \Illuminate\Hashing\HashManager::createBcryptDriver
@@ -997,6 +1071,8 @@ namespace Illuminate\Support\Facades {
      * @method static mixed driver(null|string $driver = null)
      * @see \Illuminate\Hashing\HashManager::needsRehash
      * @method static bool needsRehash(string $hashedValue, array $options = [])
+     * @see \Illuminate\Support\Manager::getContainer
+     * @method static \Illuminate\Contracts\Container\Container getContainer()
      * @see \Illuminate\Hashing\HashManager::make
      * @method static string make(string $value, array $options = [])
      * @see \Illuminate\Hashing\HashManager::createArgon2idDriver
@@ -1011,38 +1087,116 @@ namespace Illuminate\Support\Facades {
     class Hash {}
     
     /**
+     * @see \Illuminate\Http\Client\Factory::dd
+     * @method static \Illuminate\Http\Client\PendingRequest dd()
      * @see \Illuminate\Http\Client\Factory::assertSentCount
      * @method static void assertSentCount(int $count)
-     * @see \Illuminate\Http\Client\Factory::recordRequestResponsePair
-     * @method static void recordRequestResponsePair(\Illuminate\Http\Client\Request $request, \Illuminate\Http\Client\Response $response)
-     * @see \Illuminate\Support\Traits\Macroable::macro
-     * @method static void macro(string $name, callable|object $macro)
      * @see \Illuminate\Http\Client\Factory::fakeSequence
      * @method static \Illuminate\Http\Client\ResponseSequence fakeSequence(string $url = '*')
-     * @see \Illuminate\Http\Client\Factory::recorded
-     * @method static \Illuminate\Support\Collection recorded(callable $callback)
+     * @see \Illuminate\Http\Client\Factory::withDigestAuth
+     * @method static \Illuminate\Http\Client\PendingRequest withDigestAuth(string $username, string $password)
+     * @see \Illuminate\Http\Client\Factory::withoutRedirecting
+     * @method static \Illuminate\Http\Client\PendingRequest withoutRedirecting()
+     * @see \Illuminate\Http\Client\Factory::put
+     * @method static \Illuminate\Http\Client\Response put(string $url, array $data = [])
+     * @see \Illuminate\Http\Client\Factory::patch
+     * @method static \Illuminate\Http\Client\Response patch(string $url, array $data = [])
+     * @see \Illuminate\Http\Client\Factory::post
+     * @method static \Illuminate\Http\Client\Response post(string $url, array $data = [])
+     * @see \Illuminate\Http\Client\Factory::asJson
+     * @method static \Illuminate\Http\Client\PendingRequest asJson()
+     * @see \Illuminate\Http\Client\Factory::acceptJson
+     * @method static \Illuminate\Http\Client\PendingRequest acceptJson()
+     * @see \Illuminate\Http\Client\Factory::stub
+     * @method static \Illuminate\Http\Client\PendingRequest stub(callable $callback)
+     * @see \Illuminate\Http\Client\Factory::withUserAgent
+     * @method static \Illuminate\Http\Client\PendingRequest withUserAgent(string $userAgent)
+     * @see \Illuminate\Http\Client\Factory::withBody
+     * @method static \Illuminate\Http\Client\PendingRequest withBody(resource|string $content, string $contentType)
+     * @see \Illuminate\Http\Client\Factory::recordRequestResponsePair
+     * @method static void recordRequestResponsePair(\Illuminate\Http\Client\Request $request, \Illuminate\Http\Client\Response $response)
+     * @see \Illuminate\Http\Client\Factory::withCookies
+     * @method static \Illuminate\Http\Client\PendingRequest withCookies(array $cookies, string $domain)
+     * @see \Illuminate\Http\Client\Factory::sink
+     * @method static \Illuminate\Http\Client\PendingRequest sink(resource|string $to)
+     * @see \Illuminate\Http\Client\Factory::pool
+     * @method static array pool(callable $callback)
+     * @see \Illuminate\Http\Client\Factory::withBasicAuth
+     * @method static \Illuminate\Http\Client\PendingRequest withBasicAuth(string $username, string $password)
+     * @see \Illuminate\Http\Client\Factory::accept
+     * @method static \Illuminate\Http\Client\PendingRequest accept(string $contentType)
      * @see \Illuminate\Support\Traits\Macroable::mixin
      * @method static void mixin(object $mixin, bool $replace = true)
      * @see \Illuminate\Http\Client\Factory::sequence
      * @method static \Illuminate\Http\Client\ResponseSequence sequence(array $responses = [])
-     * @see \Illuminate\Http\Client\Factory::assertSent
-     * @method static void assertSent(callable $callback)
-     * @see \Illuminate\Support\Traits\Macroable::hasMacro
-     * @method static bool hasMacro(string $name)
      * @see \Illuminate\Http\Client\Factory::assertNothingSent
      * @method static void assertNothingSent()
-     * @see \Illuminate\Http\Client\Factory::response
-     * @method static \GuzzleHttp\Promise\PromiseInterface response(array|string $body = null, int $status = 200, array $headers = [])
+     * @see \Illuminate\Http\Client\Factory::send
+     * @method static \Illuminate\Http\Client\Response send(string $method, string $url, array $options = [])
+     * @see \Illuminate\Support\Traits\Macroable::flushMacros
+     * @method static void flushMacros()
+     * @see \Illuminate\Http\Client\Factory::withoutVerifying
+     * @method static \Illuminate\Http\Client\PendingRequest withoutVerifying()
+     * @see \Illuminate\Http\Client\Factory::assertSentInOrder
+     * @method static void assertSentInOrder(array $callbacks)
+     * @see \Illuminate\Http\Client\Factory::delete
+     * @method static \Illuminate\Http\Client\Response delete(string $url, array $data = [])
+     * @see \Illuminate\Http\Client\Factory::timeout
+     * @method static \Illuminate\Http\Client\PendingRequest timeout(int $seconds)
+     * @see \Illuminate\Http\Client\Factory::head
+     * @method static \Illuminate\Http\Client\Response head(string $url, array|null|string $query = null)
+     * @see \Illuminate\Http\Client\Factory::withHeaders
+     * @method static \Illuminate\Http\Client\PendingRequest withHeaders(array $headers)
+     * @see \Illuminate\Http\Client\Factory::withMiddleware
+     * @method static \Illuminate\Http\Client\PendingRequest withMiddleware(callable $middleware)
+     * @see \Illuminate\Http\Client\Factory::baseUrl
+     * @method static \Illuminate\Http\Client\PendingRequest baseUrl(string $url)
+     * @see \Illuminate\Support\Traits\Macroable::hasMacro
+     * @method static bool hasMacro(string $name)
+     * @see \Illuminate\Http\Client\Factory::getDispatcher
+     * @method static \Illuminate\Contracts\Events\Dispatcher|null getDispatcher()
+     * @see \Illuminate\Http\Client\Factory::get
+     * @method static \Illuminate\Http\Client\Response get(string $url, array|null|string $query = null)
      * @see \Illuminate\Http\Client\Factory::assertSequencesAreEmpty
      * @method static void assertSequencesAreEmpty()
+     * @see \Illuminate\Http\Client\Factory::dump
+     * @method static \Illuminate\Http\Client\PendingRequest dump()
+     * @see \Illuminate\Http\Client\Factory::attach
+     * @method static \Illuminate\Http\Client\PendingRequest attach(array|string $name, resource|string $contents = '', null|string $filename = null, array $headers = [])
+     * @see \Illuminate\Http\Client\Factory::retry
+     * @method static \Illuminate\Http\Client\PendingRequest retry(int $times, int $sleep = 0, callable|null $when = null)
+     * @see \Illuminate\Support\Traits\Macroable::macro
+     * @method static void macro(string $name, callable|object $macro)
+     * @see \Illuminate\Http\Client\Factory::bodyFormat
+     * @method static \Illuminate\Http\Client\PendingRequest bodyFormat(string $format)
+     * @see \Illuminate\Http\Client\Factory::withOptions
+     * @method static \Illuminate\Http\Client\PendingRequest withOptions(array $options)
+     * @see \Illuminate\Http\Client\Factory::recorded
+     * @method static \Illuminate\Support\Collection recorded(callable $callback = null)
+     * @see \Illuminate\Http\Client\Factory::contentType
+     * @method static \Illuminate\Http\Client\PendingRequest contentType(string $contentType)
+     * @see \Illuminate\Http\Client\Factory::async
+     * @method static \Illuminate\Http\Client\PendingRequest async()
+     * @see \Illuminate\Http\Client\Factory::assertSent
+     * @method static void assertSent(callable $callback)
+     * @see \Illuminate\Http\Client\Factory::beforeSending
+     * @method static \Illuminate\Http\Client\PendingRequest beforeSending(callable $callback)
+     * @see \Illuminate\Http\Client\Factory::response
+     * @method static \GuzzleHttp\Promise\PromiseInterface response(array|string $body = null, int $status = 200, array $headers = [])
      * @see \Illuminate\Http\Client\Factory::fake
      * @method static \Illuminate\Http\Client\Factory fake(array|callable $callback = null)
+     * @see \Illuminate\Http\Client\Factory::asMultipart
+     * @method static \Illuminate\Http\Client\PendingRequest asMultipart()
      * @see \Illuminate\Support\Traits\Macroable::macroCall
      * @method static mixed macroCall(string $method, array $parameters)
+     * @see \Illuminate\Http\Client\Factory::asForm
+     * @method static \Illuminate\Http\Client\PendingRequest asForm()
      * @see \Illuminate\Http\Client\Factory::stubUrl
      * @method static \Illuminate\Http\Client\Factory stubUrl(string $url, callable|\GuzzleHttp\Promise\PromiseInterface|\Illuminate\Http\Client\Response $callback)
      * @see \Illuminate\Http\Client\Factory::assertNotSent
      * @method static void assertNotSent(callable $callback)
+     * @see \Illuminate\Http\Client\Factory::withToken
+     * @method static \Illuminate\Http\Client\PendingRequest withToken(string $token, string $type = 'Bearer')
      */
     class Http {}
     
@@ -1062,7 +1216,7 @@ namespace Illuminate\Support\Facades {
      * @see \Illuminate\Translation\Translator::load
      * @method static void load(string $namespace, string $group, string $locale)
      * @see \Illuminate\Translation\Translator::get
-     * @method static array|string get(string $key, array $replace = [], null|string $locale = null, bool $fallback = true)
+     * @method static array|null|string get(string $key, array $replace = [], null|string $locale = null, bool $fallback = true)
      * @see \Illuminate\Translation\Translator::hasForLocale
      * @method static bool hasForLocale(string $key, null|string $locale = null)
      * @see \Illuminate\Translation\Translator::setLoaded
@@ -1077,6 +1231,8 @@ namespace Illuminate\Support\Facades {
      * @method static void addNamespace(string $namespace, string $hint)
      * @see \Illuminate\Translation\Translator::getFallback
      * @method static string getFallback()
+     * @see \Illuminate\Support\NamespacedItemResolver::flushParsedKeys
+     * @method static void flushParsedKeys()
      * @see \Illuminate\Translation\Translator::getLoader
      * @method static \Illuminate\Contracts\Translation\Loader getLoader()
      * @see \Illuminate\Translation\Translator::getSelector
@@ -1089,6 +1245,8 @@ namespace Illuminate\Support\Facades {
      * @method static string getLocale()
      * @see \Illuminate\Translation\Translator::choice
      * @method static string choice(string $key, array|\Countable|int $number, array $replace = [], null|string $locale = null)
+     * @see \Illuminate\Support\Traits\Macroable::flushMacros
+     * @method static void flushMacros()
      * @see \Illuminate\Translation\Translator::setSelector
      * @method static void setSelector(\Illuminate\Translation\MessageSelector $selector)
      */
@@ -1103,6 +1261,8 @@ namespace Illuminate\Support\Facades {
      * @method static void log(string $level, string $message, array $context = [])
      * @see \Illuminate\Log\Logger::emergency
      * @method static void emergency(string $message, array $context = [])
+     * @see \Illuminate\Log\Logger::withContext
+     * @method static \Illuminate\Log\Logger withContext(array $context = [])
      * @see \Illuminate\Log\Logger::getLogger
      * @method static \Psr\Log\LoggerInterface getLogger()
      * @see \Illuminate\Log\Logger::error
@@ -1117,6 +1277,8 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Contracts\Events\Dispatcher|null getEventDispatcher()
      * @see \Illuminate\Log\Logger::warning
      * @method static void warning(string $message, array $context = [])
+     * @see \Illuminate\Log\Logger::withoutContext
+     * @method static \Illuminate\Log\Logger withoutContext()
      * @see \Illuminate\Log\Logger::write
      * @method static void write(string $level, string $message, array $context = [])
      * @see \Illuminate\Log\Logger::info
@@ -1175,20 +1337,26 @@ namespace Illuminate\Support\Facades {
      * @method static void send(array|\Illuminate\Contracts\Mail\Mailable|string $view, array $data = [], \Closure|null|string $callback = null)
      * @see \Illuminate\Mail\Mailer::queueOn
      * @method static mixed queueOn(string $queue, \Illuminate\Contracts\Mail\Mailable $view)
+     * @see \Illuminate\Support\Traits\Macroable::flushMacros
+     * @method static void flushMacros()
      * @see \Illuminate\Mail\Mailer::queue
      * @method static mixed queue(array|\Illuminate\Contracts\Mail\Mailable|string $view, null|string $queue = null)
+     * @see \Illuminate\Support\Testing\Fakes\MailFake::queued
+     * @method static \Illuminate\Support\Collection queued(\Closure|string $mailable, callable|null $callback = null)
      * @see \Illuminate\Support\Testing\Fakes\MailFake::assertNothingQueued
      * @method static void assertNothingQueued()
+     * @see \Illuminate\Support\Testing\Fakes\MailFake::assertNotOutgoing
+     * @method static void assertNotOutgoing(\Closure|string $mailable, callable|null $callback = null)
      * @see \Illuminate\Support\Testing\Fakes\MailFake::assertNotQueued
-     * @method static void assertNotQueued(string $mailable, callable|null $callback = null)
-     * @see \Illuminate\Support\Testing\Fakes\MailFake::queued
-     * @method static \Illuminate\Support\Collection queued(string $mailable, callable|null $callback = null)
+     * @method static void assertNotQueued(\Closure|string $mailable, callable|null $callback = null)
      * @see \Illuminate\Support\Testing\Fakes\MailFake::hasSent
      * @method static bool hasSent(string $mailable)
      * @see \Illuminate\Support\Testing\Fakes\MailFake::mailer
-     * @method static \Illuminate\Mail\Mailer mailer(null|string $name = null)
+     * @method static \Illuminate\Contracts\Mail\Mailer mailer(null|string $name = null)
+     * @see \Illuminate\Support\Testing\Fakes\MailFake::forgetMailers
+     * @method static \Illuminate\Support\Testing\Fakes\MailFake forgetMailers()
      * @see \Illuminate\Support\Testing\Fakes\MailFake::sent
-     * @method static \Illuminate\Support\Collection sent(string $mailable, callable|null $callback = null)
+     * @method static \Illuminate\Support\Collection sent(\Closure|string $mailable, callable|null $callback = null)
      * @see \Illuminate\Support\Testing\Fakes\MailFake::assertQueued
      * @method static void assertQueued(\Closure|string $mailable, callable|int|null $callback = null)
      * @see \Illuminate\Support\Testing\Fakes\MailFake::assertSent
@@ -1197,24 +1365,32 @@ namespace Illuminate\Support\Facades {
      * @method static bool hasQueued(string $mailable)
      * @see \Illuminate\Support\Testing\Fakes\MailFake::assertNothingSent
      * @method static void assertNothingSent()
+     * @see \Illuminate\Support\Testing\Fakes\MailFake::assertNothingOutgoing
+     * @method static void assertNothingOutgoing()
      * @see \Illuminate\Support\Testing\Fakes\MailFake::assertNotSent
-     * @method static void assertNotSent(string $mailable, callable|null $callback = null)
+     * @method static void assertNotSent(\Closure|string $mailable, callable|null $callback = null)
      */
     class Mail {}
     
     /**
+     * @see \Illuminate\Support\Manager::forgetDrivers
+     * @method static \Illuminate\Support\Manager forgetDrivers()
      * @see \Illuminate\Notifications\ChannelManager::channel
      * @method static mixed channel(null|string $name = null)
      * @see \Illuminate\Notifications\ChannelManager::locale
      * @method static \Illuminate\Notifications\ChannelManager locale(string $locale)
      * @see \Illuminate\Notifications\ChannelManager::sendNow
      * @method static void sendNow(array|\Illuminate\Support\Collection|mixed $notifiables, $notification, array $channels = null)
+     * @see \Illuminate\Support\Manager::setContainer
+     * @method static \Illuminate\Support\Manager setContainer(\Illuminate\Contracts\Container\Container $container)
      * @see \Illuminate\Support\Manager::extend
      * @method static \Illuminate\Support\Manager extend(string $driver, \Closure $callback)
      * @see \Illuminate\Notifications\ChannelManager::deliverVia
      * @method static void deliverVia(string $channel)
      * @see \Illuminate\Support\Manager::driver
      * @method static mixed driver(null|string $driver = null)
+     * @see \Illuminate\Support\Manager::getContainer
+     * @method static \Illuminate\Contracts\Container\Container getContainer()
      * @see \Illuminate\Notifications\ChannelManager::send
      * @method static void send(array|\Illuminate\Support\Collection|mixed $notifiables, $notification)
      * @see \Illuminate\Notifications\ChannelManager::deliversVia
@@ -1227,8 +1403,40 @@ namespace Illuminate\Support\Facades {
     class Notification {}
     
     /**
+     * @see \Illuminate\Testing\ParallelTesting::callSetUpTestCaseCallbacks
+     * @method static void callSetUpTestCaseCallbacks(\Illuminate\Foundation\Testing\TestCase $testCase)
+     * @see \Illuminate\Testing\ParallelTesting::resolveTokenUsing
+     * @method static void resolveTokenUsing($resolver)
+     * @see \Illuminate\Testing\ParallelTesting::callTearDownProcessCallbacks
+     * @method static void callTearDownProcessCallbacks()
+     * @see \Illuminate\Testing\ParallelTesting::resolveOptionsUsing
+     * @method static void resolveOptionsUsing($resolver)
+     * @see \Illuminate\Testing\ParallelTesting::callSetUpProcessCallbacks
+     * @method static void callSetUpProcessCallbacks()
+     * @see \Illuminate\Testing\ParallelTesting::token
+     * @method static false|string token()
+     * @see \Illuminate\Testing\ParallelTesting::setUpTestDatabase
+     * @method static void setUpTestDatabase(callable $callback)
+     * @see \Illuminate\Testing\ParallelTesting::tearDownProcess
+     * @method static void tearDownProcess(callable $callback)
+     * @see \Illuminate\Testing\ParallelTesting::setUpProcess
+     * @method static void setUpProcess(callable $callback)
+     * @see \Illuminate\Testing\ParallelTesting::callSetUpTestDatabaseCallbacks
+     * @method static void callSetUpTestDatabaseCallbacks(string $database)
+     * @see \Illuminate\Testing\ParallelTesting::tearDownTestCase
+     * @method static void tearDownTestCase(callable $callback)
+     * @see \Illuminate\Testing\ParallelTesting::callTearDownTestCaseCallbacks
+     * @method static void callTearDownTestCaseCallbacks(\Illuminate\Foundation\Testing\TestCase $testCase)
+     * @see \Illuminate\Testing\ParallelTesting::option
+     * @method static mixed option(string $option)
+     * @see \Illuminate\Testing\ParallelTesting::setUpTestCase
+     * @method static void setUpTestCase(callable $callback)
+     */
+    class ParallelTesting {}
+    
+    /**
      * @see \Illuminate\Auth\Passwords\PasswordBroker::sendResetLink
-     * @method static string sendResetLink(array $credentials)
+     * @method static string sendResetLink(array $credentials, \Closure $callback = null)
      * @see \Illuminate\Auth\Passwords\PasswordBroker::getRepository
      * @method static \Illuminate\Auth\Passwords\TokenRepositoryInterface getRepository()
      * @see \Illuminate\Auth\Passwords\PasswordBroker::getUser
@@ -1259,6 +1467,8 @@ namespace Illuminate\Support\Facades {
      * @method static mixed laterOn(string $queue, \DateInterval|\DateTimeInterface|int $delay, object|string $job, $data = '')
      * @see \Illuminate\Contracts\Queue\Queue::later
      * @method static mixed later(\DateInterval|\DateTimeInterface|int $delay, object|string $job, $data = '', null|string $queue = null)
+     * @see \Illuminate\Queue\QueueManager::setApplication
+     * @method static \Illuminate\Queue\QueueManager setApplication(\Illuminate\Contracts\Foundation\Application $app)
      * @see \Illuminate\Queue\QueueManager::connection
      * @method static \Illuminate\Contracts\Queue\Queue connection(null|string $name = null)
      * @see \Illuminate\Queue\QueueManager::after
@@ -1267,6 +1477,8 @@ namespace Illuminate\Support\Facades {
      * @method static void looping($callback)
      * @see \Illuminate\Contracts\Queue\Queue::pushRaw
      * @method static mixed pushRaw(string $payload, null|string $queue = null, array $options = [])
+     * @see \Illuminate\Queue\QueueManager::getApplication
+     * @method static \Illuminate\Contracts\Foundation\Application getApplication()
      * @see \Illuminate\Queue\QueueManager::exceptionOccurred
      * @method static void exceptionOccurred($callback)
      * @see \Illuminate\Contracts\Queue\Queue::getConnectionName
@@ -1291,16 +1503,46 @@ namespace Illuminate\Support\Facades {
      * @method static mixed bulk(array $jobs, $data = '', null|string $queue = null)
      * @see \Illuminate\Queue\QueueManager::getDefaultDriver
      * @method static string getDefaultDriver()
-     * @see \Illuminate\Queue\Queue::getJobRetryDelay
-     * @method static mixed getJobRetryDelay($job)
+     * @see \Illuminate\Queue\Queue::getJobBackoff
+     * @method static mixed getJobBackoff($job)
      * @see \Illuminate\Queue\Queue::setContainer
      * @method static void setContainer(\Illuminate\Container\Container $container)
+     * @see \Illuminate\Queue\Queue::getContainer
+     * @method static \Illuminate\Container\Container getContainer()
      * @see \Illuminate\Queue\Queue::createPayloadUsing
-     * @method static void createPayloadUsing(callable $callback)
+     * @method static void createPayloadUsing(callable|null $callback)
      * @see \Illuminate\Queue\Queue::getJobExpiration
      * @method static mixed getJobExpiration($job)
      */
     class Queue {}
+    
+    /**
+     * @see \Illuminate\Cache\RateLimiter::availableIn
+     * @method static int availableIn(string $key)
+     * @see \Illuminate\Cache\RateLimiter::retriesLeft
+     * @method static int retriesLeft(string $key, int $maxAttempts)
+     * @see \Illuminate\Cache\RateLimiter::for
+     * @method static \Illuminate\Cache\RateLimiter for(string $name, \Closure $callback)
+     * @see \Illuminate\Cache\RateLimiter::clear
+     * @method static void clear(string $key)
+     * @see \Illuminate\Cache\RateLimiter::tooManyAttempts
+     * @method static bool tooManyAttempts(string $key, int $maxAttempts)
+     * @see \Illuminate\Cache\RateLimiter::attempt
+     * @method static false|mixed attempt(string $key, int $maxAttempts, \Closure $callback, int $decaySeconds = 60)
+     * @see \Illuminate\Cache\RateLimiter::remaining
+     * @method static int remaining(string $key, int $maxAttempts)
+     * @see \Illuminate\Cache\RateLimiter::hit
+     * @method static int hit(string $key, int $decaySeconds = 60)
+     * @see \Illuminate\Cache\RateLimiter::cleanRateLimiterKey
+     * @method static string cleanRateLimiterKey(string $key)
+     * @see \Illuminate\Cache\RateLimiter::resetAttempts
+     * @method static mixed resetAttempts(string $key)
+     * @see \Illuminate\Cache\RateLimiter::limiter
+     * @method static \Closure|null limiter(string $name)
+     * @see \Illuminate\Cache\RateLimiter::attempts
+     * @method static mixed attempts(string $key)
+     */
+    class RateLimiter {}
     
     /**
      * @see \Illuminate\Support\Traits\Macroable::macro
@@ -1337,6 +1579,8 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Http\RedirectResponse guest(string $path, int $status = 302, array $headers = [], bool|null $secure = null)
      * @see \Illuminate\Routing\Redirector::to
      * @method static \Illuminate\Http\RedirectResponse to(string $path, int $status = 302, array $headers = [], bool|null $secure = null)
+     * @see \Illuminate\Support\Traits\Macroable::flushMacros
+     * @method static void flushMacros()
      * @see \Illuminate\Routing\Redirector::getUrlGenerator
      * @method static \Illuminate\Routing\UrlGenerator getUrlGenerator()
      */
@@ -1349,6 +1593,8 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Redis\Connections\Connection resolve(null|string $name = null)
      * @see \Illuminate\Redis\Connections\Connection::funnel
      * @method static \Illuminate\Redis\Limiters\ConcurrencyLimiterBuilder funnel(string $name)
+     * @see \Illuminate\Redis\RedisManager::purge
+     * @method static void purge(null|string $name = null)
      * @see \Illuminate\Redis\Connections\Connection::psubscribe
      * @method static void psubscribe(array|string $channels, \Closure $callback)
      * @see \Illuminate\Redis\Connections\Connection::setEventDispatcher
@@ -1391,10 +1637,20 @@ namespace Illuminate\Support\Facades {
      * @method static void unsetEventDispatcher()
      * @see \Illuminate\Support\Traits\Macroable::macroCall
      * @method static mixed macroCall(string $method, array $parameters)
+     * @see \Illuminate\Support\Traits\Macroable::flushMacros
+     * @method static void flushMacros()
      */
     class Redis {}
     
     /**
+     * @see \Illuminate\Http\Request::hasValidSignature
+     * @method static bool hasValidSignature($absolute = true)
+     * @see \Illuminate\Http\Request::validateWithBag
+     * @method static array validateWithBag(string $errorBag, array $rules, ...$params)
+     * @see \Illuminate\Http\Request::hasValidRelativeSignature
+     * @method static bool hasValidRelativeSignature()
+     * @see \Illuminate\Http\Request::validate
+     * @method static array validate(array $rules, ...$params)
      * @see \Illuminate\Http\Request::createFrom
      * @method static \Illuminate\Http\Request createFrom(\Illuminate\Http\Request $from, \Illuminate\Http\Request|null $to = null)
      * @see \Symfony\Component\HttpFoundation\Request::hasPreviousSession
@@ -1499,6 +1755,8 @@ namespace Illuminate\Support\Facades {
      * @method static int|null|string getPort()
      * @see \Illuminate\Http\Request::setRouteResolver
      * @method static \Illuminate\Http\Request setRouteResolver(\Closure $callback)
+     * @see \Illuminate\Http\Request::fullUrlWithoutQuery
+     * @method static string fullUrlWithoutQuery($keys)
      * @see \Symfony\Component\HttpFoundation\Request::setRequestFormat
      * @method static void setRequestFormat(null|string $format)
      * @see \Illuminate\Http\Request::userAgent
@@ -1529,10 +1787,8 @@ namespace Illuminate\Support\Facades {
      * @method static bool matchesType(string $actual, string $type)
      * @see \Illuminate\Http\Concerns\InteractsWithContentTypes::acceptsJson
      * @method static bool acceptsJson()
-     * @see \Illuminate\Http\Request::validate
-     * @method static array validate(array $rules, ...$params)
      * @see \Illuminate\Http\Concerns\InteractsWithInput::whenHas
-     * @method static \Illuminate\Http\Concerns\InteractsWithInput|mixed whenHas(string $key, callable $callback)
+     * @method static \Illuminate\Http\Concerns\InteractsWithInput|mixed whenHas(string $key, callable $callback, callable $default = null)
      * @see \Illuminate\Http\Concerns\InteractsWithContentTypes::prefers
      * @method static null|string prefers(array|string $contentTypes)
      * @see \Symfony\Component\HttpFoundation\Request::getTrustedProxies
@@ -1555,8 +1811,6 @@ namespace Illuminate\Support\Facades {
      * @method static void setMethod(string $method)
      * @see \Symfony\Component\HttpFoundation\Request::getHost
      * @method static string getHost()
-     * @see \Illuminate\Http\Request::hasValidSignature
-     * @method static bool hasValidSignature(bool $absolute = true)
      * @see \Symfony\Component\HttpFoundation\Request::getPassword
      * @method static null|string getPassword()
      * @see \Symfony\Component\HttpFoundation\Request::getLocale
@@ -1565,6 +1819,10 @@ namespace Illuminate\Support\Facades {
      * @method static bool exists(array|string $key)
      * @see \Symfony\Component\HttpFoundation\Request::initialize
      * @method static void initialize(array $query = [], array $request = [], array $attributes = [], array $cookies = [], array $files = [], array $server = [], null|resource|string $content = null)
+     * @see \Illuminate\Http\Concerns\InteractsWithInput::dd
+     * @method static void dd(...$keys)
+     * @see \Illuminate\Http\Concerns\InteractsWithInput::date
+     * @method static \Illuminate\Support\Carbon|null date(string $key, null|string $format = null, null|string $tz = null)
      * @see \Illuminate\Http\Request::instance
      * @method static \Illuminate\Http\Request instance()
      * @see \Illuminate\Http\Concerns\InteractsWithInput::hasFile
@@ -1612,7 +1870,7 @@ namespace Illuminate\Support\Facades {
      * @see \Illuminate\Http\Concerns\InteractsWithContentTypes::isJson
      * @method static bool isJson()
      * @see \Illuminate\Http\Concerns\InteractsWithInput::whenFilled
-     * @method static \Illuminate\Http\Concerns\InteractsWithInput|mixed whenFilled(string $key, callable $callback)
+     * @method static \Illuminate\Http\Concerns\InteractsWithInput|mixed whenFilled(string $key, callable $callback, callable $default = null)
      * @see \Symfony\Component\HttpFoundation\Request::setSession
      * @method static void setSession(\Symfony\Component\HttpFoundation\Session\SessionInterface $session)
      * @see \Illuminate\Http\Request::routeIs
@@ -1626,13 +1884,13 @@ namespace Illuminate\Support\Facades {
      * @see \Illuminate\Http\Request::capture
      * @method static \Illuminate\Http\Request capture()
      * @see \Illuminate\Http\Request::duplicate
-     * @method static \Illuminate\Http\Request|\Symfony\Component\HttpFoundation\Request duplicate(array $query = null, array $request = null, array $attributes = null, array $cookies = null, array $files = null, array $server = null)
+     * @method static \Illuminate\Http\Request duplicate(array $query = null, array $request = null, array $attributes = null, array $cookies = null, array $files = null, array $server = null)
      * @see \Symfony\Component\HttpFoundation\Request::getClientIp
      * @method static null|string getClientIp()
+     * @see \Illuminate\Http\Request::mergeIfMissing
+     * @method static \Illuminate\Http\Request mergeIfMissing(array $input)
      * @see \Illuminate\Support\Traits\Macroable::mixin
      * @method static void mixin(object $mixin, bool $replace = true)
-     * @see \Illuminate\Http\Request::validateWithBag
-     * @method static array validateWithBag(string $errorBag, array $rules, ...$params)
      * @see \Illuminate\Http\Concerns\InteractsWithInput::hasCookie
      * @method static bool hasCookie(string $key)
      * @see \Symfony\Component\HttpFoundation\Request::getUser
@@ -1643,6 +1901,10 @@ namespace Illuminate\Support\Facades {
      * @method static array|null|string header(null|string $key = null, array|null|string $default = null)
      * @see \Symfony\Component\HttpFoundation\Request::getBasePath
      * @method static string getBasePath()
+     * @see \Illuminate\Support\Traits\Macroable::flushMacros
+     * @method static void flushMacros()
+     * @see \Illuminate\Http\Concerns\InteractsWithInput::collect
+     * @method static \Illuminate\Support\Collection collect(array|null|string $key = null)
      * @see \Illuminate\Http\Request::offsetGet
      * @method static mixed offsetGet(string $offset)
      * @see \Illuminate\Http\Concerns\InteractsWithInput::anyFilled
@@ -1681,6 +1943,8 @@ namespace Illuminate\Support\Facades {
      * @method static mixed|null|\Symfony\Component\HttpFoundation\ParameterBag json(null|string $key = null, $default = null)
      * @see \Illuminate\Http\Request::offsetExists
      * @method static bool offsetExists(string $offset)
+     * @see \Illuminate\Http\Concerns\InteractsWithInput::dump
+     * @method static \Illuminate\Http\Concerns\InteractsWithInput dump($keys = [])
      * @see \Symfony\Component\HttpFoundation\Request::getUri
      * @method static string getUri()
      * @see \Symfony\Component\HttpFoundation\Request::getFormat
@@ -1742,23 +2006,19 @@ namespace Illuminate\Support\Facades {
      * @see \Illuminate\Contracts\Routing\ResponseFactory::redirectToRoute
      * @method static \Illuminate\Http\RedirectResponse redirectToRoute(string $route, $parameters = [], int $status = 302, array $headers = [])
      * @see \Illuminate\Contracts\Routing\ResponseFactory::make
-     * @method static \Illuminate\Http\Response make(string $content = '', int $status = 200, array $headers = [])
+     * @method static \Illuminate\Http\Response make(array|string $content = '', int $status = 200, array $headers = [])
      * @see \Illuminate\Contracts\Routing\ResponseFactory::redirectToAction
      * @method static \Illuminate\Http\RedirectResponse redirectToAction(string $action, $parameters = [], int $status = 302, array $headers = [])
      */
     class Response {}
     
     /**
+     * @see \Illuminate\Routing\RouteRegistrar::scopeBindings
+     * @method static \Illuminate\Routing\RouteRegistrar scopeBindings()
      * @see \Illuminate\Routing\Router::apiResources
      * @method static void apiResources(array $resources, array $options = [])
-     * @see \Illuminate\Routing\Router::currentRouteName
-     * @method static null|string currentRouteName()
-     * @see \Illuminate\Routing\Router::dispatch
-     * @method static \Symfony\Component\HttpFoundation\Response dispatch(\Illuminate\Http\Request $request)
      * @see \Illuminate\Routing\Router::getLastGroupPrefix
      * @method static string getLastGroupPrefix()
-     * @see \Illuminate\Routing\Router::newRoute
-     * @method static \Illuminate\Routing\Route newRoute(array|string $methods, string $uri, $action)
      * @see \Illuminate\Routing\Router::substituteBindings
      * @method static \Illuminate\Routing\Route substituteBindings(\Illuminate\Routing\Route $route)
      * @see \Illuminate\Routing\Router::put
@@ -1767,70 +2027,34 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Routing\Route permanentRedirect(string $uri, string $destination)
      * @see \Illuminate\Routing\Router::patch
      * @method static \Illuminate\Routing\Route patch(string $uri, array|callable|null|string $action = null)
-     * @see \Illuminate\Routing\Router::view
-     * @method static \Illuminate\Routing\Route view(string $uri, string $view, array $data = [])
      * @see \Illuminate\Routing\Router::bind
      * @method static void bind(string $key, callable|string $binder)
-     * @see \Illuminate\Routing\Router::post
-     * @method static \Illuminate\Routing\Route post(string $uri, array|callable|null|string $action = null)
      * @see \Illuminate\Routing\Router::toResponse
      * @method static \Symfony\Component\HttpFoundation\Response toResponse(\Symfony\Component\HttpFoundation\Request $request, $response)
      * @see \Illuminate\Routing\Router::options
      * @method static \Illuminate\Routing\Route options(string $uri, array|callable|null|string $action = null)
      * @see \Illuminate\Routing\Router::model
      * @method static void model(string $key, string $class, \Closure $callback = null)
-     * @see \Illuminate\Routing\Router::has
-     * @method static bool has(string $name)
-     * @see \Illuminate\Routing\Router::group
-     * @method static void group(array $attributes, \Closure|string $routes)
-     * @see \Illuminate\Routing\Router::currentRouteAction
-     * @method static null|string currentRouteAction()
-     * @see \Illuminate\Routing\Router::getBindingCallback
-     * @method static \Closure|null getBindingCallback(string $key)
      * @see \Illuminate\Routing\Router::hasMiddlewareGroup
      * @method static bool hasMiddlewareGroup(string $name)
-     * @see \Illuminate\Routing\Router::resource
-     * @method static \Illuminate\Routing\PendingResourceRegistration resource(string $name, string $controller, array $options = [])
-     * @see \Illuminate\Routing\Router::pushMiddlewareToGroup
-     * @method static \Illuminate\Routing\Router pushMiddlewareToGroup(string $group, string $middleware)
-     * @see \Illuminate\Routing\Router::patterns
-     * @method static void patterns(array $patterns)
-     * @see \Illuminate\Routing\Router::respondWithRoute
-     * @method static \Symfony\Component\HttpFoundation\Response respondWithRoute(string $name)
      * @see \Illuminate\Routing\Router::prependMiddlewareToGroup
      * @method static \Illuminate\Routing\Router prependMiddlewareToGroup(string $group, string $middleware)
      * @see \Illuminate\Routing\Router::addRoute
      * @method static \Illuminate\Routing\Route addRoute(array|string $methods, string $uri, array|callable|null|string $action)
      * @see \Illuminate\Routing\Router::aliasMiddleware
      * @method static \Illuminate\Routing\Router aliasMiddleware(string $name, string $class)
-     * @see \Illuminate\Routing\Router::getMiddlewareGroups
-     * @method static array getMiddlewareGroups()
      * @see \Illuminate\Routing\Router::is
      * @method static bool is(...$patterns)
-     * @see \Illuminate\Routing\Router::dispatchToRoute
-     * @method static \Symfony\Component\HttpFoundation\Response dispatchToRoute(\Illuminate\Http\Request $request)
-     * @see \Illuminate\Routing\Router::getRoutes
-     * @method static \Illuminate\Routing\RouteCollection|\Illuminate\Routing\RouteCollectionInterface getRoutes()
-     * @see \Illuminate\Routing\Router::apiResource
-     * @method static \Illuminate\Routing\PendingResourceRegistration apiResource(string $name, string $controller, array $options = [])
-     * @see \Illuminate\Support\Traits\Macroable::mixin
-     * @method static void mixin(object $mixin, bool $replace = true)
      * @see \Illuminate\Routing\Router::input
      * @method static mixed input(string $key, null|string $default = null)
      * @see \Illuminate\Routing\RouteRegistrar::as
      * @method static \Illuminate\Routing\RouteRegistrar as(string $value)
      * @see \Illuminate\Routing\RouteRegistrar::domain
      * @method static \Illuminate\Routing\RouteRegistrar domain(string $value)
-     * @see \Illuminate\Routing\RouteRegistrar::name
-     * @method static \Illuminate\Routing\RouteRegistrar name(string $value)
      * @see \Illuminate\Routing\Router::matched
      * @method static void matched(callable|string $callback)
-     * @see \Illuminate\Routing\Router::fallback
-     * @method static \Illuminate\Routing\Route fallback(array|callable|null|string $action)
      * @see \Illuminate\Routing\Router::currentRouteUses
      * @method static bool currentRouteUses(string $action)
-     * @see \Illuminate\Routing\Router::getGroupStack
-     * @method static array getGroupStack()
      * @see \Illuminate\Routing\Router::resourceVerbs
      * @method static array|null resourceVerbs(array $verbs = [])
      * @see \Illuminate\Routing\Router::singularResourceParameters
@@ -1839,64 +2063,116 @@ namespace Illuminate\Support\Facades {
      * @method static void pattern(string $key, string $pattern)
      * @see \Illuminate\Routing\Router::substituteImplicitBindings
      * @method static void substituteImplicitBindings(\Illuminate\Routing\Route $route)
-     * @see \Illuminate\Routing\Router::delete
-     * @method static \Illuminate\Routing\Route delete(string $uri, array|callable|null|string $action = null)
-     * @see \Illuminate\Routing\Router::setCompiledRoutes
-     * @method static void setCompiledRoutes(array $routes)
      * @see \Illuminate\Routing\Router::current
      * @method static \Illuminate\Routing\Route|null current()
      * @see \Illuminate\Routing\Router::hasGroupStack
      * @method static bool hasGroupStack()
      * @see \Illuminate\Support\Traits\Macroable::hasMacro
      * @method static bool hasMacro(string $name)
-     * @see \Illuminate\Routing\Router::getMiddleware
-     * @method static array getMiddleware()
      * @see \Illuminate\Routing\Router::get
      * @method static \Illuminate\Routing\Route get(string $uri, array|callable|null|string $action = null)
      * @see \Illuminate\Routing\Router::gatherRouteMiddleware
      * @method static array gatherRouteMiddleware(\Illuminate\Routing\Route $route)
-     * @see \Illuminate\Routing\Router::resourceParameters
-     * @method static void resourceParameters(array $parameters = [])
      * @see \Illuminate\Routing\RouteRegistrar::where
      * @method static \Illuminate\Routing\RouteRegistrar where(array $where)
      * @see \Illuminate\Routing\Router::uniqueMiddleware
      * @method static array uniqueMiddleware(array $middleware)
      * @see \Illuminate\Routing\RouteRegistrar::attribute
      * @method static \Illuminate\Routing\RouteRegistrar attribute(string $key, $value)
+     * @see \Illuminate\Routing\Router::redirect
+     * @method static \Illuminate\Routing\Route redirect(string $uri, string $destination, int $status = 302)
+     * @see \Illuminate\Routing\RouteRegistrar::controller
+     * @method static \Illuminate\Routing\RouteRegistrar controller(string $controller)
+     * @see \Illuminate\Routing\Router::middlewareGroup
+     * @method static \Illuminate\Routing\Router middlewareGroup(string $name, array $middleware)
+     * @see \Illuminate\Routing\RouteRegistrar::withoutMiddleware
+     * @method static \Illuminate\Routing\RouteRegistrar withoutMiddleware(array|string $middleware)
+     * @see \Illuminate\Routing\Router::currentRouteNamed
+     * @method static bool currentRouteNamed(...$patterns)
+     * @see \Illuminate\Routing\Router::getCurrentRequest
+     * @method static \Illuminate\Http\Request getCurrentRequest()
+     * @see \Illuminate\Routing\Router::prepareResponse
+     * @method static \Symfony\Component\HttpFoundation\Response prepareResponse(\Symfony\Component\HttpFoundation\Request $request, $response)
+     * @see \Illuminate\Routing\Router::getCurrentRoute
+     * @method static \Illuminate\Routing\Route|null getCurrentRoute()
+     * @see \Illuminate\Support\Traits\Macroable::macroCall
+     * @method static mixed macroCall(string $method, array $parameters)
+     * @see \Illuminate\Routing\Router::getPatterns
+     * @method static array getPatterns()
+     * @see \Illuminate\Routing\Router::currentRouteName
+     * @method static null|string currentRouteName()
+     * @see \Illuminate\Routing\Router::dispatch
+     * @method static \Symfony\Component\HttpFoundation\Response dispatch(\Illuminate\Http\Request $request)
+     * @see \Illuminate\Routing\Router::newRoute
+     * @method static \Illuminate\Routing\Route newRoute(array|string $methods, string $uri, $action)
+     * @see \Illuminate\Routing\Router::setContainer
+     * @method static \Illuminate\Routing\Router setContainer(\Illuminate\Container\Container $container)
+     * @see \Illuminate\Routing\Router::view
+     * @method static \Illuminate\Routing\Route view(string $uri, string $view, array $data = [], array|int $status = 200, array $headers = [])
+     * @see \Illuminate\Routing\Router::post
+     * @method static \Illuminate\Routing\Route post(string $uri, array|callable|null|string $action = null)
+     * @see \Illuminate\Routing\Router::has
+     * @method static bool has(string $name)
+     * @see \Illuminate\Routing\Router::group
+     * @method static void group(array $attributes, \Closure|string $routes)
+     * @see \Illuminate\Routing\Router::currentRouteAction
+     * @method static null|string currentRouteAction()
+     * @see \Illuminate\Routing\Router::getBindingCallback
+     * @method static \Closure|null getBindingCallback(string $key)
+     * @see \Illuminate\Routing\Router::resource
+     * @method static \Illuminate\Routing\PendingResourceRegistration resource(string $name, string $controller, array $options = [])
+     * @see \Illuminate\Routing\Router::pushMiddlewareToGroup
+     * @method static \Illuminate\Routing\Router pushMiddlewareToGroup(string $group, string $middleware)
+     * @see \Illuminate\Routing\Router::patterns
+     * @method static void patterns(array $patterns)
+     * @see \Illuminate\Routing\Router::respondWithRoute
+     * @method static \Symfony\Component\HttpFoundation\Response respondWithRoute(string $name)
+     * @see \Illuminate\Routing\Router::getMiddlewareGroups
+     * @method static array getMiddlewareGroups()
+     * @see \Illuminate\Routing\Router::dispatchToRoute
+     * @method static \Symfony\Component\HttpFoundation\Response dispatchToRoute(\Illuminate\Http\Request $request)
+     * @see \Illuminate\Routing\Router::getRoutes
+     * @method static \Illuminate\Routing\RouteCollection|\Illuminate\Routing\RouteCollectionInterface getRoutes()
+     * @see \Illuminate\Routing\Router::apiResource
+     * @method static \Illuminate\Routing\PendingResourceRegistration apiResource(string $name, string $controller, array $options = [])
+     * @see \Illuminate\Support\Traits\Macroable::mixin
+     * @method static void mixin(object $mixin, bool $replace = true)
+     * @see \Illuminate\Routing\RouteRegistrar::name
+     * @method static \Illuminate\Routing\RouteRegistrar name(string $value)
+     * @see \Illuminate\Routing\Router::fallback
+     * @method static \Illuminate\Routing\Route fallback(array|callable|null|string $action)
+     * @see \Illuminate\Support\Traits\Macroable::flushMacros
+     * @method static void flushMacros()
+     * @see \Illuminate\Routing\Router::getGroupStack
+     * @method static array getGroupStack()
+     * @see \Illuminate\Routing\Router::delete
+     * @method static \Illuminate\Routing\Route delete(string $uri, array|callable|null|string $action = null)
+     * @see \Illuminate\Routing\Router::flushMiddlewareGroups
+     * @method static \Illuminate\Routing\Router flushMiddlewareGroups()
+     * @see \Illuminate\Routing\Router::setCompiledRoutes
+     * @method static void setCompiledRoutes(array $routes)
+     * @see \Illuminate\Routing\Router::getMiddleware
+     * @method static array getMiddleware()
+     * @see \Illuminate\Routing\Router::resourceParameters
+     * @method static void resourceParameters(array $parameters = [])
      * @see \Illuminate\Routing\RouteRegistrar::middleware
      * @method static \Illuminate\Routing\RouteRegistrar middleware(array|null|string $middleware)
      * @see \Illuminate\Routing\Router::mergeWithLastGroup
      * @method static array mergeWithLastGroup(array $new, bool $prependExistingPrefix = true)
-     * @see \Illuminate\Routing\Router::redirect
-     * @method static \Illuminate\Routing\Route redirect(string $uri, string $destination, int $status = 302)
      * @see \Illuminate\Support\Traits\Macroable::macro
      * @method static void macro(string $name, callable|object $macro)
-     * @see \Illuminate\Routing\Router::middlewareGroup
-     * @method static \Illuminate\Routing\Router middlewareGroup(string $name, array $middleware)
-     * @see \Illuminate\Routing\Router::currentRouteNamed
-     * @method static bool currentRouteNamed(...$patterns)
      * @see \Illuminate\Routing\Router::match
      * @method static \Illuminate\Routing\Route match(array|string $methods, string $uri, array|callable|null|string $action = null)
      * @see \Illuminate\Routing\Router::resources
      * @method static void resources(array $resources, array $options = [])
      * @see \Illuminate\Routing\Router::any
      * @method static \Illuminate\Routing\Route any(string $uri, array|callable|null|string $action = null)
-     * @see \Illuminate\Routing\Router::getCurrentRequest
-     * @method static \Illuminate\Http\Request getCurrentRequest()
      * @see \Illuminate\Routing\Router::setRoutes
      * @method static void setRoutes(\Illuminate\Routing\RouteCollection $routes)
-     * @see \Illuminate\Routing\Router::prepareResponse
-     * @method static \Symfony\Component\HttpFoundation\Response prepareResponse(\Symfony\Component\HttpFoundation\Request $request, $response)
-     * @see \Illuminate\Routing\Router::getCurrentRoute
-     * @method static \Illuminate\Routing\Route|null getCurrentRoute()
      * @see \Illuminate\Routing\RouteRegistrar::namespace
-     * @method static \Illuminate\Routing\RouteRegistrar namespace(string $value)
+     * @method static \Illuminate\Routing\RouteRegistrar namespace(null|string $value)
      * @see \Illuminate\Routing\Router::uses
      * @method static bool uses(...$patterns)
-     * @see \Illuminate\Support\Traits\Macroable::macroCall
-     * @method static mixed macroCall(string $method, array $parameters)
-     * @see \Illuminate\Routing\Router::getPatterns
-     * @method static array getPatterns()
      */
     class Route {}
     
@@ -1905,14 +2181,34 @@ namespace Illuminate\Support\Facades {
      * @method static bool disableForeignKeyConstraints()
      * @see \Illuminate\Database\Schema\Builder::drop
      * @method static void drop(string $table)
-     * @see \Illuminate\Database\Schema\Builder::getColumnListing
-     * @method static array getColumnListing(string $table)
      * @see \Illuminate\Database\Schema\Builder::hasColumns
      * @method static bool hasColumns(string $table, array $columns)
      * @see \Illuminate\Database\Schema\Builder::getConnection
      * @method static \Illuminate\Database\Connection getConnection()
+     * @see \Illuminate\Database\Schema\Builder::morphUsingUuids
+     * @method static void morphUsingUuids()
+     * @see \Illuminate\Database\Schema\Builder::enableForeignKeyConstraints
+     * @method static bool enableForeignKeyConstraints()
+     * @see \Illuminate\Database\Schema\Builder::blueprintResolver
+     * @method static void blueprintResolver(\Closure $resolver)
+     * @see \Illuminate\Database\Schema\Builder::defaultStringLength
+     * @method static void defaultStringLength(int $length)
+     * @see \Illuminate\Database\Schema\Builder::setConnection
+     * @method static \Illuminate\Database\Schema\Builder setConnection(\Illuminate\Database\Connection $connection)
+     * @see \Illuminate\Database\Schema\Builder::getColumnType
+     * @method static string getColumnType(string $table, string $column)
+     * @see \Illuminate\Database\Schema\Builder::create
+     * @method static void create(string $table, \Closure $callback)
+     * @see \Illuminate\Database\Schema\Builder::dropColumns
+     * @method static void dropColumns(string $table, array|string $columns)
+     * @see \Illuminate\Database\Schema\Builder::table
+     * @method static void table(string $table, \Closure $callback)
+     * @see \Illuminate\Database\Schema\Builder::getColumnListing
+     * @method static array getColumnListing(string $table)
      * @see \Illuminate\Database\Schema\Builder::dropIfExists
      * @method static void dropIfExists(string $table)
+     * @see \Illuminate\Database\Schema\Builder::dropDatabaseIfExists
+     * @method static bool dropDatabaseIfExists(string $name)
      * @see \Illuminate\Database\Schema\Builder::dropAllTables
      * @method static void dropAllTables()
      * @see \Illuminate\Database\Schema\Builder::dropAllViews
@@ -1921,28 +2217,18 @@ namespace Illuminate\Support\Facades {
      * @method static bool hasTable(string $table)
      * @see \Illuminate\Database\Schema\Builder::getAllTables
      * @method static void getAllTables()
-     * @see \Illuminate\Database\Schema\Builder::enableForeignKeyConstraints
-     * @method static bool enableForeignKeyConstraints()
-     * @see \Illuminate\Database\Schema\Builder::blueprintResolver
-     * @method static void blueprintResolver(\Closure $resolver)
+     * @see \Illuminate\Database\Schema\Builder::defaultMorphKeyType
+     * @method static void defaultMorphKeyType(string $type)
      * @see \Illuminate\Database\Schema\Builder::rename
      * @method static void rename(string $from, string $to)
-     * @see \Illuminate\Database\Schema\Builder::defaultStringLength
-     * @method static void defaultStringLength(int $length)
-     * @see \Illuminate\Database\Schema\Builder::setConnection
-     * @method static \Illuminate\Database\Schema\Builder setConnection(\Illuminate\Database\Connection $connection)
-     * @see \Illuminate\Database\Schema\Builder::getColumnType
-     * @method static string getColumnType(string $table, string $column)
      * @see \Illuminate\Database\Schema\Builder::dropAllTypes
      * @method static void dropAllTypes()
-     * @see \Illuminate\Database\Schema\Builder::create
-     * @method static void create(string $table, \Closure $callback)
      * @see \Illuminate\Database\Schema\Builder::hasColumn
      * @method static bool hasColumn(string $table, string $column)
      * @see \Illuminate\Database\Schema\Builder::registerCustomDoctrineType
      * @method static void registerCustomDoctrineType(string $class, string $name, string $type)
-     * @see \Illuminate\Database\Schema\Builder::table
-     * @method static void table(string $table, \Closure $callback)
+     * @see \Illuminate\Database\Schema\Builder::createDatabase
+     * @method static bool createDatabase(string $name)
      */
     class Schema {}
     
@@ -1951,6 +2237,12 @@ namespace Illuminate\Support\Facades {
      * @method static void setDefaultDriver(string $name)
      * @see \Illuminate\Session\SessionManager::getSessionConfig
      * @method static array getSessionConfig()
+     * @see \Illuminate\Support\Manager::setContainer
+     * @method static \Illuminate\Support\Manager setContainer(\Illuminate\Contracts\Container\Container $container)
+     * @see \Illuminate\Support\Manager::getContainer
+     * @method static \Illuminate\Contracts\Container\Container getContainer()
+     * @see \Illuminate\Support\Manager::forgetDrivers
+     * @method static \Illuminate\Support\Manager forgetDrivers()
      * @see \Illuminate\Session\SessionManager::blockDriver
      * @method static null|string blockDriver()
      * @see \Illuminate\Support\Manager::extend
@@ -1995,10 +2287,10 @@ namespace Illuminate\Support\Facades {
      * @method static void push(string $key, $value)
      * @see \Illuminate\Session\Store::setName
      * @method static void setName(string $name)
-     * @see \Illuminate\Session\Store::reflash
-     * @method static void reflash()
      * @see \Illuminate\Session\Store::forget
      * @method static void forget(array|string $keys)
+     * @see \Illuminate\Session\Store::reflash
+     * @method static void reflash()
      * @see \Illuminate\Session\Store::setExists
      * @method static void setExists(bool $value)
      * @see \Illuminate\Session\Store::regenerate
@@ -2029,6 +2321,8 @@ namespace Illuminate\Support\Facades {
      * @method static mixed get(string $key, $default = null)
      * @see \Illuminate\Session\Store::now
      * @method static void now(string $key, $value)
+     * @see \Illuminate\Session\Store::missing
+     * @method static bool missing(array|string $key)
      * @see \Illuminate\Session\Store::start
      * @method static bool start()
      * @see \Illuminate\Session\Store::getHandler
@@ -2041,6 +2335,8 @@ namespace Illuminate\Support\Facades {
      * @method static string getName()
      * @see \Illuminate\Session\Store::pull
      * @method static mixed pull(string $key, $default = null)
+     * @see \Illuminate\Session\Store::passwordConfirmed
+     * @method static void passwordConfirmed()
      * @see \Illuminate\Session\Store::decrement
      * @method static int decrement(string $key, int $amount = 1)
      * @see \Illuminate\Session\Store::exists
@@ -2057,6 +2353,8 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Filesystem\FilesystemManager forgetDisk(array|string $disk)
      * @see \Illuminate\Contracts\Filesystem\Filesystem::prepend
      * @method static bool prepend(string $path, string $data)
+     * @see \Illuminate\Filesystem\FilesystemManager::purge
+     * @method static void purge(null|string $name = null)
      * @see \Illuminate\Contracts\Filesystem\Filesystem::getVisibility
      * @method static string getVisibility(string $path)
      * @see \Illuminate\Contracts\Filesystem\Filesystem::delete
@@ -2071,6 +2369,8 @@ namespace Illuminate\Support\Facades {
      * @method static bool writeStream(string $path, resource $resource, array $options = [])
      * @see \Illuminate\Filesystem\FilesystemManager::createLocalDriver
      * @method static \Illuminate\Contracts\Filesystem\Filesystem|\Illuminate\Filesystem\FilesystemAdapter createLocalDriver(array $config)
+     * @see \Illuminate\Filesystem\FilesystemManager::setApplication
+     * @method static \Illuminate\Filesystem\FilesystemManager setApplication(\Illuminate\Contracts\Foundation\Application $app)
      * @see \Illuminate\Contracts\Filesystem\Filesystem::allDirectories
      * @method static array allDirectories(null|string $directory = null)
      * @see \Illuminate\Contracts\Filesystem\Filesystem::directories
@@ -2095,6 +2395,8 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Contracts\Filesystem\Filesystem|\Illuminate\Filesystem\FilesystemAdapter disk(null|string $name = null)
      * @see \Illuminate\Contracts\Filesystem\Filesystem::size
      * @method static int size(string $path)
+     * @see \Illuminate\Filesystem\FilesystemManager::build
+     * @method static \Illuminate\Contracts\Filesystem\Filesystem|\Illuminate\Filesystem\FilesystemAdapter build(array|string $config)
      * @see \Illuminate\Contracts\Filesystem\Filesystem::makeDirectory
      * @method static bool makeDirectory(string $path)
      * @see \Illuminate\Contracts\Filesystem\Filesystem::lastModified
@@ -2135,6 +2437,8 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Routing\UrlGenerator setKeyResolver(callable $keyResolver)
      * @see \Illuminate\Routing\UrlGenerator::format
      * @method static string format(string $root, string $path, \Illuminate\Routing\Route|null $route = null)
+     * @see \Illuminate\Routing\UrlGenerator::hasValidRelativeSignature
+     * @method static bool hasValidRelativeSignature(\Illuminate\Http\Request $request)
      * @see \Illuminate\Support\Traits\Macroable::mixin
      * @method static void mixin(object $mixin, bool $replace = true)
      * @see \Illuminate\Routing\UrlGenerator::formatHostUsing
@@ -2153,6 +2457,8 @@ namespace Illuminate\Support\Facades {
      * @method static void setRequest(\Illuminate\Http\Request $request)
      * @see \Illuminate\Routing\UrlGenerator::isValidUrl
      * @method static bool isValidUrl(string $path)
+     * @see \Illuminate\Support\Traits\Macroable::flushMacros
+     * @method static void flushMacros()
      * @see \Illuminate\Routing\UrlGenerator::full
      * @method static string full()
      * @see \Illuminate\Routing\UrlGenerator::getDefaultParameters
@@ -2203,12 +2509,18 @@ namespace Illuminate\Support\Facades {
      * @method static void replacer(string $rule, \Closure|string $replacer)
      * @see \Illuminate\Validation\Factory::extendImplicit
      * @method static void extendImplicit(string $rule, \Closure|string $extension, null|string $message = null)
+     * @see \Illuminate\Validation\Factory::setContainer
+     * @method static \Illuminate\Validation\Factory setContainer(\Illuminate\Contracts\Container\Container $container)
      * @see \Illuminate\Validation\Factory::extend
      * @method static void extend(string $rule, \Closure|string $extension, null|string $message = null)
      * @see \Illuminate\Validation\Factory::extendDependent
      * @method static void extendDependent(string $rule, \Closure|string $extension, null|string $message = null)
+     * @see \Illuminate\Validation\Factory::getContainer
+     * @method static \Illuminate\Contracts\Container\Container|null getContainer()
      * @see \Illuminate\Validation\Factory::getTranslator
      * @method static \Illuminate\Contracts\Translation\Translator getTranslator()
+     * @see \Illuminate\Validation\Factory::excludeUnvalidatedArrayKeys
+     * @method static void excludeUnvalidatedArrayKeys()
      * @see \Illuminate\Validation\Factory::make
      * @method static \Illuminate\Validation\Validator make(array $data, array $rules, array $messages = [], array $customAttributes = [])
      * @see \Illuminate\Validation\Factory::getPresenceVerifier
@@ -2250,9 +2562,11 @@ namespace Illuminate\Support\Facades {
      * @see \Illuminate\View\Factory::renderEach
      * @method static string renderEach(string $view, array $data, string $iterator, string $empty = 'raw|')
      * @see \Illuminate\View\Concerns\ManagesComponents::startComponent
-     * @method static void startComponent(\Closure|\Illuminate\View\View|string $view, array $data = [])
+     * @method static void startComponent(\Closure|\Illuminate\Contracts\Support\Htmlable|\Illuminate\Contracts\View\View|string $view, array $data = [])
      * @see \Illuminate\View\Concerns\ManagesStacks::startPrepend
      * @method static void startPrepend(string $section, string $content = '')
+     * @see \Illuminate\View\Factory::renderUnless
+     * @method static string renderUnless(bool $condition, string $view, array|\Illuminate\Contracts\Support\Arrayable $data = [], array $mergeData = [])
      * @see \Illuminate\Support\Traits\Macroable::mixin
      * @method static void mixin(object $mixin, bool $replace = true)
      * @see \Illuminate\View\Concerns\ManagesStacks::flushStacks
@@ -2273,6 +2587,8 @@ namespace Illuminate\Support\Facades {
      * @method static string yieldSection()
      * @see \Illuminate\View\Concerns\ManagesLayouts::appendSection
      * @method static string appendSection()
+     * @see \Illuminate\Support\Traits\Macroable::flushMacros
+     * @method static void flushMacros()
      * @see \Illuminate\View\Factory::shared
      * @method static mixed shared(string $key, $default = null)
      * @see \Illuminate\View\Concerns\ManagesEvents::composers
@@ -2287,12 +2603,14 @@ namespace Illuminate\Support\Facades {
      * @method static void flushSections()
      * @see \Illuminate\View\Factory::getFinder
      * @method static \Illuminate\View\ViewFinderInterface getFinder()
+     * @see \Illuminate\View\Concerns\ManagesComponents::getConsumableComponentData
+     * @method static mixed|null getConsumableComponentData(string $key, $default = null)
      * @see \Illuminate\View\Concerns\ManagesLayouts::parentPlaceholder
      * @method static string parentPlaceholder(string $section = '')
      * @see \Illuminate\View\Concerns\ManagesLayouts::getSection
      * @method static mixed|null|string getSection(string $name, null|string $default = null)
      * @see \Illuminate\View\Concerns\ManagesComponents::slot
-     * @method static void slot(string $name, null|string $content = null)
+     * @method static void slot(string $name, null|string $content = null, array $attributes = [])
      * @see \Illuminate\View\Factory::doneRendering
      * @method static bool doneRendering()
      * @see \Illuminate\View\Concerns\ManagesLoops::addLoop
@@ -2460,8 +2778,6 @@ namespace {
     class Cache extends Illuminate\Support\Facades\Cache {}
     class Config extends Illuminate\Support\Facades\Config {}
     class Cookie extends Illuminate\Support\Facades\Cookie {}
-    class Countries extends Monarobase\CountryList\CountryListFacade {}
-    class Country extends Nnjeim\World\World {}
     class Crypt extends Illuminate\Support\Facades\Crypt {}
     class DB extends Illuminate\Support\Facades\DB {}
     class Eloquent extends Illuminate\Database\Eloquent\Model {}
@@ -2471,10 +2787,8 @@ namespace {
     class Flare extends Facade\Ignition\Facades\Flare {}
     class Form extends Collective\Html\FormFacade {}
     class Gate extends Illuminate\Support\Facades\Gate {}
-    class Google2FA extends PragmaRX\Google2FALaravel\Facade {}
     class Hash extends Illuminate\Support\Facades\Hash {}
     class Html extends Collective\Html\HtmlFacade {}
-    class Image extends Intervention\Image\Facades\Image {}
     class Lang extends Illuminate\Support\Facades\Lang {}
     class LaravelLocalization extends Mcamara\LaravelLocalization\Facades\LaravelLocalization {}
     class Log extends Illuminate\Support\Facades\Log {}
