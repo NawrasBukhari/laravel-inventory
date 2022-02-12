@@ -3,11 +3,8 @@ This is an inventory system and point of sale application it is build in laravel
 
 # Quick Installation
 ```bash
-change values of .env
-DB_DATABASE=""
-DB_USERNAME=""
-DB_PASSWORD=""
-php artisan migreate --seed
+http://localhost/install
+and simply follow the instructions
 ```
 
 # Login and password
