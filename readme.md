@@ -1,19 +1,24 @@
 # Quick Introduction
-This is an inventory system and point of sale application it is build in laravel 7 and php 7.2
+This is an inventory system and point of sale application it is build in laravel 8 and php 7.3
 
 # Quick Installation
 ```bash
-change values of .env
-DB_DATABASE=""
-DB_USERNAME=""
-DB_PASSWORD=""
-php artisan migreate --seed
+http://localhost/install
+and simply follow the instructions
 ```
 
 # Login and password
 
-Login: admin@app.com <br>
-password: admin
+```bash 
+Admin login:
+Login: admin@app.com
+Password: admin
+```
+```bash
+Worker login
+Login: worker@app.com
+Password: worker
+```
 
 # roles
 Admin: can (add, read, edit, delete)<br>

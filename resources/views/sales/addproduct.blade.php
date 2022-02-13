@@ -85,13 +85,13 @@
 {{--                                <div class="form-group{{ $errors->has('product_id') ? ' has-danger' : '' }}">--}}
 {{--                                    <label class="form-control-label" for="input-product">{{__('translation.Products')}}</label>--}}
 {{--                                    <select name="kenzhekhan_id" id="input-product" class="form-select form-control-alternative{{ $errors->has('product_id') ? ' is-invalid' : '' }}" required>--}}
-{{--                                        @foreach ($kenzhekhan as $product)--}}
-{{--                                            @if($product['id'] == old('kenzhekhan_id'))--}}
-{{--                                                <option value="{{$product['id']}}" selected>[{{ $product->category->name }}] {{ $product->name }} ---}}
-{{--                                                    {{__('translation.Base_price')}}: {{ $product->price }}₸</option>--}}
+{{--                                        @foreach ($kenzhekhan as $kenzhekhan)--}}
+{{--                                            @if($kenzhekhan['id'] == old('kenzhekhan_id'))--}}
+{{--                                                <option value="{{$kenzhekhan['id']}}" selected>[{{ $kenzhekhan->category->name }}] {{ $kenzhekhan->name }} ---}}
+{{--                                                    {{__('translation.Base_price')}}: {{ $kenzhekhan->price }}₸</option>--}}
 {{--                                            @else--}}
-{{--                                                <option value="{{$product['id']}}">[{{ $product->category->name }}] {{ $product->name }} ---}}
-{{--                                                    {{__('translation.Base_price')}}: {{ $product->price }}₸</option>--}}
+{{--                                                <option value="{{$kenzhekhan['id']}}">[{{ $kenzhekhan->category->name }}] {{ $kenzhekhan->name }} ---}}
+{{--                                                    {{__('translation.Base_price')}}: {{ $kenzhekhan->price }}₸</option>--}}
 {{--                                            @endif--}}
 {{--                                        @endforeach--}}
 {{--                                    </select>--}}

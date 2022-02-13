@@ -10,6 +10,11 @@
                             <h4 class="card-title">{{__('translation.kazkan')}}</h4>
                         </div>
                         <div class="col-4 text-right">
+                            @foreach($products as $p)
+                                @if($p->id == 1)
+                                    <a href="{{ route('export') }}" class="btn btn-sm btn-success">{{__('translation.Download')}} <i class="tim-icons icon-cloud-download-93"></i></a>
+                                @endif
+                            @endforeach
                             <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary">{{__('translation.New_Product')}}</a>
                         </div>
                     </div>

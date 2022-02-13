@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\KenzhekhanExport;
+use App\Exports\ProductExport;
 use App\Models\Country;
 use App\Http\Requests\KenzhekhanRequest;
 use App\Models\Kenzhekhan;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
+use Nette\Utils\Random;
 
 class KenzhekhanController extends Controller
 {
@@ -91,6 +95,13 @@ class KenzhekhanController extends Controller
 
         return view('inventory.kenzhekhan.show', compact('kenzhekhan', 'solds', 'receiveds'));
     }
+
+    public function export()
+    {
+        $nick_name = Random::generate(6).'_'.'Кенжехан.xlsx';
+        return Excel::download(new KenzhekhanExport, $nick_name);
+    }
+
     public function destroy(Kenzhekhan $kenzhekhan)
     {
         $kenzhekhan->delete();

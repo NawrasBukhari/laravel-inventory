@@ -96,12 +96,10 @@ Auth::routes(['register' => false]);
         Route::get('tables', ['as' => 'pages.tables', 'uses' => 'PageController@tables']);
         Route::get('typography', ['as' => 'pages.typography', 'uses' => 'PageController@typography']);
     });
-// Route for view/blade file.
-    Route::get('importExport', 'ExcelController@importExport');
-// Route for export/download tabledata to .csv, .xls or .xlsx
-    Route::get('downloadExcel/{type}', 'ExcelController@downloadExcel');
-// Route for import excel data to database.
-    Route::post('importExcel', 'ExcelController@importExcel');
+
+Route::get('/export', 'Productcontroller@export')->name('export')->middleware('auth');
+Route::get('/export2', 'KenzhekhanController@export')->name('export2')->middleware('auth');
+
 
 
 
