@@ -27,7 +27,8 @@
 
     <div class="buttons" style="background-color: #7f53ac;
     background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);">
-        <a href="{{ url('/') }}" class="button">{{ trans('installer_messages.final.exit') }}</a>
+        <a href="{{ url('/') }}" style="background-color: #7f53ac;
+    background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);" class="button">{{ trans('installer_messages.final.exit') }}</a>
     </div>
 
 @endsection

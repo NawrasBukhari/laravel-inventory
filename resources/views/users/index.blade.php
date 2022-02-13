@@ -34,7 +34,7 @@
                                             <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
                                         </td>
                                         <td>{{ $user->created_at->format('d/m/Y H:i') }}</td>
-                                        <td><img width="64px" height="64px" class="rounded-circle" src="{{asset('/images/profile_pictures/'.$user->image)}}"></td>
+                                        <td><img width="64px" height="64px" class="rounded-circle" src="{{asset('/images/profile_pictures/'.$user->image)}}" onerror="this.src='{{asset('images/user.png')}}';"></td>
 
                                         <td class="text-right">
                                                 <div class="dropdown">
