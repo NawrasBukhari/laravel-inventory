@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ProductExport;
 use Illuminate\Http\Request;
 use App\Models\Settings;
+use App\Models\Product;
+use App\Models\Kenzhekhan;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SettingsController extends Controller
 {
@@ -12,20 +16,10 @@ class SettingsController extends Controller
         $themes = Settings::all();
         return view('settings.index', compact('themes'));
     }
-    public function create()
+    public function export()
     {
+        return Excel::download(new ProductExport, 'казкан.xlsx');
 
     }
-    public function store(Request $request, Settings $model)
-    {
 
-    }
-    public function edit()
-    {
-
-    }
-    public function update(Request $request)
-    {
-
-    }
 }

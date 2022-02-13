@@ -88,8 +88,10 @@
                         </thead>
                         <tbody>
                             @foreach ($sale->products as $sold_product)
+                                @foreach((array) $sale->kenzhekhan as $sold_kenzhekhan)
+
                                 <tr>
-                                    <td>{{ $sold_product->product->id or $sold_kenzhekhan->kenzhekhan->id}}</td>
+                                    <td>{{ $sold_product->product->id ?? $sold_kenzhekhan->kenzhekhan->id}}</td>
                                     <td><a href="{{ route('categories.show', $sold_product->product->category or $sold_kenzhekhan->kenzhekhan->category) }}">{{ $sold_product->product->category->name or $sold_kenzhekhan->kenzhekhan->category->name }} </a></td>
                                     <td><a href="{{ route('products.show', $sold_product->product) }}">{{ $sold_product->product->name }}</a></td>
                                     <td>{{ $sold_product->qty }}</td>
@@ -110,6 +112,7 @@
                                         @endif
                                     </td>
                                 </tr>
+                                @endforeach
                                 @endforeach
                         </tbody>
                     </table>

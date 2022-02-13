@@ -255,6 +255,7 @@ return[
     'Add_user'=>'Add user',
     'Creation_Date'=>'Creation Date',
     'edit'=>'Edit',
-    'delete'=>'Delete'
+    'delete'=>'Delete',
+    'Download'=>'Download',
 
 ];

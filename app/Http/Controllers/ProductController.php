@@ -7,6 +7,9 @@ use App\Models\ProductCategory;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Exports\ProductExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Nette\Utils\Random;
 
 class ProductController extends Controller
 {
@@ -98,6 +101,12 @@ class ProductController extends Controller
     {
         $countries = Country::all();
         return view('inventory.products.create', compact('countries', $countries));
+    }
+
+    public function export()
+    {
+        $nick_name = Random::generate(6).'_'.'казкан.xlsx';
+        return Excel::download(new ProductExport,$nick_name );
     }
 
 
