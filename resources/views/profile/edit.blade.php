@@ -107,7 +107,7 @@
                                 <button type="button" class="close" data-dismiss="alert">×</button>
                                 <strong>{{ $message }}</strong>
                             </div>
-                            <img src="{{asset('/images/profile_pictures/'.Auth::user()->image)}}">
+                            <img src="{{asset('/images/profile_pictures/'.Auth::user()->image)}}" onerror="this.src='{{asset('images/user.png')}}';">
                         @endif
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
@@ -121,6 +121,7 @@
                         @endif
                             @if(Auth::user()->image)
                                 <img class="avatar" src="{{asset('/images/profile_pictures/'.Auth::user()->image)}}"
+                                     onerror="this.src='{{asset('images/user.png')}}';"
                                      alt="{{__('translation.upload_image')}}">
                             @endif
                         <div class="upload-btn-wrapper">

@@ -500,7 +500,7 @@ background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);" onclick="sh
                 <div class="align-content-center">
                     <div style="text-align: center;">
                         <button class="button" style="background-color: #7f53ac;
-background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);" type="submit">
+                        background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);" type="submit">
                             {{ trans('installer_messages.environment.wizard.form.buttons.install') }}
                             <i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>
                         </button>
