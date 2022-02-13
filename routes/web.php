@@ -97,7 +97,7 @@ Auth::routes(['register' => false]);
         Route::get('typography', ['as' => 'pages.typography', 'uses' => 'PageController@typography']);
     });
 
-Route::get('/export', 'Productcontroller@export')->name('export')->middleware('auth');
+Route::get('/export', 'ProductController@export')->name('export')->middleware('auth');
 Route::get('/export2', 'KenzhekhanController@export')->name('export2')->middleware('auth');
 
 
