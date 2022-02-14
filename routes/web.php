@@ -102,5 +102,3 @@ Route::get('/export2', 'KenzhekhanController@export')->name('export2')->middlewa
 Route::get('/export3', 'SettingsController@export')->name('export3')->middleware('auth');
 
 
-
-

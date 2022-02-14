@@ -20,7 +20,7 @@ Login: worker@app.com
 Password: worker
 ```
 
-# roles
+# Roles
 Admin: can (add, read, edit, delete)<br>
 User: can (add, read, edit)<br>
 
