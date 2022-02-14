@@ -166,6 +166,33 @@
             'reference' => '0690bde05318336c7221785f2a932467f98b64ca',
             'dev_requirement' => false,
         ),
+        'guzzlehttp/guzzle' => array(
+            'pretty_version' => '7.4.1',
+            'version' => '7.4.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../guzzlehttp/guzzle',
+            'aliases' => array(),
+            'reference' => 'ee0a041b1760e6a53d2a39c8c34115adc2af2c79',
+            'dev_requirement' => false,
+        ),
+        'guzzlehttp/promises' => array(
+            'pretty_version' => '1.5.1',
+            'version' => '1.5.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../guzzlehttp/promises',
+            'aliases' => array(),
+            'reference' => 'fe752aedc9fd8fcca3fe7ad05d419d32998a06da',
+            'dev_requirement' => false,
+        ),
+        'guzzlehttp/psr7' => array(
+            'pretty_version' => '2.1.0',
+            'version' => '2.1.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../guzzlehttp/psr7',
+            'aliases' => array(),
+            'reference' => '089edd38f5b8abba6cb01567c2a8aaa47cec4c72',
+            'dev_requirement' => false,
+        ),
         'hamcrest/hamcrest-php' => array(
             'pretty_version' => 'v2.0.1',
             'version' => '2.0.1.0',
@@ -526,6 +553,15 @@
                 0 => '^1.0',
             ),
         ),
+        'munafio/chatify' => array(
+            'pretty_version' => 'v1.3.4',
+            'version' => '1.3.4.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../munafio/chatify',
+            'aliases' => array(),
+            'reference' => '9ed61364a87bedc018f006c3b9f01fac419a5c52',
+            'dev_requirement' => false,
+        ),
         'myclabs/deep-copy' => array(
             'pretty_version' => '1.10.2',
             'version' => '1.10.2.0',
@@ -599,6 +635,24 @@
             'install_path' => __DIR__ . '/../opis/closure',
             'aliases' => array(),
             'reference' => '3d81e4309d2a927abbe66df935f4bb60082805ad',
+            'dev_requirement' => false,
+        ),
+        'paragonie/random_compat' => array(
+            'pretty_version' => 'v9.99.100',
+            'version' => '9.99.100.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../paragonie/random_compat',
+            'aliases' => array(),
+            'reference' => '996434e5492cb4c3edcb9168db6fbb1359ef965a',
+            'dev_requirement' => false,
+        ),
+        'paragonie/sodium_compat' => array(
+            'pretty_version' => 'v1.17.0',
+            'version' => '1.17.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../paragonie/sodium_compat',
+            'aliases' => array(),
+            'reference' => 'c59cac21abbcc0df06a3dd18076450ea4797b321',
             'dev_requirement' => false,
         ),
         'phar-io/manifest' => array(
@@ -766,6 +820,12 @@
             'reference' => '2dfb5f6c5eff0e91e20e913f8c5452ed95b86621',
             'dev_requirement' => false,
         ),
+        'psr/http-client-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '1.0',
+            ),
+        ),
         'psr/http-factory' => array(
             'pretty_version' => '1.0.1',
             'version' => '1.0.1.0',
@@ -775,6 +835,12 @@
             'reference' => '12ac7fcd07e5b077433f5f2bee95b3a771bf61be',
             'dev_requirement' => false,
         ),
+        'psr/http-factory-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '1.0',
+            ),
+        ),
         'psr/http-message' => array(
             'pretty_version' => '1.0.1',
             'version' => '1.0.1.0',
@@ -783,6 +849,12 @@
             'aliases' => array(),
             'reference' => 'f6561bf28d520154e4b0ec72be95418abe6d9363',
             'dev_requirement' => false,
+        ),
+        'psr/http-message-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '1.0',
+            ),
         ),
         'psr/log' => array(
             'pretty_version' => '2.0.0',
@@ -824,6 +896,15 @@
             'reference' => '570292577277f06f590635381a7f761a6cf4f026',
             'dev_requirement' => false,
         ),
+        'pusher/pusher-php-server' => array(
+            'pretty_version' => '7.0.2',
+            'version' => '7.0.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../pusher/pusher-php-server',
+            'aliases' => array(),
+            'reference' => 'af3eeaefc0c7959f5b3852f0a4dd5547245d33df',
+            'dev_requirement' => false,
+        ),
         'rachidlaasri/laravel-installer' => array(
             'pretty_version' => '4.1.0',
             'version' => '4.1.0.0',
@@ -831,6 +912,15 @@
             'install_path' => __DIR__ . '/../rachidlaasri/laravel-installer',
             'aliases' => array(),
             'reference' => 'b751b4c23dba893e9a4a12f881a6fd8fa921d228',
+            'dev_requirement' => false,
+        ),
+        'ralouphie/getallheaders' => array(
+            'pretty_version' => '3.0.3',
+            'version' => '3.0.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../ralouphie/getallheaders',
+            'aliases' => array(),
+            'reference' => '120b605dfeb996808c31b6477290a714d356e822',
             'dev_requirement' => false,
         ),
         'ramsey/collection' => array(

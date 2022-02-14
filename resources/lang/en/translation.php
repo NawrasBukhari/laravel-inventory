@@ -257,5 +257,14 @@ return[
     'edit'=>'Edit',
     'delete'=>'Delete',
     'Download'=>'Download',
+    'MESSAGES'=>'MESSAGES',
+    'People'=>'People',
+    'Favorites'=>'Favorites',
+    'Search'=>'Search',
+    'Type_to_search..'=>'Type to search..',
+    'Connected'=>'Connected',
+    'Connecting...'=>'Connecting...',
+    'No_internet_access'=>'No internet access',
+    'Please_select_a_chat_to_start_messaging'=>'Please select a chat to start messaging',
 
 ];

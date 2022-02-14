@@ -165,14 +165,18 @@
                     </a>
                 </li>
             @endcan
-            @can('access_settings')
-                <li @if ($pageSlug == 'Search query') class="active " @endif>
-                    <a href="{{route('theme.index')}}">
-                        <i class="tim-icons icon-zoom-split"></i>
-                        <p>{{__('translation.search')}}</p>
-                    </a>
-                </li>
-            @endcan
+            <li @if ($pageSlug == 'Search query') class="active " @endif>
+                <a href="{{route('theme.index')}}">
+                    <i class="tim-icons icon-zoom-split"></i>
+                    <p>{{__('translation.search')}}</p>
+                </a>
+            </li>
+            <li @if ($pageSlug == 'chat') class="active " @endif>
+                <a href="/chatify">
+                    <i class="tim-icons icon-chat-33"></i>
+                    <p>{{__('translation.chat')}}</p>
+                </a>
+            </li>
         </ul>
     </div>
 </div>
