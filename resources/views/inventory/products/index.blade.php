@@ -54,11 +54,11 @@
                                             <a href="{{ route('products.edit', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="{{__('translation.edit_product')}}">
                                                 <i class="tim-icons icon-pencil"></i>
                                             </a>
-                                            <form action="{{ route('products.destroy', $product) }}" method="post" class="d-inline">
+                                            <form action="{{ route('products.destroy', $product) }}" method="post" id="delete" class="d-inline">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="{{__('translation.Delete_Product')}}"
-                                                        onclick="confirm('{{__('translation.Are_you_sure_you_want_to_remove_this_product?')}}') ? this.parentElement.submit() : ''">
+                                                        onclick="submitResult(event)">
                                                     <i class="tim-icons icon-simple-remove"></i>
                                                 </button>
                                             </form>

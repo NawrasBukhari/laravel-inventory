@@ -20,6 +20,8 @@
          <link href="{{ asset('assets/css/black-dashboard.css?v=1.0.0') }}" rel="stylesheet" />
         <link href="{{ asset('assets/css/black-theme.css') }}" rel="stylesheet" />
         <link href="{{ asset('assets/css/black-nucleo-icons.css?v=1.0.0') }}" rel="stylesheet" />
+        @include('sweetalert::alert')
+
     </head>
 
         <body class="black-content {{ $class ?? '' }}">
@@ -180,6 +182,28 @@
             $(function () {
                 $('[data-toggle="tooltip"]').tooltip();
             });
+            function submitResult(e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'уверены ли вы?',
+                    text: "Вы не сможете отменить это!",
+                    icon: 'предупреждение!',
+                    showCancelButton: true,
+                    confirmButtonColor: '#5fd630',
+                    cancelButtonColor: '#d21c1c',
+                    confirmButtonText: 'Удалить!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire(
+                            'Удалено!!',
+                            'Ваш файл удален!',
+                            'успешно удален!'
+                        )
+                        document.getElementById("delete").submit();
+                    }
+                })
+            }
+
         </script>
         {{--Bootbox--}}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js" integrity="sha512-RdSPYh1WA6BF0RhpisYJVYkOyTzK4HwofJ3Q7ivt/jkpW6Vc8AurL1R+4AUcvn9IwEKAPm/fk7qFZW3OuiUDeg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

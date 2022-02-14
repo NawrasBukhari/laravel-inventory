@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use App\Exports\ProductExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Nette\Utils\Random;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
@@ -47,7 +48,9 @@ class ProductController extends Controller
         $model->weight=$request->weight;
         $model->image = $path.'/'.$filename;
         $model->save([$model]);
-            return redirect()
+        Alert::success('Done!', 'Client has been successfully updated','success');
+
+        return redirect()
                 ->route('products.index')
                 ->withStatus('Product successfully registered.');
     }

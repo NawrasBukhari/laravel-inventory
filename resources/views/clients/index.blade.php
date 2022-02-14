@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    @include('alerts.success')
+                    @include('sweetalert::alert')
 
                     <div class="">
                         <table class="table tablesorter " id="">
@@ -56,10 +56,10 @@
                                             <a href="{{ route('clients.edit', $client) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Client">
                                                 <i class="tim-icons icon-pencil"></i>
                                             </a>
-                                            <form action="{{ route('clients.destroy', $client) }}" method="post" class="d-inline">
+                                            <form action="{{ route('clients.destroy', $client) }}" method="post" id="delete" class="d-inline">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Delete Client" onclick="confirm('{{__('translation.Are_you_sure_you_want_to_delete_this_Client?')}}') ? this.parentElement.submit() : ''">
+                                                <button type="button" class="btn btn-link " data-toggle="tooltip" data-placement="bottom" title="Delete Client" onclick="submitResult(event)">
                                                     <i class="tim-icons icon-simple-remove"></i>
                                                 </button>
                                             </form>
@@ -79,3 +79,4 @@
         </div>
     </div>
 @endsection
+
