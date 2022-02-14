@@ -62,7 +62,7 @@ class MessagesController extends Controller
             'id' => $id ?? 0,
             'type' => $type ?? 'user',
             'messengerColor' => Auth::user()->messenger_color ?? $this->messengerFallbackColor,
-            'dark_mode' => Auth::user()->dark_mode < 1 ? 'light' : 'dark',
+            'dark_mode' => Auth::user()->dark_mode < 1 ? 'dark' : 'dark',
         ]);
     }
 
