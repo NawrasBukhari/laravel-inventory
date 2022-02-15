@@ -101,7 +101,7 @@ return array(
     'Chatify\\' => array($vendorDir . '/munafio/chatify/src'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
-    'Biscolab\\ReCaptcha\\' => array($vendorDir . '/biscolab/laravel-recaptcha/src'),
     'Barryvdh\\TranslationManager\\' => array($vendorDir . '/barryvdh/laravel-translation-manager/src'),
     'App\\' => array($baseDir . '/app'),
+    'Anhskohbo\\NoCaptcha\\' => array($vendorDir . '/anhskohbo/no-captcha/src'),
 );

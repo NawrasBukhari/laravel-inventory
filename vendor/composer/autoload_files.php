@@ -42,6 +42,5 @@ return array(
     'f18cc91337d49233e5754e93f3ed9ec3' => $vendorDir . '/laravelcollective/html/src/helpers.php',
     'd7354eb4c8441fbf08eec280b61c7c73' => $vendorDir . '/rachidlaasri/laravel-installer/src/Helpers/functions.php',
     '6b34c85f7b1ad6faa15aa12109e030f2' => $vendorDir . '/realrashid/sweet-alert/src/functions.php',
-    '5f2edeb18ca19ebd9ee6da72dc9f4292' => $vendorDir . '/biscolab/laravel-recaptcha/src/helpers.php',
     'b4e3f29b106af37a2bb239f73cdf68c7' => $baseDir . '/app/helpers.php',
 );

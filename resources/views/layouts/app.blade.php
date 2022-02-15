@@ -20,6 +20,8 @@
          <link href="{{ asset('assets/css/black-dashboard.css?v=1.0.0') }}" rel="stylesheet" />
         <link href="{{ asset('assets/css/black-theme.css') }}" rel="stylesheet" />
         <link href="{{ asset('assets/css/black-nucleo-icons.css?v=1.0.0') }}" rel="stylesheet" />
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        {!! NoCaptcha::renderJs() !!}
         @include('sweetalert::alert')
 
     </head>

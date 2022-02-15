@@ -125,9 +125,8 @@ class EnvironmentManager
         'PUSHER_APP_KEY='.$request->pusher_app_key."\n".
         'PUSHER_APP_SECRET='.$request->pusher_app_secret."\n".
         'PUSHER_APP_CLUSTER='."\n\n".
-        'RECAPTCHA_SITE_KEY='."\n".
-        'RECAPTCHA_SECRET_KEY='."\n".
-        'RECAPTCHA_SKIP_IP='."\n\n".
+        'NOCAPTCHA_SITEKEY='."\n".
+        'NOCAPTCHA_SECRET='."\n\n".
         'GOOGLE_CALENDAR_AUTH_PROFILE='."\n".
         'GOOGLE_CALENDAR_ID='."\n".
         'GOOGLE_CALENDAR_IMPERSONATE='."\n\n".
