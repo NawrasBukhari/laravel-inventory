@@ -1,5 +1,6 @@
 /public/hot
 /storage/*.key
+/storage/installed
 .env.backup
 .phpunit.result.cache
 Homestead.json
