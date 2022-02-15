@@ -2768,6 +2768,7 @@ namespace Monarobase\CountryList {
 }
 
 namespace {
+    class Alert extends RealRashid\SweetAlert\Facades\Alert {}
     class App extends Illuminate\Support\Facades\App {}
     class Arr extends Illuminate\Support\Arr {}
     class Artisan extends Illuminate\Support\Facades\Artisan {}
@@ -2776,6 +2777,7 @@ namespace {
     class Broadcast extends Illuminate\Support\Facades\Broadcast {}
     class Bus extends Illuminate\Support\Facades\Bus {}
     class Cache extends Illuminate\Support\Facades\Cache {}
+    class Chatify extends Chatify\Facades\ChatifyMessenger {}
     class Config extends Illuminate\Support\Facades\Config {}
     class Cookie extends Illuminate\Support\Facades\Cookie {}
     class Crypt extends Illuminate\Support\Facades\Crypt {}
@@ -2787,6 +2789,7 @@ namespace {
     class Flare extends Facade\Ignition\Facades\Flare {}
     class Form extends Collective\Html\FormFacade {}
     class Gate extends Illuminate\Support\Facades\Gate {}
+    class GoogleCalendar extends Spatie\GoogleCalendar\GoogleCalendarFacade {}
     class Hash extends Illuminate\Support\Facades\Hash {}
     class Html extends Collective\Html\HtmlFacade {}
     class Lang extends Illuminate\Support\Facades\Lang {}
@@ -2796,6 +2799,7 @@ namespace {
     class Notification extends Illuminate\Support\Facades\Notification {}
     class Password extends Illuminate\Support\Facades\Password {}
     class Queue extends Illuminate\Support\Facades\Queue {}
+    class ReCaptcha extends Biscolab\ReCaptcha\Facades\ReCaptcha {}
     class Redirect extends Illuminate\Support\Facades\Redirect {}
     class Redis extends Illuminate\Support\Facades\Redis {}
     class Request extends Illuminate\Support\Facades\Request {}
