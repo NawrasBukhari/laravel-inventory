@@ -6,6 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Anhskohbo\\NoCaptcha\\Facades\\NoCaptcha' => $vendorDir . '/anhskohbo/no-captcha/src/Facades/NoCaptcha.php',
+    'Anhskohbo\\NoCaptcha\\NoCaptcha' => $vendorDir . '/anhskohbo/no-captcha/src/NoCaptcha.php',
+    'Anhskohbo\\NoCaptcha\\NoCaptchaServiceProvider' => $vendorDir . '/anhskohbo/no-captcha/src/NoCaptchaServiceProvider.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Exports\\KenzhekhanExport' => $baseDir . '/app/Exports/KenzhekhanExport.php',
@@ -82,6 +85,7 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Rules\\CurrentPasswordCheckRule' => $baseDir . '/app/Rules/CurrentPasswordCheckRule.php',
+    'App\\Validators\\ReCaptcha' => $baseDir . '/app/Validators/ReCaptcha.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Barryvdh\\TranslationManager\\Console\\CleanCommand' => $vendorDir . '/barryvdh/laravel-translation-manager/src/Console/CleanCommand.php',
     'Barryvdh\\TranslationManager\\Console\\ExportCommand' => $vendorDir . '/barryvdh/laravel-translation-manager/src/Console/ExportCommand.php',
@@ -95,14 +99,6 @@ return array(
     'Barryvdh\\TranslationManager\\Models\\Translation' => $vendorDir . '/barryvdh/laravel-translation-manager/src/Models/Translation.php',
     'Barryvdh\\TranslationManager\\TranslationServiceProvider' => $vendorDir . '/barryvdh/laravel-translation-manager/src/TranslationServiceProvider.php',
     'Barryvdh\\TranslationManager\\Translator' => $vendorDir . '/barryvdh/laravel-translation-manager/src/Translator.php',
-    'Biscolab\\ReCaptcha\\Controllers\\ReCaptchaController' => $vendorDir . '/biscolab/laravel-recaptcha/src/Controllers/ReCaptchaController.php',
-    'Biscolab\\ReCaptcha\\Exceptions\\InvalidConfigurationException' => $vendorDir . '/biscolab/laravel-recaptcha/src/Exceptions/InvalidConfigurationException.php',
-    'Biscolab\\ReCaptcha\\Facades\\ReCaptcha' => $vendorDir . '/biscolab/laravel-recaptcha/src/Facades/ReCaptcha.php',
-    'Biscolab\\ReCaptcha\\ReCaptchaBuilder' => $vendorDir . '/biscolab/laravel-recaptcha/src/ReCaptchaBuilder.php',
-    'Biscolab\\ReCaptcha\\ReCaptchaBuilderInvisible' => $vendorDir . '/biscolab/laravel-recaptcha/src/ReCaptchaBuilderInvisible.php',
-    'Biscolab\\ReCaptcha\\ReCaptchaBuilderV2' => $vendorDir . '/biscolab/laravel-recaptcha/src/ReCaptchaBuilderV2.php',
-    'Biscolab\\ReCaptcha\\ReCaptchaBuilderV3' => $vendorDir . '/biscolab/laravel-recaptcha/src/ReCaptchaBuilderV3.php',
-    'Biscolab\\ReCaptcha\\ReCaptchaServiceProvider' => $vendorDir . '/biscolab/laravel-recaptcha/src/ReCaptchaServiceProvider.php',
     'Brick\\Math\\BigDecimal' => $vendorDir . '/brick/math/src/BigDecimal.php',
     'Brick\\Math\\BigInteger' => $vendorDir . '/brick/math/src/BigInteger.php',
     'Brick\\Math\\BigNumber' => $vendorDir . '/brick/math/src/BigNumber.php',

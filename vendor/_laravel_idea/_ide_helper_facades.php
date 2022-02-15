@@ -2796,10 +2796,10 @@ namespace {
     class LaravelLocalization extends Mcamara\LaravelLocalization\Facades\LaravelLocalization {}
     class Log extends Illuminate\Support\Facades\Log {}
     class Mail extends Illuminate\Support\Facades\Mail {}
+    class NoCaptcha extends Anhskohbo\NoCaptcha\Facades\NoCaptcha {}
     class Notification extends Illuminate\Support\Facades\Notification {}
     class Password extends Illuminate\Support\Facades\Password {}
     class Queue extends Illuminate\Support\Facades\Queue {}
-    class ReCaptcha extends Biscolab\ReCaptcha\Facades\ReCaptcha {}
     class Redirect extends Illuminate\Support\Facades\Redirect {}
     class Redis extends Illuminate\Support\Facades\Redis {}
     class Request extends Illuminate\Support\Facades\Request {}

@@ -10,6 +10,15 @@
         'dev' => true,
     ),
     'versions' => array(
+        'anhskohbo/no-captcha' => array(
+            'pretty_version' => '3.4.0',
+            'version' => '3.4.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../anhskohbo/no-captcha',
+            'aliases' => array(),
+            'reference' => 'e12233006da3063f5cf4ce959cae05a6676faedd',
+            'dev_requirement' => false,
+        ),
         'barryvdh/laravel-translation-manager' => array(
             'pretty_version' => 'v0.6.1',
             'version' => '0.6.1.0',
@@ -17,15 +26,6 @@
             'install_path' => __DIR__ . '/../barryvdh/laravel-translation-manager',
             'aliases' => array(),
             'reference' => '5ea4bb0b88fe116af0e44c7ed9cd3716e968c721',
-            'dev_requirement' => false,
-        ),
-        'biscolab/laravel-recaptcha' => array(
-            'pretty_version' => 'v5.3.0',
-            'version' => '5.3.0.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../biscolab/laravel-recaptcha',
-            'aliases' => array(),
-            'reference' => 'c5af231e59996603bfa8d86b0c5119621f934345',
             'dev_requirement' => false,
         ),
         'brick/math' => array(

@@ -1,6 +1,28 @@
 @extends('layouts.app', ['class' => 'login-page', 'page' => 'Laravel Inventory', 'contentClass' => 'login-page', 'section' => 'auth'])
 
 @section('content')
+    <style>
+        .g-recaptcha-outer{
+            text-align: center;
+            border-radius: 2px;
+            background: #f9f9f9;
+            border-style: solid;
+            border-color: #37474f;
+            border-width: 1px;
+            border-bottom-width: 2px;
+        }
+        .g-recaptcha-inner{
+            width: 154px;
+            height: 82px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        .g-recaptcha{
+            position:relative;
+            left: -2px;
+            top: -1px;
+        }
+    </style>
      <div style="padding-top: 110px" class="col-lg-4 col-md-6 ml-auto mr-auto">
         <form class="form" method="post" action="{{ route('login') }}">
             @csrf
@@ -28,13 +50,28 @@
                         <input type="password" placeholder="{{__('translation.Password')}}" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}">
                         @include('alerts.feedback', ['field' => 'password'])
                     </div>
+                    <div class="g-recaptcha-outer">
+                        <div class="g-recaptcha-inner">
+                            <div class="input-group">
+                                {!! app('captcha')->display() !!}
+                                <div class="g-recaptcha">
+                                    @if ($errors->has('g-recaptcha-response'))
+                                        <span class="text-danger">
+                                            <div class="alert alert-danger" role="alertdialog"> {{ $errors}} </div>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary btn-lg btn-block mb-3">{{__('translation.Login')}}</button>
                     <div class="text-center">
-                        <h6>
-                            <a href="{{ route('password.request') }}" class="link footer-link">{{__('translation.I_forgot_the_password')}}</a>
-                        </h6>
+{{--                        <h6>--}}
+{{--                            <a href="{{ route('password.request') }}" class="link footer-link">{{__('translation.I_forgot_the_password')}}</a>--}}
+{{--                        </h6>--}}
                     </div>
                 </div>
             </div>
