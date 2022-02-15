@@ -107,7 +107,6 @@ class EnvironmentManager
         'DB_DATABASE='.$request->database_name."\n".
         'DB_USERNAME='.$request->database_username."\n".
         'DB_PASSWORD='.$request->database_password."\n\n".
-        'THEME='.'2'."\n\n".
         'BROADCAST_DRIVER='.$request->broadcast_driver."\n".
         'CACHE_DRIVER='.$request->cache_driver."\n".
         'SESSION_DRIVER='.$request->session_driver."\n".
@@ -121,9 +120,18 @@ class EnvironmentManager
         'MAIL_USERNAME='.$request->mail_username."\n".
         'MAIL_PASSWORD='.$request->mail_password."\n".
         'MAIL_ENCRYPTION='.$request->mail_encryption."\n\n".
+        'CHATIFY_NAME=\''."\n".
         'PUSHER_APP_ID='.$request->pusher_app_id."\n".
         'PUSHER_APP_KEY='.$request->pusher_app_key."\n".
-        'PUSHER_APP_SECRET='.$request->pusher_app_secret;
+        'PUSHER_APP_SECRET='.$request->pusher_app_secret."\n".
+        'PUSHER_APP_CLUSTER='."\n\n".
+        'RECAPTCHA_SITE_KEY='."\n".
+        'RECAPTCHA_SECRET_KEY='."\n".
+        'RECAPTCHA_SKIP_IP='."\n\n".
+        'GOOGLE_CALENDAR_AUTH_PROFILE='."\n".
+        'GOOGLE_CALENDAR_ID='."\n".
+        'GOOGLE_CALENDAR_IMPERSONATE='."\n\n".
+        'BCRYPT_ROUNDS='."\n\n";
 
 
         try {
