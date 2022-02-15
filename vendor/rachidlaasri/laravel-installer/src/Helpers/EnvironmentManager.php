@@ -120,7 +120,7 @@ class EnvironmentManager
         'MAIL_USERNAME='.$request->mail_username."\n".
         'MAIL_PASSWORD='.$request->mail_password."\n".
         'MAIL_ENCRYPTION='.$request->mail_encryption."\n\n".
-        'CHATIFY_NAME=\''."\n".
+        'CHATIFY_NAME=""'."\n".
         'PUSHER_APP_ID='.$request->pusher_app_id."\n".
         'PUSHER_APP_KEY='.$request->pusher_app_key."\n".
         'PUSHER_APP_SECRET='.$request->pusher_app_secret."\n".
@@ -129,8 +129,7 @@ class EnvironmentManager
         'NOCAPTCHA_SECRET='."\n\n".
         'GOOGLE_CALENDAR_AUTH_PROFILE='."\n".
         'GOOGLE_CALENDAR_ID='."\n".
-        'GOOGLE_CALENDAR_IMPERSONATE='."\n\n".
-        'BCRYPT_ROUNDS='."\n\n";
+        'GOOGLE_CALENDAR_IMPERSONATE='."\n\n";
 
 
         try {
