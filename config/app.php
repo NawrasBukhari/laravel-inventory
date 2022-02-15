@@ -17,13 +17,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Theme
+    | Application Versions
     |--------------------------------------------------------------------------
-    | This Value is used for the Application Theme that is going to be applied.
-    | If selected it 1 then it means the WHITE theme will be applied.
-    | If selected it 2 then it means the BLACK theme will be applied.
+    | These Values will be used for the Application version purposes.
+    | Monkey   = version: 1.0.0
+    | Elephant = version: 2.0.0
+    | Falcon   = version: 3.0.0
+    | Cobra    = version: 4.0.0
+    | Tiger    = version: 5.0.0
+    | Seagull  = version: 6.0.0
+    | Phoenix  = version: 7.0.0
+    |
     */
-    'theme' =>env('THEME', '2'),
+    'version' =>env('Version', '1.0.0'),
 
 
     /*
@@ -174,6 +180,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
+        Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -239,6 +246,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'ReCaptcha' => Biscolab\ReCaptcha\Facades\ReCaptcha::class,
     ],
 
 
