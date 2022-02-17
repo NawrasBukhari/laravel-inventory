@@ -52,6 +52,7 @@ class DatabaseManager
     {
         try {
             Artisan::call('db:seed', ['--force' => true], $outputLog);
+            Artisan::call('storage:link');
         } catch (Exception $e) {
             return $this->response($e->getMessage(), 'error', $outputLog);
         }
