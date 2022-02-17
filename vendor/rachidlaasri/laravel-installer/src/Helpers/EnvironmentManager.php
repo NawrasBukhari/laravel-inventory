@@ -120,13 +120,13 @@ class EnvironmentManager
         'MAIL_USERNAME='.$request->mail_username."\n".
         'MAIL_PASSWORD='.$request->mail_password."\n".
         'MAIL_ENCRYPTION='.$request->mail_encryption."\n\n".
-        'CHATIFY_NAME=""'."\n".
+        'CHATIFY_NAME=\''.$request->chatify_name."'\n".
         'PUSHER_APP_ID='.$request->pusher_app_id."\n".
         'PUSHER_APP_KEY='.$request->pusher_app_key."\n".
         'PUSHER_APP_SECRET='.$request->pusher_app_secret."\n".
-        'PUSHER_APP_CLUSTER='."\n\n".
-        'NOCAPTCHA_SITEKEY=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'."\n".
-        'NOCAPTCHA_SECRET=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'."\n\n".
+        'PUSHER_APP_CLUSTER='.$request->pusher_app_cluster."\n\n".
+        'NOCAPTCHA_SITEKEY='.$request->no_captcha_site_key."\n".
+        'NOCAPTCHA_SECRET='.$request->no_captcha_secret_key."\n\n".
         'GOOGLE_CALENDAR_AUTH_PROFILE='."\n".
         'GOOGLE_CALENDAR_ID='."\n".
         'GOOGLE_CALENDAR_IMPERSONATE='."\n\n";

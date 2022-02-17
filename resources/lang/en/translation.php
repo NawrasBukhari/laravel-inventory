@@ -267,5 +267,7 @@ return[
     'No_internet_access'=>'No internet access',
     'Please_select_a_chat_to_start_messaging'=>'Please select a chat to start messaging',
     'chat'=>'Chat',
-    'Pusher_id'=>'Do you have a pusher key?'
+    'Pusher_id'=>'Do you have a pusher key?',
+    'not_installed'=>'Script is not installed',
+    'install_me'=>'Install'
 ];
