@@ -38,7 +38,6 @@
                         <div class="photo">
                             <img src="{{asset('/images/profile_pictures/'.Auth::user()->image)}}" onerror="this.src='{{asset('images/user.png')}}';">
                         </div>
-                        <b class="caret d-none d-lg-block d-xl-block"></b>
                         <p class="d-lg-none">{{ __('Log out') }}</p>
                     </a>
                     <ul class="dropdown-menu dropdown-navbar">

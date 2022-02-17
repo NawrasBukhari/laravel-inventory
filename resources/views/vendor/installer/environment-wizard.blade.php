@@ -449,7 +449,7 @@ background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);" onclick="sh
                         </div>
                     </div>
                 </div>
-                <div class="block margin-bottom-2">
+                <div class="block">
                     <input type="radio" name="appSettingsTabs" id="appSettingsTab4" value="null"/>
                     <label for="appSettingsTab4">
                         <span>
@@ -495,6 +495,55 @@ background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);" onclick="sh
                                 </span>
                             @endif
                         </div>
+                        <div class="form-group {{ $errors->has('pusher_app_cluster') ? ' has-error ' : '' }}">
+                            <label for="pusher_app_cluster">{{ trans('installer_messages.environment.wizard.form.app_tabs.pusher_app_cluster_label') }}</label>
+                            <input type="text" name="pusher_app_cluster" id="pusher_app_cluster" value="" placeholder="{{ trans('installer_messages.environment.wizard.form.app_tabs.pusher_app_cluster_label') }}" />
+                            @if ($errors->has('pusher_app_cluster'))
+                                <span class="error-block">
+                                    <i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i>
+                                    {{ $errors->first('pusher_app_cluster') }}
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="block">
+                    <input type="radio" name="appSettingsTabs" id="appSettingsTab5" value="null"/>
+                    <label for="appSettingsTab5">
+                        <span>
+                            {{ trans('installer_messages.environment.wizard.form.app_tabs.no_captcha_label') }}
+                        </span>
+                    </label>
+                    <div class="info">
+                        <div class="form-group {{ $errors->has('no_captcha_site_key') ? ' has-error ' : '' }}">
+                            <label for="no_captcha_site_key">
+                                {{ trans('installer_messages.environment.wizard.form.app_tabs.no_captcha_site_key') }}
+                                <sup>
+                                    <a href="https://pusher.com/docs/server_api_guide" target="_blank" title="{{ trans('installer_messages.environment.wizard.form.app_tabs.more_info') }}">
+                                        <i class="fa fa-info-circle fa-fw" aria-hidden="true"></i>
+                                        <span class="sr-only">{{ trans('installer_messages.environment.wizard.form.app_tabs.more_info') }}</span>
+                                    </a>
+                                </sup>
+                            </label>
+                            <input type="text" name="no_captcha_site_key" id="no_captcha_site_key" value="" placeholder="{{ trans('installer_messages.environment.wizard.form.app_tabs.no_captcha_label') }}" />
+                            @if ($errors->has('no_captcha_site_key'))
+                                <span class="error-block">
+                                    <i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i>
+                                    {{ $errors->first('no_captcha_site_key') }}
+                                </span>
+                            @endif
+                        </div>
+                        <div class="form-group {{ $errors->has('no_captcha_secret_key') ? ' has-error ' : '' }}">
+                            <label for="no_captcha_secret_key">{{ trans('installer_messages.environment.wizard.form.app_tabs.no_captcha_secret_key') }}</label>
+                            <input type="password" name="no_captcha_secret_key" id="no_captcha_secret_key" value="" placeholder="{{ trans('installer_messages.environment.wizard.form.app_tabs.no_captcha_secret_key') }}" />
+                            @if ($errors->has('no_captcha_secret_key'))
+                                <span class="error-block">
+                                    <i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i>
+                                    {{ $errors->first('no_captcha_secret_key') }}
+                                    {{ $errors->first('no_captcha_secret_key') }}
+                                </span>
+                            @endif
+                        </div>
                     </div>
                 </div>
                 <div class="align-content-center">
@@ -527,6 +576,9 @@ background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);" onclick="sh
         }
         function showApplicationSettings() {
             document.getElementById('tab3').checked = true;
+        }
+        function showNoCaptchaSettings() {
+            document.getElementById('tab4').checked = true;
         }
     </script>
 @endsection

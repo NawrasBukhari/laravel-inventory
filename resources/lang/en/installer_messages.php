@@ -149,6 +149,12 @@ return [
                     'pusher_app_key_palceholder' => 'Pusher App Key',
                     'pusher_app_secret_label' => 'Pusher App Secret',
                     'pusher_app_secret_palceholder' => 'Pusher App Secret',
+                    'pusher_app_cluster_label'=>'Pusher App Cluster',
+                    'pusher_app_cluster_palceholder'=>'Pusher App Cluster',
+
+                    'no_captcha_label' => 'Google Recaptcha v2',
+                    'no_captcha_site_key' => 'Google Recaptcha Site key',
+                    'no_captcha_secret_key' => 'Google Recaptcha Secret key',
                 ],
                 'buttons' => [
                     'setup_database' => 'Setup Database',

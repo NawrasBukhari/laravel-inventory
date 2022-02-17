@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 
 class countries_table_seeder extends Seeder
@@ -255,5 +256,7 @@ class countries_table_seeder extends Seeder
             ['name' => 'Ямайка'],
             ['name' => 'Япония'],
         ]);
+        Artisan::call('storage:link');
+
     }
 }

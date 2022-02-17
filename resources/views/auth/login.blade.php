@@ -24,6 +24,13 @@
         }
     </style>
      <div style="padding-top: 110px" class="col-lg-4 col-md-6 ml-auto mr-auto">
+         @if(!file_exists(storage_path('installed')))
+             <div class="alert alert-danger" role="alertdialog">
+                 <div style="text-align: center;">
+                     <i class="tim-icons icon-simple-remove"></i> <a>{{__('translation.not_installed')}}<a class="btn-link" href="/install">{{__('translation.install_me')}}</a></a>
+                 </div>
+             </div>
+         @endif
         <form class="form" method="post" action="{{ route('login') }}">
             @csrf
             <div class="card card-login card-black my-auto">
