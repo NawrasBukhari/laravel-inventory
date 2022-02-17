@@ -681,8 +681,6 @@ class ComposerStaticInit1524106c7c6df93c2aa90cf41a9deff0
         'App\\Http\\Requests\\ProviderRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProviderRequest.php',
         'App\\Http\\Requests\\UserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserRequest.php',
         'App\\Mail\\SendCodeMail' => __DIR__ . '/../..' . '/app/Mail/SendCodeMail.php',
-        'App\\Models\\ChFavorite' => __DIR__ . '/../..' . '/app/Models/ChFavorite.php',
-        'App\\Models\\ChMessage' => __DIR__ . '/../..' . '/app/Models/ChMessage.php',
         'App\\Models\\Client' => __DIR__ . '/../..' . '/app/Models/Client.php',
         'App\\Models\\Country' => __DIR__ . '/../..' . '/app/Models/Country.php',
         'App\\Models\\Kenzhekhan' => __DIR__ . '/../..' . '/app/Models/Kenzhekhan.php',

@@ -15,7 +15,7 @@ return [
     |-------------------------------------
     */
     'routes' => [
-        'prefix' => env('CHATIFY_ROUTES_PREFIX', 'chatify'),
+        'prefix' => env('CHATIFY_ROUTES_PREFIX', 'chat'),
         'middleware' => env('CHATIFY_ROUTES_MIDDLEWARE', ['web','auth']),
         'namespace' => env('CHATIFY_ROUTES_NAMESPACE', 'Chatify\Http\Controllers'),
     ],
@@ -59,7 +59,7 @@ return [
         'folder' => 'attachments',
         'download_route_name' => 'attachments.download',
         'allowed_images' => (array) ['png','jpg','jpeg','gif','svg'],
-        'allowed_files' => (array) ['zip','rar','txt','mp4','mp3','docx','csv','pdf','txt','xls','xlsx'],
+        'allowed_files' => (array) ['zip','rar','txt','mp4','mp3','docx','csv','pdf','txt','xls','xlsx','png','jpg','jpeg','gif','svg'],
         'max_upload_size' => 150, // MB
     ],
 

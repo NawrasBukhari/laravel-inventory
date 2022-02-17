@@ -11,7 +11,6 @@
                 <a data-toggle="collapse" href="#transactions" {{ $section == 'transactions' ? 'aria-expanded=true' : '' }}>
                     <i class="tim-icons icon-bank" ></i>
                     <span class="nav-link-text">{{__('translation.transactions')}}</span>
-                    <b class="caret mt-1"></b>
                 </a>
 
                 <div class="collapse {{ $section == 'transactions' ? 'show' : '' }}" id="transactions">
@@ -66,7 +65,6 @@
                 <a data-toggle="collapse" href="#inventory" {{ $section == 'inventory' ? 'aria-expanded=true' : '' }}>
                     <i class="tim-icons icon-app"></i>
                     <span class="nav-link-text">{{__('translation.Inventory')}}</span>
-                    <b class="caret mt-1"></b>
                 </a>
 
                 <div class="collapse {{ $section == 'inventory' ? 'show' : '' }}" id="inventory">
@@ -130,7 +128,6 @@
                     <a data-toggle="collapse" href="#users" {{ $section == 'users' ? 'aria-expanded=true' : '' }}>
                         <i class="tim-icons icon-badge" ></i>
                         <span class="nav-link-text">{{__('translation.Users')}}</span>
-                        <b class="caret mt-1"></b>
                     </a>
 
                     <div class="collapse {{ $section == 'users' ? 'aria-expanded=true' : '' }}" id="users">
@@ -172,7 +169,7 @@
                 </a>
             </li>
             <li @if ($pageSlug == 'chat') class="active " @endif>
-                <a href="/chatify">
+                <a href="/chat">
                     <i class="tim-icons icon-chat-33"></i>
                     <p>{{__('translation.chat')}}</p>
                 </a>
