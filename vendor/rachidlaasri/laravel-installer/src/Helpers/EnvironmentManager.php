@@ -125,8 +125,8 @@ class EnvironmentManager
         'PUSHER_APP_KEY='.$request->pusher_app_key."\n".
         'PUSHER_APP_SECRET='.$request->pusher_app_secret."\n".
         'PUSHER_APP_CLUSTER='."\n\n".
-        'NOCAPTCHA_SITEKEY='."\n".
-        'NOCAPTCHA_SECRET='."\n\n".
+        'NOCAPTCHA_SITEKEY=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'."\n".
+        'NOCAPTCHA_SECRET=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'."\n\n".
         'GOOGLE_CALENDAR_AUTH_PROFILE='."\n".
         'GOOGLE_CALENDAR_ID='."\n".
         'GOOGLE_CALENDAR_IMPERSONATE='."\n\n";
