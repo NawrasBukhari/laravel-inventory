@@ -20,7 +20,7 @@ use App\Models\Kenzhekhan;
 Auth::routes(['register' => false]);
 // Login Route goes here
 
-    Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
+    Route::get('/', 'HomeController@index')->name('homee')->middleware('auth');
     // Languages Locales Route goes here
     Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
 

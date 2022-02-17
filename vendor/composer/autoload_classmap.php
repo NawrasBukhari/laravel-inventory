@@ -59,8 +59,6 @@ return array(
     'App\\Http\\Requests\\ProviderRequest' => $baseDir . '/app/Http/Requests/ProviderRequest.php',
     'App\\Http\\Requests\\UserRequest' => $baseDir . '/app/Http/Requests/UserRequest.php',
     'App\\Mail\\SendCodeMail' => $baseDir . '/app/Mail/SendCodeMail.php',
-    'App\\Models\\ChFavorite' => $baseDir . '/app/Models/ChFavorite.php',
-    'App\\Models\\ChMessage' => $baseDir . '/app/Models/ChMessage.php',
     'App\\Models\\Client' => $baseDir . '/app/Models/Client.php',
     'App\\Models\\Country' => $baseDir . '/app/Models/Country.php',
     'App\\Models\\Kenzhekhan' => $baseDir . '/app/Models/Kenzhekhan.php',
