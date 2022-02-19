@@ -124,6 +124,7 @@ class EnvironmentManager
         'PUSHER_APP_ID='.$request->pusher_app_id."\n".
         'PUSHER_APP_KEY='.$request->pusher_app_key."\n".
         'PUSHER_APP_SECRET='.$request->pusher_app_secret."\n".
+        'PUSHER_APP_ENCRYPTION_KEY='.base64_encode(Str::random(32))."\n".
         'PUSHER_APP_CLUSTER='.$request->pusher_app_cluster."\n\n".
         'NOCAPTCHA_SITEKEY='.$request->no_captcha_site_key."\n".
         'NOCAPTCHA_SECRET='.$request->no_captcha_secret_key."\n\n".
