@@ -472,6 +472,31 @@ background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);" onclick="sh
                                 </span>
                             @endif
                         </div>
+
+                        <div class="form-group {{ $errors->has('mail_from_address') ? ' has-error ' : '' }}">
+                            <label for="mail_from_address">{{ trans('installer_messages.environment.wizard.form.app_tabs.mail_from_address_label') }}</label>
+                            <input type="text" name="mail_from_address" id="mail_from_address" value="null"
+                                   placeholder="{{ trans('installer_messages.environment.wizard.form.app_tabs.mail_from_address_placeholder') }}"/>
+                            @if ($errors->has('mail_from_address'))
+                                <span class="error-block">
+                                    <i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i>
+                                    {{ $errors->first('mail_from_address') }}
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="form-group {{ $errors->has('mail_from_name') ? ' has-error ' : '' }}">
+                            <label for="mail_from_name">{{ trans('installer_messages.environment.wizard.form.app_tabs.mail_from_name_label') }}</label>
+                            <input type="text" name="mail_from_name" id="mail_from_name" value="null"
+                                   placeholder="{{ trans('installer_messages.environment.wizard.form.app_tabs.mail_from_name_placeholder') }}"/>
+                            @if ($errors->has('mail_from_name'))
+                                <span class="error-block">
+                                    <i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i>
+                                    {{ $errors->first('mail_from_name') }}
+                                </span>
+                            @endif
+                        </div>
+
                     </div>
                 </div>
                 <div class="block">

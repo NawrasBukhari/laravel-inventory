@@ -85,6 +85,8 @@ return [
                 'mail_username'         => 'required|string|max:50',
                 'mail_password'         => 'required|string|max:50',
                 'mail_encryption'       => 'required|string|max:50',
+                'mail_from_address'     => 'required|string|max:50',
+                'mail_from_name'        => 'required|string|max:50',
                 'chatify_name'          => 'max:50',
                 'pusher_app_id'         => 'max:50',
                 'pusher_app_key'        => 'max:50',

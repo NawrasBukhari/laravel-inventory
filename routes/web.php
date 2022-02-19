@@ -17,10 +17,6 @@ use App\Models\Kenzhekhan;
 |
 */
 
-// Registration is turned off upon user client request
-Auth::routes(['register' => false]);
-// Login Route goes here
-
 Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
 // Languages Locales Route goes here
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);

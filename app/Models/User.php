@@ -10,13 +10,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Laravel\Sanctum\HasApiTokens;
 use Exception;
 use Mail;
-use App\Mail\SendCodeMail;
-
+use Laravel\Fortify\TwoFactorAuthenticatable;
 
 class User extends Authenticatable
 {
     use SoftDeletes;
     use Notifiable;
+    use TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -49,26 +49,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function generateCode()
-    {
-        $code = rand(1000, 9999);
-
-        UserCode::updateOrCreate(
-            [ 'user_id' => auth()->user()->id ],
-            [ 'code' => $code ]
-        );
-
-        try {
-
-            $details = [
-                'title' => 'Mail from ItSolutionStuff.com',
-                'code' => $code
-            ];
-
-            Mail::to(auth()->user()->email)->send(new SendCodeMail($details));
-
-        } catch (Exception $e) {
-            info("Error: ". $e->getMessage());
-        }
-    }
 }
