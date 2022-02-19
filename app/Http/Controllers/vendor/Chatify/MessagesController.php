@@ -16,7 +16,7 @@ use Illuminate\Support\Str;
 class MessagesController extends Controller
 {
     protected $perPage = 30;
-    protected $messengerFallbackColor = '#2180f3';
+    protected $messengerFallbackColor = '#ba237b';
 
     /**
      * Authinticate the connection for pusher

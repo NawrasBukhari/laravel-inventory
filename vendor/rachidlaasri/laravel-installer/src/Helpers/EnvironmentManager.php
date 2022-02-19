@@ -127,6 +127,8 @@ class EnvironmentManager
         'PUSHER_APP_CLUSTER='.$request->pusher_app_cluster."\n\n".
         'NOCAPTCHA_SITEKEY='.$request->no_captcha_site_key."\n".
         'NOCAPTCHA_SECRET='.$request->no_captcha_secret_key."\n\n".
+        'ZOOM_CLIENT_KEY='.$request->zoom_client_key."\n".
+        'ZOOM_CLIENT_SECRET='.$request->zoom_client_secret."\n\n".
         'GOOGLE_CALENDAR_AUTH_PROFILE='."\n".
         'GOOGLE_CALENDAR_ID='."\n".
         'GOOGLE_CALENDAR_IMPERSONATE='."\n\n";

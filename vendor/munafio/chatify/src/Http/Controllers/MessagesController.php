@@ -16,7 +16,7 @@ use Illuminate\Support\Str;
 class MessagesController extends Controller
 {
     protected $perPage = 30;
-    protected $messengerFallbackColor = '#2180f3';
+    protected $messengerFallbackColor = '#ba237b';
 
     /**
      * Authinticate the connection for pusher
@@ -62,7 +62,7 @@ class MessagesController extends Controller
             'id' => $id ?? 0,
             'type' => $type ?? 'user',
             'messengerColor' => Auth::user()->messenger_color ?? $this->messengerFallbackColor,
-            'dark_mode' => Auth::user()->dark_mode < 1 ? 'light' : 'dark',
+            'dark_mode' => Auth::user()->dark_mode < 1 ? 'dark' : 'light',
         ]);
     }
 

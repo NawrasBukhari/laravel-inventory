@@ -92,6 +92,8 @@ return [
                 'pusher_app_cluster'    => 'max:5',
                 'no_captcha_site_key'   => 'max:80',
                 'no_captcha_secret_key' => 'max:80',
+                'zoom_client_key'       => 'max:80',
+                'zoom_client_secret'    => 'max:80',
             ],
         ],
     ],

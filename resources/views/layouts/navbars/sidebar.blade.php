@@ -174,6 +174,12 @@
                     <p>{{__('translation.chat')}}</p>
                 </a>
             </li>
+            <li @if ($pageSlug == 'zoom') class="active " @endif>
+                <a href="{{ route('zoom.index') }}">
+                    <i class="tim-icons icon-video-66"></i>
+                    <p>{{__('translation.zoom')}}</p>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

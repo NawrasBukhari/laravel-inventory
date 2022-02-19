@@ -36,7 +36,9 @@ return [
         'app_id' => env('PUSHER_APP_ID'),
         'options' => [
             'cluster' => env('PUSHER_APP_CLUSTER'),
-            'encrypted' => false,
+            'encrypted' => true,
+            'encryption_master_key_base64' => env('PUSHER_APP_ENCRYPTION_KEY'),
+            'useTLS' => true,
         ],
     ],
 
@@ -83,6 +85,6 @@ return [
         '#2727b0',
         '#2765b0',
         '#279bb0',
-        '#87b027',
+        '#ba237b',
     ],
 ];
