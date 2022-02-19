@@ -91,6 +91,8 @@
 <script src="{{ asset('assets/js/theme.js') }}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://unpkg.com/xzoom/dist/xzoom.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
     $(document).ready(function () {
         $().ready(function () {
@@ -204,7 +206,7 @@
         Swal.fire({
             title: 'уверены ли вы?',
             text: "Вы не сможете отменить это!",
-            icon: 'предупреждение!',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#5fd630',
             cancelButtonColor: '#d21c1c',

@@ -269,5 +269,14 @@ return[
     'chat'=>'Chat',
     'Pusher_id'=>'Do you have a pusher key?',
     'not_installed'=>'Script is not installed',
-    'install_me'=>'Install'
+    'install_me'=>'Install',
+    'zoom'=>'Zoom',
+    'New_Meeting'=>'New Meeting',
+    'user_id'=>'user id',
+    'meeting_id'=>'meeting id',
+    'topic'=>'topic',
+    'start_time'=>'start time',
+    'duration'=>'duration',
+    'start_url'=>'start url',
+    'join_url'=>'join url',
 ];

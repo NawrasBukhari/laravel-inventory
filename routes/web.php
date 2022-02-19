@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
         'inventory/categories' => 'ProductCategoryController',
         'transactions/transfer' => 'TransferController',
         'methods' => 'MethodController',
+        'zoom'=>'ZoomMeetingsController',
     ]); // Sidebar left menu routes goes here
 
     // Search goes here
@@ -97,8 +98,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('tables', ['as' => 'pages.tables', 'uses' => 'PageController@tables']);
     Route::get('typography', ['as' => 'pages.typography', 'uses' => 'PageController@typography']);
 });
-
+// Export Excel goes here
 Route::get('/export', 'ProductController@export')->name('export')->middleware('auth');
 Route::get('/export2', 'KenzhekhanController@export')->name('export2')->middleware('auth');
 Route::get('/export3', 'SettingsController@export')->name('export3')->middleware('auth');
+
+
+
 

@@ -155,6 +155,9 @@ return [
                     'no_captcha_label' => 'Google Recaptcha v2',
                     'no_captcha_site_key' => 'Google Recaptcha Site key',
                     'no_captcha_secret_key' => 'Google Recaptcha Secret key',
+                    'zoom_label'=>'Zoom API',
+                    'zoom_client_secret'=>'Zoom Client Secret',
+                    'zoom_client_key'=>'Zoom Client Key',
                 ],
                 'buttons' => [
                     'setup_database' => 'Setup Database',
