@@ -2812,4 +2812,5 @@ namespace {
     class URL extends Illuminate\Support\Facades\URL {}
     class Validator extends Illuminate\Support\Facades\Validator {}
     class View extends Illuminate\Support\Facades\View {}
+    class Zoom extends MacsiDigital\Zoom\Facades\Zoom {}
 }

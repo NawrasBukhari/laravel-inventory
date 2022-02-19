@@ -25,9 +25,13 @@
     }
 </style>
 @section('content')
-    <div class="alert alert-danger" role="alert">
-        {{__('translation.welcome')}}
-    </div>
+    @if(!Auth::user()->image)
+        <div class="alert alert-danger" role="alert">
+            {{__('translation.welcome')}}
+        </div>
+    @endif
+    @include('alerts.success')
+
     <div class="row">
         <div class="col-md-8">
             <div class="card">
@@ -36,22 +40,25 @@
                 </div>
                 <form method="post" action="{{ route('profile.update') }}" autocomplete="off">
                     <div class="card-body">
-                            @csrf
-                            @method('put')
+                        @csrf
+                        @method('put')
 
-                            @include('alerts.success')
 
-                            <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                <label>{{__('translation.Name')}}</label>
-                                <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Name" value="{{ old('name', auth()->user()->name) }}">
-                                @include('alerts.feedback', ['field' => 'name'])
-                            </div>
+                        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                            <label>{{__('translation.Name')}}</label>
+                            <input type="text" name="name"
+                                   class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                   placeholder="Name" value="{{ old('name', auth()->user()->name) }}">
+                            @include('alerts.feedback', ['field' => 'name'])
+                        </div>
 
-                            <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                <label>{{__('translation.Email')}}</label>
-                                <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Email" value="{{ old('email', auth()->user()->email) }}">
-                                @include('alerts.feedback', ['field' => 'email'])
-                            </div>
+                        <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
+                            <label>{{__('translation.Email')}}</label>
+                            <input type="email" name="email"
+                                   class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                   placeholder="Email" value="{{ old('email', auth()->user()->email) }}">
+                            @include('alerts.feedback', ['field' => 'email'])
+                        </div>
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-fill btn-success">{{__('translation.Save')}}</button>
@@ -72,42 +79,77 @@
 
                         <div class="form-group{{ $errors->has('old_password') ? ' has-danger' : '' }}">
                             <label>{{__('translation.Current_password')}}</label>
-                            <input type="password" name="old_password" class="form-control{{ $errors->has('old_password') ? ' is-invalid' : '' }}" placeholder="Current password" value="" required>
+                            <input type="password" name="old_password"
+                                   class="form-control{{ $errors->has('old_password') ? ' is-invalid' : '' }}"
+                                   placeholder="Current password" value="" required>
                             @include('alerts.feedback', ['field' => 'old_password'])
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                             <label>{{__('translation.New_Password')}}</label>
-                            <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="New password" value="" required>
+                            <input type="password" name="password"
+                                   class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                   placeholder="New password" value="" required>
                             @include('alerts.feedback', ['field' => 'password'])
                         </div>
                         <div class="form-group">
                             <label>{{__('translation.Confirm_new_password')}}</label>
-                            <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm new password" value="" required>
+                            <input type="password" name="password_confirmation" class="form-control"
+                                   placeholder="Confirm new password" value="" required>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-fill btn-success">{{__('translation.Save_New_Password')}}</button>
+                        <button type="submit"
+                                class="btn btn-fill btn-success">{{__('translation.Save_New_Password')}}</button>
                     </div>
                 </form>
             </div>
+            <!-- Here Goes 2FA -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">{{__('translation.2fa')}}</h5>
+                </div>
+                <form method="post" action="{{ url('user/two-factor-authentication') }}" autocomplete="off">
+                    <div class="card-body">
+                        @csrf
+                        @if(auth()->user()->two_factor_secret)
+                            @method('DELETE')
+                            <div class="pb-5">
+                                {!! auth()->user()->twoFactorQrCodeSvg() !!}
+                            </div>
+                            <button class="btn btn-danger">Disable</button>
+
+
+
+                        @include('alerts.success', ['key' => '2fa'])
+
+                    </div>
+                    <div class="card-footer">
+                        @else
+                            <button class="btn btn-primary" >Enable</button>
+                        @endif
+                    </div>
+                </form>
+            </div>
+
         </div>
         <div class="col-md-4">
             <div class="card card-user">
                 <div class="card-body">
                     <p class="card-text">
-                        <div class="author">
-                            <div class="block block-one"></div>
-                            <div class="block block-two"></div>
-                            <div class="block block-three"></div>
-                            <div class="block block-four"></div>
+                    <div class="author">
+                        <div class="block block-one"></div>
+                        <div class="block block-two"></div>
+                        <div class="block block-three"></div>
+                        <div class="block block-four"></div>
                         <h4 class="title">{{ auth()->user()->name }}</h4>
                         @if ($message = Session::get('success'))
                             <div class="alert alert-success alert-block">
                                 <button type="button" class="close" data-dismiss="alert">×</button>
                                 <strong>{{ $message }}</strong>
                             </div>
-                            <img src="{{asset('/images/profile_pictures/'.Auth::user()->image)}}" onerror="this.src='{{asset('images/user.png')}}';">
+                            <img src="{{asset('/images/profile_pictures/'.Auth::user()->image)}}"
+                                 onerror="this.src='{{asset('images/user.png')}}';">
                         @endif
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
@@ -119,22 +161,22 @@
                                 </ul>
                             </div>
                         @endif
-                            @if(Auth::user()->image)
-                                <img class="avatar" src="{{asset('/images/profile_pictures/'.Auth::user()->image)}}"
-                                     onerror="this.src='{{asset('images/user.png')}}';"
-                                     alt="{{__('translation.upload_image')}}">
-                            @endif
+                        @if(Auth::user()->image)
+                            <img class="avatar" src="{{asset('/images/profile_pictures/'.Auth::user()->image)}}"
+                                 onerror="this.src='{{asset('images/user.png')}}';"
+                                 alt="{{__('translation.upload_image')}}">
+                        @endif
                         <div class="upload-btn-wrapper">
                             <form action="{{route('profile.edit')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <button class="btn">{{__('translation.Upload_a_file')}}</button>
-                                <input type="file" name="image" />
+                                <input type="file" name="image"/>
                                 <input type="submit" class="btn btn-fill btn-success" value="Save">
                             </form>
 
                         </div>
-                            <p class="description">{{__('translation.Change_profile_picture')}}</p>
-                        </div>
+                        <p class="description">{{__('translation.Change_profile_picture')}}</p>
+                    </div>
                     </p>
                     <div class="card-description"></div>
                 </div>
